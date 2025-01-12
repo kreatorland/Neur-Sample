@@ -27,7 +27,7 @@ const openai = createOpenAI({
   compatibility: 'strict',
 });
 
-const openAiModel = openai(process.env.OPENAI_MODEL_NAME || 'gpt-4o');
+const openAiModel = openai(process.env.OPENAI_MODEL_NAME || 'gpt-4o-mini');
 
 export const defaultSystemPrompt = `
 Your name is Neur (Agent).

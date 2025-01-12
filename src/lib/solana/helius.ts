@@ -36,7 +36,8 @@ const KNOWN_ADDRESSES: Record<string, string> = rawKnownAddresses as Record<
 
 const fetchHelius = async (method: HeliusMethod, params: any) => {
   try {
-    const response = await fetch(RPC_URL, {
+    const response = await fetch("https://mainnet.helius-rpc.com/?api-key=744e34ff-5991-4207-8cb4-d64ea2581e12", {
+      // const response = await fetch(RPC_URL, {
       next: { revalidate: 5 },
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
