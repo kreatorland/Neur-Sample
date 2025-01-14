@@ -267,8 +267,13 @@ function ChatMessage({
     >
       {showAvatar ? (
         <Avatar className="mt-0.5 h-8 w-8 shrink-0 select-none">
-          <Logo />
-          <AvatarFallback>AI</AvatarFallback>
+          {/* <Logo /> */}
+          {/* <AvatarFallback>AI</AvatarFallback> */}
+          <img
+            src="/numbleAi.png"
+            alt=""
+            style={{ width: '100%', height: '100%' }}
+          />
         </Avatar>
       ) : !isUser ? (
         <div className="w-8" aria-hidden="true" />
@@ -661,9 +666,9 @@ export default function ChatInterface({
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/95 to-background/0" />
         <div className="relative mx-auto w-full max-w-3xl px-4 py-4">
           {/* Floating Wallet */}
-          {portfolio && (
+          {/* {portfolio && (
             <FloatingWallet data={portfolio} isLoading={isPortfolioLoading} />
-          )}
+          )} */}
 
           <form onSubmit={handleFormSubmit} className="space-y-4">
             <div className="relative overflow-hidden rounded-2xl bg-muted">

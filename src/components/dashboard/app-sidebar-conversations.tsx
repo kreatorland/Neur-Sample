@@ -193,7 +193,7 @@ export const AppSidebarConversations = () => {
   if (isUserLoading) {
     return (
       <SidebarGroup>
-        <SidebarGroupLabel>Conversations</SidebarGroupLabel>
+        <SidebarGroupLabel>History</SidebarGroupLabel>
         <div className="flex items-center justify-center">
           <Loader2 className="mt-4 h-4 w-4 animate-spin" />
         </div>
@@ -205,7 +205,7 @@ export const AppSidebarConversations = () => {
     <SidebarGroup>
       <SidebarGroupLabel className="text-md flex gap-1">
         <LayoutGridIcon></LayoutGridIcon>
-        Conversations
+        History
       </SidebarGroupLabel>
       <SidebarGroupContent className="group-data-[collapsible=icon]:hidden">
         {isConversationsLoading ? (
@@ -213,9 +213,7 @@ export const AppSidebarConversations = () => {
             <Loader2 className="mt-4 h-4 w-4 animate-spin" />
           </div>
         ) : !conversations?.length ? (
-          <p className="ml-2 mt-2 text-xs text-muted-foreground">
-            No conversations
-          </p>
+          <p className="ml-2 mt-2 text-xs text-muted-foreground">No History</p>
         ) : (
           <SidebarMenu>
             {conversations.map((conversation: Conversation) => (

@@ -276,7 +276,7 @@ const SidebarTrigger = React.forwardRef<
   React.ElementRef<typeof Button>,
   React.ComponentProps<typeof Button>
 >(({ className, onClick, ...props }, ref) => {
-  const { toggleSidebar } = useSidebar();
+  const { toggleSidebar, open } = useSidebar();
 
   return (
     <Button
@@ -292,10 +292,10 @@ const SidebarTrigger = React.forwardRef<
       {...props}
     >
       {/* <PanelLeft /> */}
-      <div className="flex h-6 w-6 items-center justify-center rounded-md bg-[#444444]">
-        <ArrowLeftIcon />
-      </div>
 
+      <div className="flex h-6 w-6 items-center justify-center rounded-md bg-[#444444]">
+        {open ? <ArrowLeftIcon /> : <ArrowRightIcon />}
+      </div>
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );

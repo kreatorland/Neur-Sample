@@ -50,10 +50,7 @@ export function FloatingWallet({
 
   return (
     <div
-      className={cn(
-        'absolute bottom-full right-4 z-50 mb-3 select-none',
-        className,
-      )}
+      className={cn('absolute right-4 top-1 z-50 mb-3 select-none', className)}
     >
       <motion.div
         layout="preserve-aspect"
@@ -189,7 +186,7 @@ export function FloatingWallet({
 
         <motion.div
           layout="preserve-aspect"
-          className="flex cursor-pointer items-center gap-1.5 rounded-2xl bg-black/[0.02] px-3 py-2 backdrop-blur-[12px] transition-colors hover:bg-black/[0.04] dark:bg-black/10 dark:backdrop-blur-xl dark:hover:bg-black/20"
+          className="flex cursor-pointer items-center gap-1.5 rounded-2xl bg-[#262626] px-3 py-2 backdrop-blur-[12px] transition-colors hover:bg-black/[0.04] dark:bg-black/10 dark:backdrop-blur-xl dark:hover:bg-black/20"
           onClick={() => setIsExpanded(!isExpanded)}
         >
           <Wallet className="h-4 w-4 shrink-0 text-muted-foreground" />
@@ -203,7 +200,7 @@ export function FloatingWallet({
                   transition={{ type: 'spring', bounce: 0.2 }}
                   className="block text-sm text-muted-foreground"
                 >
-                  Embedded Wallet
+                  Portfolio
                 </motion.span>
               ) : (
                 <motion.span

@@ -44,7 +44,7 @@ const AppSidebarHeader = ({ open }: { open: boolean }) => {
   return (
     <SidebarHeader>
       <div
-        className={`flex h-[48px] items-center  border-b-2 border-white  py-1.5 ${open ? 'justify-between' : 'justify-center'}`}
+        className={`border-b-1 flex h-[48px]  items-center border-[#5f5e5e]  py-1.5 ${open ? 'justify-between' : 'justify-center'}`}
       >
         <span className="pl-2 text-lg font-medium tracking-tight group-data-[collapsible=icon]:hidden">
           <Brand />
@@ -188,14 +188,14 @@ export function AppSidebar() {
               {ExploreItems.map((item) => (
                 <SidebarMenuItem
                   key={item.title}
-                  className="rounded-lg bg-[#27272A]  p-1 hover:bg-[#fa8f8f]"
+                  className="rounded-lg bg-[#27272A]  p-1 hover:bg-[#fff] "
                 >
                   <SidebarMenuButton
                     asChild
                     isActive={getIsActive(item.segment)}
                   >
                     <Link
-                      className="color-white"
+                      className="color-white hover:text-black"
                       href={item.url}
                       target={item.external ? '_blank' : undefined}
                     >
@@ -205,7 +205,7 @@ export function AppSidebar() {
                           width: '24px',
                           marginLeft: '-4px',
                         }}
-                        className="hover:text-[#fff]"
+                        className="hover:text-[#070707]"
                       />
                       <span>{item.title}</span>
                     </Link>

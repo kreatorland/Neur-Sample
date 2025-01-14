@@ -1,8 +1,10 @@
 import { cookies } from 'next/headers';
 
 import { AppSidebar } from '@/components/dashboard/app-sidebar';
+import { FloatingWallet } from '@/components/floating-wallet';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import WalletComponent from '@/components/wallet';
 import { IS_BETA } from '@/lib/constants';
 import { APP_VERSION } from '@/lib/constants';
 
@@ -22,8 +24,12 @@ export default async function UserLayout({
         </div>
         {/* <AppSidebar /> */}
         <main className="w-full flex-1">
-          <div className="sticky top-0 z-10 flex h-[55px] items-center justify-between space-x-1 border-b-2 border-white py-1.5">
+          <div className="border-b-1 sticky top-0 z-10 flex h-[55px] items-center justify-between space-x-1  border-[#5f5e5e]  py-1.5">
             <SidebarTrigger />
+
+            <div>
+              <WalletComponent></WalletComponent>
+            </div>
             {/* <div className="flex items-center gap-1.5">
               <ThemeToggle />
 
