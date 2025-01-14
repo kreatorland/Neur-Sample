@@ -10,6 +10,11 @@
     hsl(0 0% 0% / 0)
   );
 }
+
+.bg-primary-foreground {
+  background-color: #231f1f; /* Replace with your desired background color */
+  color: white; /* Replace with your desired text color */
+}
 @layer base {
   :root {
     --background: 0 0% 100%;

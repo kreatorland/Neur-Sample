@@ -2,10 +2,17 @@
 
 import { useState } from 'react';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { useFundWallet } from '@privy-io/react-auth/solana';
-import { ArrowUpDown, Banknote, HelpCircle, Loader2 } from 'lucide-react';
+import {
+  ArrowUpDown,
+  Banknote,
+  EyeOff,
+  HelpCircle,
+  Loader2,
+} from 'lucide-react';
 import { toast } from 'sonner';
 import useSWR from 'swr';
 
@@ -22,6 +29,16 @@ import { Card, CardContent } from '@/components/ui/card';
 import { CopyableText } from '@/components/ui/copyable-text';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 import { SolanaUtils } from '@/lib/solana';
 import { cn } from '@/lib/utils';
 import { embeddedWalletSendSOL } from '@/server/actions/wallet';
@@ -126,23 +143,73 @@ export function WalletCard({ wallet }: { wallet: EmbeddedWallet }) {
 
   return (
     <>
-      <Card className="bg-sidebar">
+      <Card className="w-full">
         <CardContent className="pt-6">
           <div className="space-y-4">
             {/* Wallet Public Key Display */}
             <div>
+              <Label className=":theme-white:text-black text-2xl font-medium text-muted-foreground text-white">
+                Assets
+              </Label>
+            </div>
+
+            <div>
               <Label className="text-xs text-muted-foreground">
-                Public Key
+                Wallet Address
               </Label>
               <div className="mt-1 font-mono text-xs">
-                <div className="w-full">
-                  <CopyableText text={wallet.publicKey} showSolscan={true} />
-                </div>
+                <CopyableText text={wallet.publicKey} showSolscan={true} />
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Label className="text-md font-medium text-muted-foreground">
+                Estimate Value
+              </Label>
+              <div className="flex items-center gap-2 rounded-md border border-color-1 p-1">
+                <EyeOff className="h-3 w-3"></EyeOff>
+                <span className="text-sm font-medium">Hide</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-between gap-2 sm:flex-col md:flex-row ">
+              <div className="flex items-center gap-2">
+                <Label className=" text-2xl font-semibold text-muted-foreground text-white">
+                  {balance.toFixed(4)} <span className="text-lg">SOL</span>
+                </Label>
+                <div className="rp-1 flex items-center gap-2">=</div>
+                <Label className=" text-2xl font-semibold text-muted-foreground">
+                  {balance.toFixed(4)} <span className="text-lg">USD</span>
+                </Label>
+              </div>
+              <div className="flex items-center gap-2">
+                {/* Fund Wallet Button */}
+                <Button
+                  onClick={() =>
+                    fundWallet(wallet.publicKey, {
+                      cluster: {
+                        name: 'mainnet-beta',
+                      },
+                    })
+                  }
+                >
+                  <Banknote className="mr-2 h-4 w-4" />
+                  <span>Deposit</span>
+                </Button>
+
+                {/* Send SOL Button */}
+                <Button
+                  variant="outline"
+                  onClick={() => setIsSendDialogOpen(true)}
+                >
+                  <ArrowUpDown className="mr-2 h-4 w-4" />
+                  <span>Withdraw</span>
+                </Button>
               </div>
             </div>
 
             {/* SOL Balance Display */}
-            <div>
+            {/* <div>
               <Label className="text-xs text-muted-foreground">Balance</Label>
               <div className="mt-1 text-lg font-medium">
                 {isBalanceLoading ? (
@@ -151,33 +218,60 @@ export function WalletCard({ wallet }: { wallet: EmbeddedWallet }) {
                   <span>{balance.toFixed(4)} SOL</span>
                 )}
               </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              {/* Fund Wallet Button */}
-              <Button
-                onClick={() =>
-                  fundWallet(wallet.publicKey, {
-                    cluster: {
-                      name: 'mainnet-beta',
-                    },
-                  })
-                }
-              >
-                <Banknote className="mr-2 h-4 w-4" />
-                <span>Fund</span>
-              </Button>
-
-              {/* Send SOL Button */}
-              <Button
-                variant="outline"
-                onClick={() => setIsSendDialogOpen(true)}
-              >
-                <ArrowUpDown className="mr-2 h-4 w-4" />
-                <span>Send</span>
-              </Button>
-            </div>
+            </div> */}
           </div>
+
+          <Card className="mt-3">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="text-lg font-medium">
+                    Currency
+                  </TableHead>
+                  <TableHead className="text-lg font-medium">Balance</TableHead>
+                  <TableHead className="text-lg font-medium">Value</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>
+                    <div className="flex items-center gap-2">
+                      <Image
+                        src={`/solana.webp`}
+                        alt="solana"
+                        width={30}
+                        height={30}
+                      ></Image>
+
+                      <div className="flex flex-col gap-[1px]">
+                        <div className=" text-xl font-semibold md:text-2xl">
+                          Solana
+                        </div>
+                        <div className="md:text-md p-0 text-sm font-bold text-[#666565]">
+                          SOL
+                        </div>
+                      </div>
+                    </div>
+                  </TableCell>
+
+                  <TableCell>
+                    <div className="text-md font-medium md:text-lg">
+                      {isBalanceLoading ? (
+                        <span className="text-muted-foreground">
+                          Loading...
+                        </span>
+                      ) : (
+                        <span>{balance.toFixed(3)} SOL</span>
+                      )}
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <div className="text-md font-medium md:text-lg">1</div>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </Card>
         </CardContent>
       </Card>
 

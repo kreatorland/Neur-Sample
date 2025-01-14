@@ -3,9 +3,24 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { BookOpen, Brain, HomeIcon } from 'lucide-react';
+import {
+  ActivityIcon,
+  BookOpen,
+  BotIcon,
+  Brain,
+  DollarSignIcon,
+  HeartHandshakeIcon,
+  HomeIcon,
+  SettingsIcon,
+  WalletIcon,
+} from 'lucide-react';
 
 import { ThemeToggle } from '@/components/theme-toggle';
+import {
+  SidebarProvider,
+  SidebarTrigger,
+  useSidebar,
+} from '@/components/ui/sidebar';
 import {
   Sidebar,
   SidebarContent,
@@ -20,19 +35,25 @@ import {
 } from '@/components/ui/sidebar';
 import { APP_VERSION, IS_BETA } from '@/lib/constants';
 
+import { Brand } from '../logo';
+import NLogo from '../n-logo';
 import { AppSidebarConversations } from './app-sidebar-conversations';
 import { AppSidebarUser } from './app-sidebar-user';
 
-const AppSidebarHeader = () => {
+const AppSidebarHeader = ({ open }: { open: boolean }) => {
   return (
     <SidebarHeader>
-      <div className="flex items-center justify-between px-1">
+      <div
+        className={`flex items-center  border-b-2 border-white  py-1.5 ${open ? 'justify-between' : 'justify-center'}`}
+      >
         <span className="pl-2 text-lg font-medium tracking-tight group-data-[collapsible=icon]:hidden">
-          neur.sh
+          <Brand />
         </span>
-        <div className="flex items-center gap-1.5">
-          <ThemeToggle />
-          <div className="flex items-center gap-1.5 group-data-[collapsible=icon]:hidden">
+        <div className="ml-2 flex items-center gap-1.5">
+          <NLogo></NLogo>
+          {/* <ThemeToggle /> */}
+          {/* <SidebarTrigger></SidebarTrigger> */}
+          {/* <div className="flex items-center gap-1.5 group-data-[collapsible=icon]:hidden">
             {IS_BETA && (
               <span className="select-none rounded-md bg-primary/90 px-1.5 py-0.5 text-xs text-primary-foreground">
                 BETA
@@ -41,7 +62,7 @@ const AppSidebarHeader = () => {
             <span className="select-none rounded-md bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
               {APP_VERSION}
             </span>
-          </div>
+          </div> */}
         </div>
       </div>
     </SidebarHeader>
@@ -64,6 +85,37 @@ const ExploreItems = [
     icon: HomeIcon,
     external: false,
   },
+
+  {
+    title: 'Agents',
+    url: '/agent',
+    segment: 'agents',
+    icon: ActivityIcon,
+    external: false,
+  },
+
+  {
+    title: 'Wallet',
+    url: '/wallet',
+    segment: 'wallet',
+    icon: WalletIcon,
+    external: false,
+  },
+  {
+    title: 'Settings',
+    url: '/setting',
+    segment: 'setting',
+    icon: SettingsIcon,
+    external: false,
+  },
+  {
+    title: 'Integration',
+    url: '/integration',
+    segment: 'integration',
+    icon: Brain,
+    external: false,
+  },
+
   {
     title: 'Docs',
     url: 'https://docs.neur.sh',
@@ -72,10 +124,10 @@ const ExploreItems = [
     external: true,
   },
   {
-    title: 'Memories',
+    title: 'Support',
     url: '/memories',
-    segment: 'memories',
-    icon: Brain,
+    segment: 'support',
+    icon: HeartHandshakeIcon,
     external: false,
   },
   // {
@@ -96,7 +148,8 @@ const ExploreItems = [
 
 export function AppSidebar() {
   const pathname = usePathname();
-
+  const { open } = useSidebar();
+  console.log('open', open);
   const getIsActive = (itemSegment: string) => {
     if (itemSegment === 'home') {
       return pathname === '/home';
@@ -105,37 +158,75 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar variant="sidebar" collapsible="icon" className="hidden md:flex">
-      <AppSidebarHeader />
+    <Sidebar
+      variant="sidebar"
+      collapsible="icon"
+      className=" fixed hidden h-screen bg-black md:flex"
+      style={{ backgroundColor: 'black' }}
+    >
+      <AppSidebarHeader open={open} />
 
       <SidebarContent>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Explore</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {ExploreItems.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton
-                      asChild
-                      isActive={getIsActive(item.segment)}
+        {/* <div className="flex flex-col space-y-2 p-3 ">
+          {ExploreItems.map((item) => (
+            <div
+              key={item.title}
+              className=" flex items-center rounded-lg bg-[#27272A] p-2  hover:bg-[#3a3a3a]"
+            >
+              <Link
+                className="flex items-center gap-2 pl-3 pr-2"
+                href={item.url}
+                target={item.external ? '_blank' : undefined}
+              >
+                <item.icon
+                  style={{
+                    height: '25px',
+                    width: '25px',
+                    marginLeft: '-4px',
+                  }}
+                />
+                <span>{item.title}</span>
+              </Link>
+            </div>
+          ))}
+        </div> */}
+        <SidebarGroup className=" pl-3 pr-2">
+          <SidebarGroupContent>
+            <SidebarMenu
+              className={`space-y-2 ${open ? '' : 'flex items-center '}`}
+            >
+              {ExploreItems.map((item) => (
+                <SidebarMenuItem
+                  key={item.title}
+                  className="rounded-lg bg-[#27272A]  p-1 hover:bg-[#fa8f8f]"
+                >
+                  <SidebarMenuButton
+                    asChild
+                    isActive={getIsActive(item.segment)}
+                  >
+                    <Link
+                      className="color-white"
+                      href={item.url}
+                      target={item.external ? '_blank' : undefined}
                     >
-                      <Link
-                        href={item.url}
-                        target={item.external ? '_blank' : undefined}
-                      >
-                        <item.icon />
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
+                      <item.icon
+                        style={{
+                          height: '24px',
+                          width: '24px',
+                          marginLeft: '-4px',
+                        }}
+                        className="hover:text-[#fff]"
+                      />
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
 
-          <AppSidebarConversations />
-        </SidebarContent>
+        <AppSidebarConversations />
       </SidebarContent>
 
       <AppSidebarFooter />

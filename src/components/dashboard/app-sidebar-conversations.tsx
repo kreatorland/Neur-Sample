@@ -6,7 +6,13 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
 import { Conversation } from '@prisma/client';
-import { Loader2, MoreHorizontal, PencilIcon, TrashIcon } from 'lucide-react';
+import {
+  LayoutGridIcon,
+  Loader2,
+  MoreHorizontal,
+  PencilIcon,
+  TrashIcon,
+} from 'lucide-react';
 import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
@@ -197,14 +203,19 @@ export const AppSidebarConversations = () => {
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Conversations</SidebarGroupLabel>
+      <SidebarGroupLabel className="text-md flex gap-1">
+        <LayoutGridIcon></LayoutGridIcon>
+        Conversations
+      </SidebarGroupLabel>
       <SidebarGroupContent className="group-data-[collapsible=icon]:hidden">
         {isConversationsLoading ? (
           <div className="flex items-center justify-center">
             <Loader2 className="mt-4 h-4 w-4 animate-spin" />
           </div>
         ) : !conversations?.length ? (
-          <p className="ml-2 text-xs text-muted-foreground">No conversations</p>
+          <p className="ml-2 mt-2 text-xs text-muted-foreground">
+            No conversations
+          </p>
         ) : (
           <SidebarMenu>
             {conversations.map((conversation: Conversation) => (
