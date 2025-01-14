@@ -6,7 +6,7 @@ import { DynamicImage } from './dynamic-image';
 
 export default function Logo({
   width = 100,
-  height = 28,
+  height = 31,
   className,
 }: {
   width?: number;
@@ -33,7 +33,7 @@ export function Brand({ className }: BrandProps) {
   return (
     <Link href="/" className={className}>
       <div className="flex items-center gap-2">
-        <Logo width={80} />
+        <Logo />
         {/* <span className="text-x select-none font-bold">Neur</span> */}
       </div>
     </Link>

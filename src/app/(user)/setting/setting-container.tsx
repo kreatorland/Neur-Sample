@@ -45,7 +45,7 @@ export default function SettingContainer() {
         <div className="flex flex-row items-center gap-x-4 text-[28px] font-bold leading-10">
           <h3 className="p-0 text-2xl font-semibold">Settings</h3>
         </div>
-        <div className="flex h-full flex-col p-6">
+        <div className="flex h-full flex-col py-6">
           <div
             data-orientation="horizontal"
             role="none"
@@ -124,7 +124,7 @@ export default function SettingContainer() {
                     className="w-[200px] justify-between"
                   >
                     English
-                    <ArrowBigDownIcon className="opacity-50" />
+                    <ChevronsUpDown className="opacity-50" />
                   </Button>
                 </PopoverTrigger>
               </Popover>
@@ -153,12 +153,18 @@ export default function SettingContainer() {
                     className="w-[200px] justify-between"
                   >
                     US Dollar
-                    <ArrowBigDownIcon className="opacity-50" />
+                    <ChevronsUpDown className="opacity-50" />
                   </Button>
                 </PopoverTrigger>
               </Popover>
             </div>
           </div>
+
+          <div
+            data-orientation="horizontal"
+            role="none"
+            className="h-[1px] w-full shrink-0 bg-border"
+          ></div>
         </div>
       </div>
     </div>

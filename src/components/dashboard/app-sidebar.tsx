@@ -44,26 +44,16 @@ const AppSidebarHeader = ({ open }: { open: boolean }) => {
   return (
     <SidebarHeader>
       <div
-        className={`flex items-center  border-b-2 border-white  py-1.5 ${open ? 'justify-between' : 'justify-center'}`}
+        className={`flex h-[48px] items-center  border-b-2 border-white  py-1.5 ${open ? 'justify-between' : 'justify-center'}`}
       >
         <span className="pl-2 text-lg font-medium tracking-tight group-data-[collapsible=icon]:hidden">
           <Brand />
         </span>
-        <div className="ml-2 flex items-center gap-1.5">
-          <NLogo></NLogo>
-          {/* <ThemeToggle /> */}
-          {/* <SidebarTrigger></SidebarTrigger> */}
-          {/* <div className="flex items-center gap-1.5 group-data-[collapsible=icon]:hidden">
-            {IS_BETA && (
-              <span className="select-none rounded-md bg-primary/90 px-1.5 py-0.5 text-xs text-primary-foreground">
-                BETA
-              </span>
-            )}
-            <span className="select-none rounded-md bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
-              {APP_VERSION}
-            </span>
-          </div> */}
-        </div>
+        {!open && (
+          <div className="ml-2 flex items-center gap-1.5">
+            <NLogo></NLogo>
+          </div>
+        )}
       </div>
     </SidebarHeader>
   );

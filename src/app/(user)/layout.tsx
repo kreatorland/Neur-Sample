@@ -22,9 +22,9 @@ export default async function UserLayout({
         </div>
         {/* <AppSidebar /> */}
         <main className="w-full flex-1">
-          <div className="sticky top-0 flex h-[51px] items-center justify-between space-x-1 border-b-2 border-white py-1.5">
+          <div className="sticky top-0 z-10 flex h-[55px] items-center justify-between space-x-1 border-b-2 border-white py-1.5">
             <SidebarTrigger />
-            <div className="flex items-center gap-1.5">
+            {/* <div className="flex items-center gap-1.5">
               <ThemeToggle />
 
               <div className="flex items-center gap-1.5 group-data-[collapsible=icon]:hidden">
@@ -37,7 +37,7 @@ export default async function UserLayout({
                   {APP_VERSION}
                 </span>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* <Banner>$NEUR is now live on Raydium 🎉</Banner> */}
