@@ -220,8 +220,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
             </h1>
 
             <p className="mt-4 text-lg text-muted-foreground">
-              Elevate your Solana experience with AI-powered insights and
-              delegated actions
+            Experience Solana on-chain actions using powerful AI Engine from Numble
             </p>
           </BlurFade>
 

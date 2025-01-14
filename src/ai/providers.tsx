@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 import { createAnthropic } from '@ai-sdk/anthropic';
 import { createOpenAI } from '@ai-sdk/openai';
+import { createGroq } from '@ai-sdk/groq';
 import { z } from 'zod';
 
 import { actionTools } from './generic/action';
@@ -21,12 +22,20 @@ const usingAntropic = !!process.env.ANTHROPIC_API_KEY;
 const anthropic = createAnthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const claude35Sonnet = anthropic('claude-3-5-sonnet-20241022');
 
+// added
+// const openai = createGroq({
+//   baseURL: "https://api.groq.com/openai/v1",
+//   apiKey: process.env.GROP_API_KEY,
+// });
+
 const openai = createOpenAI({
   baseURL: process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1',
   apiKey: process.env.OPENAI_API_KEY,
   compatibility: 'strict',
 });
 
+// added
+// const openAiModel = openai(process.env.GROP_MODEL || "llama-3.3-70b-versatile");
 const openAiModel = openai(process.env.OPENAI_MODEL_NAME || 'gpt-4o-mini');
 
 export const defaultSystemPrompt = `
