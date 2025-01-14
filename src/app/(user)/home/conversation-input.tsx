@@ -90,7 +90,7 @@ export function ConversationInput({
           </div>
         </form>
 
-        <BorderBeam size={250} duration={8} delay={9} />
+        {/* <BorderBeam size={250} duration={8} delay={9} /> */}
       </div>
     </div>
   );
