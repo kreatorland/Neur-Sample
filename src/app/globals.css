@@ -11,6 +11,30 @@
   );
 }
 
+.sidebarMenuItem {
+  background: #27272a;
+}
+
+.sidebarMenuItem:hover {
+  background-color: #fff;
+}
+
+.span_text {
+  color: white;
+}
+
+.sidebarMenuItem:hover .span_text {
+  color: black;
+}
+
+.sidebarMenuItem:hover .iconImage {
+  color: black;
+}
+
+.iconImage {
+  color: white;
+}
+
 .custom-toast {
   background-color: black !important; /* Black background */
   border: 1px solid white !important; /* White border */

@@ -8,6 +8,7 @@ import { Attachment, Message } from 'ai';
 import { useChat } from 'ai/react';
 import {
   ChevronDown,
+  ForwardIcon,
   Image as ImageIcon,
   Loader2,
   SendHorizontal,
@@ -730,7 +731,13 @@ export default function ChatInterface({
                   onClick={() => fileInputRef.current?.click()}
                   disabled={isLoading}
                 >
-                  <ImageIcon className="h-5 w-5" />
+                  <div className="rounded-lg bg-[#111111] p-2">
+                    <ImageIcon
+                      className="color-[#adad39] h-6 w-6 transition-transform 
+                  duration-200 ease-out group-hover:scale-110"
+                    />
+                  </div>
+                  {/* <ImageIcon className="h-5 w-5" /> */}
                 </Button>
 
                 <Button
@@ -744,7 +751,13 @@ export default function ChatInterface({
                   }
                   className="h-8 w-8 hover:bg-muted"
                 >
-                  <SendHorizontal className="h-5 w-5" />
+                  <div className="rounded-lg bg-[#111111] p-2">
+                    <ForwardIcon
+                      className="color-[#adad39] h-6 w-6 transition-transform 
+                  duration-200 ease-out group-hover:scale-110"
+                    />
+                  </div>
+                  {/* <SendHorizontal className="h-5 w-5" /> */}
                 </Button>
               </div>
             </div>

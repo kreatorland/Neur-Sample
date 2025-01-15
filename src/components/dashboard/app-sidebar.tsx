@@ -91,7 +91,7 @@ const ExploreItems = [
   },
 
   {
-    title: 'Wallet',
+    title: 'Portfolio',
     url: '/wallet',
     segment: 'Portfolio',
     icon: WalletIcon,
@@ -126,20 +126,6 @@ const ExploreItems = [
     icon: HeartHandshakeIcon,
     external: false,
   },
-  // {
-  //     title: "Agents",
-  //     url: "/agents",
-  //     segment: "agents",
-  //     icon: Bot,
-  //     external: false,
-  // },
-  // {
-  //     title: "Automations",
-  //     url: "/automations",
-  //     segment: "automations",
-  //     icon: Workflow,
-  //     external: false,
-  // }
 ] as const;
 
 export function AppSidebar() {
@@ -170,7 +156,7 @@ export function AppSidebar() {
               {ExploreItems.map((item) => (
                 <SidebarMenuItem
                   key={item.title}
-                  className=" rounded-lg bg-[#27272A] p-1 hover:bg-white"
+                  className="sidebarMenuItem rounded-lg  p-1 "
                 >
                   <SidebarMenuButton
                     asChild
@@ -178,7 +164,6 @@ export function AppSidebar() {
                     className="group"
                   >
                     <Link
-                      className="text-white "
                       href={item.url}
                       target={item.external ? '_blank' : undefined}
                     >
@@ -188,11 +173,9 @@ export function AppSidebar() {
                           width: '24px',
                           marginLeft: '-4px',
                         }}
-                        className="text-white group-hover:text-black"
+                        className="iconImage "
                       />
-                      <span className="text-white group-hover:text-black">
-                        {item.title}
-                      </span>
+                      <span className="span_text">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
