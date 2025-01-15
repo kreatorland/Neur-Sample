@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import { RiTwitterXFill } from '@remixicon/react';
+import { RiDiscordFill, RiTwitterXFill } from '@remixicon/react';
 import {
   BookOpen,
   BookOpenIcon,
@@ -37,6 +37,12 @@ export const AppSidebarUser = () => {
           <SendIcon className="h-6 w-6" />
         </a>
       </div>
+      <div className="flex justify-center rounded-md bg-[#302f2f] p-2">
+        <a href="https://discord.gg/9MN5bjBF" target="_blank">
+          <RiDiscordFill className="h-6 w-6" />
+        </a>
+      </div>
+
       <div className="flex justify-center rounded-md bg-[#302f2f] p-2">
         <a href="https://docs.numble.ai/" target="_blank">
           <BookOpenIcon className=" h-6 w-6" />

@@ -114,7 +114,7 @@ const ExploreItems = [
 
   {
     title: 'Docs',
-    url: 'https://docs.neur.sh',
+    url: 'https://docs.numble.ai/',
     segment: 'docs',
     icon: BookOpen,
     external: true,

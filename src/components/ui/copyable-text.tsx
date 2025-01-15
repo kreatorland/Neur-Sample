@@ -22,11 +22,9 @@ export const CopyableText = ({ text, showSolscan = false }: Props) => {
   const { toast } = useToast();
   const [isCopied, setIsCopied] = useState(false);
   const handleCopy = (text: string) => {
-    navigator.clipboard.writeText(text).then(() => {
-      setIsCopied(true);
-      // Reset icon after 2 seconds
-      setTimeout(() => setIsCopied(false), 2000);
-    });
+    navigator.clipboard.writeText(text);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
   };
 
   // Validate if it's a valid bs58 address

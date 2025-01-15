@@ -54,11 +54,9 @@ export function FloatingWallet({
   const [value, setValue] = useState('');
   const [isCopied, setIsCopied] = useState(false);
   const handleCopy = (text: string) => {
-    navigator.clipboard.writeText(text).then(() => {
-      setIsCopied(true);
-      // Reset icon after 2 seconds
-      setTimeout(() => setIsCopied(false), 2000);
-    });
+    navigator.clipboard.writeText(text);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
   };
   const frameworks = [
     {

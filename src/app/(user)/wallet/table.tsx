@@ -71,40 +71,59 @@ export function WalletDetail({
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.tokens.map((token, index) => (
-          <TableRow key={index}>
-            <TableCell>
-              <div className="flex items-center gap-1">
-                <Avatar className="h-8 w-8 shrink-0 rounded-lg bg-background">
-                  <AvatarImage
-                    src={token.imageUrl}
-                    alt={token.name}
-                    className="object-cover transition-transform duration-150 group-hover:scale-105"
-                  />
-                  <AvatarFallback className="rounded-lg text-xs">
-                    {token.symbol.slice(0, 2)}
-                  </AvatarFallback>
-                </Avatar>
-                <div className="flex flex-col">
-                  <p className="line text-lg font-bold">{token.name}</p>
-                  <p className="text-sm font-semibold">{token.symbol}</p>
-                </div>
-              </div>
-            </TableCell>
+        {data?.tokens.length > 1 ? (
+          <>
+            {data.tokens.map((token, index) => (
+              <TableRow key={index}>
+                <TableCell>
+                  <div className="flex items-center gap-1">
+                    <Avatar className="h-8 w-8 shrink-0 rounded-lg bg-background">
+                      <AvatarImage
+                        src={token.imageUrl}
+                        alt={token.name}
+                        className="object-cover transition-transform duration-150 group-hover:scale-105"
+                      />
+                      <AvatarFallback className="rounded-lg text-xs">
+                        {token.symbol.slice(0, 2)}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="flex flex-col">
+                      <p className="line text-lg font-bold">{token.name}</p>
+                      <p className="text-sm font-semibold">{token.symbol}</p>
+                    </div>
+                  </div>
+                </TableCell>
 
-            <TableCell>
-              <span className="text-md font-medium md:text-lg">
-                {token.balance}
-              </span>
-            </TableCell>
-            <TableCell>
-              <span className="text-md font-medium md:text-lg">
-                {token.balance * token.pricePerToken}
-              </span>
-            </TableCell>
-          </TableRow>
-        ))}
+                <TableCell>
+                  <span className="text-md font-medium md:text-lg">
+                    {token.balance}
+                  </span>
+                </TableCell>
+                <TableCell>
+                  <span className="text-md font-medium md:text-lg">
+                    {/* {token.balance * token.pricePerToken} */}
+                    {parseFloat(
+                      (token.balance * token.pricePerToken).toFixed(2),
+                    )}
+                  </span>
+                </TableCell>
+              </TableRow>
+            ))}
+          </>
+        ) : (
+          <>
+            <div className="flex justify-center">
+              <p className="text-md font-medium">No Tokens</p>
+            </div>
+          </>
+        )}
       </TableBody>
+      <TableFooter>
+        <TableRow>
+          <TableCell colSpan={2}>Total</TableCell>
+          <TableCell className="text-right">${data.totalBalance}</TableCell>
+        </TableRow>
+      </TableFooter>
     </Table>
   );
 }
