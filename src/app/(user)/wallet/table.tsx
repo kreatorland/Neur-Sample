@@ -71,7 +71,7 @@ export function WalletDetail({
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data?.tokens.length > 1 ? (
+        {data?.tokens.length > 0 ? (
           <>
             {data.tokens.map((token, index) => (
               <TableRow key={index}>
@@ -88,19 +88,21 @@ export function WalletDetail({
                       </AvatarFallback>
                     </Avatar>
                     <div className="flex flex-col">
-                      <p className="line text-lg font-bold">{token.name}</p>
-                      <p className="text-sm font-semibold">{token.symbol}</p>
+                      <p className="line text-md font-bold">{token.name}</p>
+                      <p className="mt-[-4px] text-[10px] font-semibold">
+                        {token.symbol}
+                      </p>
                     </div>
                   </div>
                 </TableCell>
 
                 <TableCell>
-                  <span className="text-md font-medium md:text-lg">
+                  <span className="text-md md:text-md font-medium">
                     {token.balance}
                   </span>
                 </TableCell>
                 <TableCell>
-                  <span className="text-md font-medium md:text-lg">
+                  <span className="text-md md:text-md font-medium">
                     {/* {token.balance * token.pricePerToken} */}
                     {parseFloat(
                       (token.balance * token.pricePerToken).toFixed(2),
@@ -120,8 +122,10 @@ export function WalletDetail({
       </TableBody>
       <TableFooter>
         <TableRow>
-          <TableCell colSpan={2}>Total</TableCell>
-          <TableCell className="text-right">${data.totalBalance}</TableCell>
+          <TableCell colSpan={3}>Total</TableCell>
+          <TableCell className="text-right">
+            ${parseFloat(data.totalBalance.toFixed(2))}
+          </TableCell>
         </TableRow>
       </TableFooter>
     </Table>

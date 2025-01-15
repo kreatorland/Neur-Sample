@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     'The Intelligent AI Agents Engine to perform on-chain tasks on Solana',
 
   icons: {
-    icon: '/numble.svg',
+    icon: '/favicon.png',
   },
 };
 

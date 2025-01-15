@@ -90,44 +90,47 @@ export function FloatingWallet({
     <div>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
-          <Button
-            variant="outline"
+          <div
             role="combobox"
             aria-expanded={open}
-            className="w-[180px] justify-between"
+            className="flex w-[200px] items-center justify-around rounded-md bg-white p-2"
           >
-            <span className="max-w-[120px] truncate">
-              {data.address.slice(0, 4)}...{data.address.slice(-4)}
+            <span className="max-w-[120px] truncate text-sm text-black">
+              {data.address.slice(0, 6)}...{data.address.slice(-6)}
             </span>
-            <Wallet />
-            {formatNumber(data.totalBalance, 'currency')}
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-[200px] p-0">
-          <Command>
-            <CommandList>
-              <CommandGroup>
-                <CommandItem
-                  className="flex cursor-pointer justify-between"
-                  onClick={() => handleCopy(data.address)}
-                >
-                  <span className="max-w-[120px] truncate">
-                    {data.address.slice(0, 4)}...{data.address.slice(-4)}
-                  </span>
-                  {isCopied ? (
-                    <CopyCheckIcon className="h-3.5 w-3.5" />
-                  ) : (
-                    <Copy className="h-3.5 w-3.5" />
-                  )}
-                </CommandItem>
 
-                <CommandItem onClick={logout} className="cursor-pointer">
-                  <LogOutIcon></LogOutIcon>
-                  Log out
-                </CommandItem>
-              </CommandGroup>
-            </CommandList>
-          </Command>
+            <Wallet className="h-4 w-4 text-black" style={{ color: 'black' }} />
+            <p className="text-sm font-medium text-black">
+              {formatNumber(data.totalBalance, 'currency')}
+            </p>
+          </div>
+        </PopoverTrigger>
+        <PopoverContent className="w-[200px] bg-black p-1">
+          <div className="flex flex-col gap-1 p-1">
+            <div
+              className="hover:bg-grey flex cursor-pointer items-center justify-between"
+              onClick={() => handleCopy(data.address)}
+            >
+              <p className="max-w-[120px] truncate text-sm text-white">
+                {data.address.slice(0, 4)}...{data.address.slice(-4)}
+              </p>
+              {isCopied ? (
+                <CopyCheckIcon className="h-3.5 w-3.5 text-white" />
+              ) : (
+                <Copy className="h-3.5 w-3.5 text-white" />
+              )}
+            </div>
+
+            <div className="border-t-2"></div>
+
+            <div
+              onClick={logout}
+              className="flex cursor-pointer items-center gap-1 text-white"
+            >
+              <LogOutIcon className="h-3.5 w-3.5"></LogOutIcon>
+              <p className="text-sm">Log out</p>
+            </div>
+          </div>
         </PopoverContent>
       </Popover>
       {/* <div

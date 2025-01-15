@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { useFundWallet } from '@privy-io/react-auth/solana';
@@ -76,7 +75,7 @@ export function WalletCard({ wallet }: { wallet: EmbeddedWallet }) {
     { refreshInterval: 30000 },
   );
 
-  console.log('balance', balance);
+  console.log('balance', balance, wallet);
   /**
    * Handles sending SOL to another address
    * Includes validation, transaction processing, and error handling
@@ -139,9 +138,7 @@ export function WalletCard({ wallet }: { wallet: EmbeddedWallet }) {
       <div className="space-y-4">
         {/* Wallet Public Key Display */}
         <div>
-          <Label className=":theme-white:text-black text-2xl font-medium text-muted-foreground text-white">
-            Assets
-          </Label>
+          <h1 className="text-lg font-medium">Assets</h1>
         </div>
 
         <div>
@@ -153,23 +150,13 @@ export function WalletCard({ wallet }: { wallet: EmbeddedWallet }) {
           </div>
         </div>
 
-        {/* <div className="flex items-center gap-2">
-              <Label className="text-md font-medium text-muted-foreground">
-                Estimate Value
-              </Label>
-              <div className="flex items-center gap-2 rounded-md border border-color-1 p-1">
-                <EyeOff className="h-3 w-3"></EyeOff>
-                <span className="text-sm font-medium">Hide</span>
-              </div>
-            </div> */}
-
         <div className="flex flex-col justify-between gap-2 sm:flex-col md:flex-row ">
           <div className="flex items-center gap-2">
-            <Label className=" text-xl font-semibold text-muted-foreground text-white">
+            <Label className=" text-lg  font-semibold text-muted-foreground text-white">
               {balance.toFixed(4)} <span className="text-sm">SOL</span>
             </Label>
             <div className="rp-1 flex items-center gap-2">=</div>
-            <Label className=" text-xl font-semibold text-muted-foreground">
+            <Label className=" text-lg font-semibold text-muted-foreground">
               {balance.toFixed(4)} <span className="text-sm">USD</span>
             </Label>
           </div>
@@ -329,8 +316,8 @@ export function WalletCard({ wallet }: { wallet: EmbeddedWallet }) {
               href="/faq#send-sol"
               className="flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              <HelpCircle className="mr-2 h-4 w-4" />
-              Need help?
+              {/* <HelpCircle className="mr-2 h-4 w-4" /> */}
+              {/* Need help? */}
             </Link>
 
             <div className="flex gap-2">

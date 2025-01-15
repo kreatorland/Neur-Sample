@@ -583,9 +583,16 @@ const Footer = () => {
                     Twitter
                   </h3>
                 </a>
+
                 <a href="https://t.me/numble_ai" target="_blank">
                   <motion.h3 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
                     Telegram
+                  </motion.h3>
+                </a>
+
+                <a href="https://discord.gg/9MN5bjBF" target="_blank">
+                  <motion.h3 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+                    Discord
                   </motion.h3>
                 </a>
               </div>
