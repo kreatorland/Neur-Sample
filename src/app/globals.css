@@ -11,24 +11,18 @@
   );
 }
 
-.bg-primary-foreground {
-  background-color: #231f1f; /* Replace with your desired background color */
-  color: white; /* Replace with your desired text color */
+.custom-toast {
+  background-color: black !important; /* Black background */
+  border: 1px solid white !important; /* White border */
+  color: white !important; /* White text color */
+  box-shadow: none !important; /* Remove default shadow if any */
+  font-size: 14px !important;
 }
 
-.sidebar-menu-item {
-  background-color: #27272a;
-  transition: all 0.3s ease;
+.custom-toast-body {
+  color: white !important; /* Ensure the text remains white */
 }
 
-.sidebar-menu-item:hover {
-  background-color: white;
-}
-
-.sidebar-menu-item:hover .icon,
-.sidebar-menu-item:hover .text {
-  color: black;
-}
 @layer base {
   :root {
     --background: 0 0% 100%;

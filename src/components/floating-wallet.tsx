@@ -13,6 +13,7 @@ import {
   Wallet,
 } from 'lucide-react';
 import { Check, ChevronsUpDown } from 'lucide-react';
+import { toast } from 'react-toastify';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -30,6 +31,8 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Toaster } from '@/components/ui/toaster';
+import { useToast } from '@/hooks/use-toast';
 import { useUser } from '@/hooks/use-user';
 import { formatNumber } from '@/lib/format';
 import { cn } from '@/lib/utils';
@@ -53,10 +56,13 @@ export function FloatingWallet({
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
   const [isCopied, setIsCopied] = useState(false);
+
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text);
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
+
+    toast.success('Address copied to clipboard');
   };
   const frameworks = [
     {
