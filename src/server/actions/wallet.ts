@@ -52,9 +52,10 @@ export const embeddedWalletSendSOL = actionClient
   )
   .action<ActionResponse<string>>(
     async ({ parsedInput: { walletId, recipientAddress, amount } }) => {
+      console.log('befrore verify user  functiojn');
       const authResult = await verifyUser();
       const userId = authResult?.data?.data?.id;
-
+      console.log('after user function verify', authResult);
       if (!userId) {
         return {
           success: false,

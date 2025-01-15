@@ -244,15 +244,16 @@ export function WalletCard({ wallet }: { wallet: EmbeddedWallet }) {
                       /^\d*\.?\d*$/.test(e.target.value)
                     ) {
                       const numValue = parseFloat(e.target.value);
-                      if (e.target.value === '' || numValue <= balance) {
-                        setAmount(e.target.value);
-                      }
+                      setAmount(e.target.value);
+                      // if (e.target.value === '' || numValue <= balance) {
+                      //   setAmount(e.target.value);
+                      // }
                     }
                   }}
-                  placeholder={`Enter amount (max ${(balance - TRANSACTION_FEE_RESERVE).toFixed(4)} SOL)`}
+                  // placeholder={`Enter amount (max ${(balance - TRANSACTION_FEE_RESERVE).toFixed(4)} SOL)`}
                 />
                 {/* Amount Validation Display */}
-                {amount && !isNaN(parseFloat(amount)) && (
+                {/* {amount && !isNaN(parseFloat(amount)) && (
                   <div className="text-sm text-muted-foreground">
                     You will send {parseFloat(amount).toFixed(4)} SOL
                     {parseFloat(amount) > balance - TRANSACTION_FEE_RESERVE && (
@@ -262,7 +263,7 @@ export function WalletCard({ wallet }: { wallet: EmbeddedWallet }) {
                       </div>
                     )}
                   </div>
-                )}
+                )} */}
               </div>
 
               {/* Quick Amount Selection Buttons */}
@@ -276,12 +277,12 @@ export function WalletCard({ wallet }: { wallet: EmbeddedWallet }) {
                       variant="outline"
                       size="sm"
                       onClick={() => setAmount(calculatedAmount.toFixed(4))}
-                      className={cn(
-                        'min-w-[60px]',
-                        amount === calculatedAmount.toFixed(4) &&
-                          'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground',
-                      )}
-                      disabled={balance <= TRANSACTION_FEE_RESERVE}
+                      // className={cn(
+                      //   'min-w-[60px]',
+                      //   amount === calculatedAmount.toFixed(4) &&
+                      //     'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground',
+                      // )}
+                      // disabled={balance <= TRANSACTION_FEE_RESERVE}
                     >
                       {label}
                     </Button>
@@ -329,13 +330,13 @@ export function WalletCard({ wallet }: { wallet: EmbeddedWallet }) {
                   </AlertDialogCancel>
                   <Button
                     onClick={handleSendSol}
-                    disabled={
-                      isLoading ||
-                      !recipientAddress ||
-                      !amount ||
-                      parseFloat(amount) < MIN_AMOUNT ||
-                      parseFloat(amount) > balance - TRANSACTION_FEE_RESERVE
-                    }
+                    // disabled={
+                    //   isLoading ||
+                    //   !recipientAddress ||
+                    //   !amount ||
+                    //   parseFloat(amount) < MIN_AMOUNT ||
+                    //   parseFloat(amount) > balance - TRANSACTION_FEE_RESERVE
+                    // }
                   >
                     {isLoading ? (
                       <>
