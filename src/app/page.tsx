@@ -94,7 +94,7 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
                     </motion.a>
                   );
                 })}
-                <ThemeToggle></ThemeToggle>
+                {/* <ThemeToggle></ThemeToggle> */}
               </nav>
 
               <div className="flex items-center gap-3">
@@ -220,7 +220,8 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
             </h1>
 
             <p className="mt-4 text-lg text-muted-foreground">
-            Experience Solana on-chain actions using powerful AI Engine from Numble
+              Experience Solana on-chain actions using powerful AI Engine from
+              Numble
             </p>
           </BlurFade>
 
@@ -577,7 +578,7 @@ const Footer = () => {
                 Social
               </h3>
               <div className="flex flex-col">
-                <a href="https://x.com/Numble_ai" target="_blank">
+                <a href="Twitter url: https://x.com/NumbleAI" target="_blank">
                   <h3 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
                     Twitter
                   </h3>

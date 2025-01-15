@@ -32,10 +32,6 @@ export default function SettingContainer() {
       value: 'Dark',
       label: 'Dark',
     },
-    {
-      value: 'Light',
-      label: 'Light',
-    },
   ];
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('Dark');

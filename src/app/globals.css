@@ -15,6 +15,20 @@
   background-color: #231f1f; /* Replace with your desired background color */
   color: white; /* Replace with your desired text color */
 }
+
+.sidebar-menu-item {
+  background-color: #27272a;
+  transition: all 0.3s ease;
+}
+
+.sidebar-menu-item:hover {
+  background-color: white;
+}
+
+.sidebar-menu-item:hover .icon,
+.sidebar-menu-item:hover .text {
+  color: black;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;

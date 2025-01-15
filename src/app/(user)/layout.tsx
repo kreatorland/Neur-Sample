@@ -1,7 +1,6 @@
 import { cookies } from 'next/headers';
 
 import { AppSidebar } from '@/components/dashboard/app-sidebar';
-import { FloatingWallet } from '@/components/floating-wallet';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import WalletComponent from '@/components/wallet';

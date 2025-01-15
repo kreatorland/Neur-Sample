@@ -18,6 +18,7 @@ import { CopyableText } from '@/components/ui/copyable-text';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { useUser } from '@/hooks/use-user';
+import { useWalletPortfolio } from '@/hooks/use-wallet-portfolio';
 import { cn } from '@/lib/utils';
 import {
   formatPrivyId,
@@ -26,6 +27,8 @@ import {
 } from '@/lib/utils/format';
 import { getUserID, grantDiscordRole } from '@/lib/utils/grant-discord-role';
 import { EmbeddedWallet } from '@/types/db';
+
+import { WalletDetail } from './table';
 
 // import { LoadingStateSkeleton } from './loading-skeleton';
 
@@ -48,6 +51,12 @@ export function AccountContent() {
       handleGrantDiscordRole(tokens.accessToken);
     },
   });
+
+  const {
+    data: portfolio,
+    isLoading: isPortfolioLoading,
+    refresh,
+  } = useWalletPortfolio();
 
   if (isLoading || !user) {
     // return <LoadingStateSkeleton />;
@@ -84,12 +93,24 @@ export function AccountContent() {
     <div className="flex flex-1 flex-col py-8">
       <div className="w-full ">
         <div className=" space-y-6">
-          {/* Embedded Wallet Section */}
-          <section className="space-y-4">
-            {wallets?.map((wallet: EmbeddedWallet) => (
-              <WalletCard key={wallet.id} wallet={wallet} />
-            ))}
-          </section>
+          <Card className="w-full">
+            <CardContent className="pt-6">
+              <section className="space-y-4">
+                {wallets?.map((wallet: EmbeddedWallet) => (
+                  <WalletCard key={wallet.id} wallet={wallet} />
+                ))}
+              </section>
+
+              <Card className="mt-2">
+                {portfolio && (
+                  <WalletDetail
+                    data={portfolio}
+                    isLoading={isPortfolioLoading}
+                  ></WalletDetail>
+                )}
+              </Card>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

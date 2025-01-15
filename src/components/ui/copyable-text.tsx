@@ -1,7 +1,11 @@
+import { useState } from 'react';
+
 import bs58 from 'bs58';
-import { Copy, ExternalLink } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Copy, CopyCheckIcon, ExternalLink } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 
 interface Props {
   text: string;
@@ -15,8 +19,14 @@ interface Props {
  * Copyable text component with clipboard support and Solscan link
  */
 export const CopyableText = ({ text, showSolscan = false }: Props) => {
+  const { toast } = useToast();
+  const [isCopied, setIsCopied] = useState(false);
   const handleCopy = (text: string) => {
-    navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText(text).then(() => {
+      setIsCopied(true);
+      // Reset icon after 2 seconds
+      setTimeout(() => setIsCopied(false), 2000);
+    });
   };
 
   // Validate if it's a valid bs58 address
@@ -51,10 +61,15 @@ export const CopyableText = ({ text, showSolscan = false }: Props) => {
             variant="ghost"
             size="sm"
             onClick={() => handleCopy(text)}
-            className="h-6 w-6 hover:bg-sidebar-accent/50"
+            className="relative h-6 w-6 hover:bg-sidebar-accent/50"
           >
-            <Copy className="h-3.5 w-3.5" />
+            {isCopied ? (
+              <CopyCheckIcon className="h-3.5 w-3.5" />
+            ) : (
+              <Copy className="h-3.5 w-3.5" />
+            )}
           </Button>
+
           {shouldShowSolscanLink && (
             <Button
               variant="ghost"

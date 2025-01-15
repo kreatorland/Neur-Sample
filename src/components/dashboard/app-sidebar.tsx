@@ -37,6 +37,7 @@ import { APP_VERSION, IS_BETA } from '@/lib/constants';
 
 import { Brand } from '../logo';
 import NLogo from '../n-logo';
+import { Card, CardContent } from '../ui/card';
 import { AppSidebarConversations } from './app-sidebar-conversations';
 import { AppSidebarUser } from './app-sidebar-user';
 
@@ -61,9 +62,14 @@ const AppSidebarHeader = ({ open }: { open: boolean }) => {
 
 const AppSidebarFooter = () => {
   return (
-    <SidebarFooter>
-      <AppSidebarUser />
-    </SidebarFooter>
+    <div>
+      {/* <Card>
+        <CardContent>ss</CardContent>
+      </Card> */}
+      <SidebarFooter>
+        <AppSidebarUser />
+      </SidebarFooter>
+    </div>
   );
 };
 
@@ -87,7 +93,7 @@ const ExploreItems = [
   {
     title: 'Wallet',
     url: '/wallet',
-    segment: 'wallet',
+    segment: 'Portfolio',
     icon: WalletIcon,
     external: false,
   },
@@ -155,31 +161,7 @@ export function AppSidebar() {
       style={{ backgroundColor: 'black' }}
     >
       <AppSidebarHeader open={open} />
-
       <SidebarContent>
-        {/* <div className="flex flex-col space-y-2 p-3 ">
-          {ExploreItems.map((item) => (
-            <div
-              key={item.title}
-              className=" flex items-center rounded-lg bg-[#27272A] p-2  hover:bg-[#3a3a3a]"
-            >
-              <Link
-                className="flex items-center gap-2 pl-3 pr-2"
-                href={item.url}
-                target={item.external ? '_blank' : undefined}
-              >
-                <item.icon
-                  style={{
-                    height: '25px',
-                    width: '25px',
-                    marginLeft: '-4px',
-                  }}
-                />
-                <span>{item.title}</span>
-              </Link>
-            </div>
-          ))}
-        </div> */}
         <SidebarGroup className=" pl-3 pr-2">
           <SidebarGroupContent>
             <SidebarMenu
@@ -188,14 +170,15 @@ export function AppSidebar() {
               {ExploreItems.map((item) => (
                 <SidebarMenuItem
                   key={item.title}
-                  className="rounded-lg bg-[#27272A]  p-1 hover:bg-[#fff] "
+                  className=" rounded-lg bg-[#27272A] p-1 hover:bg-white"
                 >
                   <SidebarMenuButton
                     asChild
                     isActive={getIsActive(item.segment)}
+                    className="group"
                   >
                     <Link
-                      className="color-white hover:text-black"
+                      className="text-white "
                       href={item.url}
                       target={item.external ? '_blank' : undefined}
                     >
@@ -205,9 +188,11 @@ export function AppSidebar() {
                           width: '24px',
                           marginLeft: '-4px',
                         }}
-                        className="hover:text-[#070707]"
+                        className="text-white group-hover:text-black"
                       />
-                      <span>{item.title}</span>
+                      <span className="text-white group-hover:text-black">
+                        {item.title}
+                      </span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
