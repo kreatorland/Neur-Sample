@@ -31,6 +31,8 @@ import {
   ZapIcon,
 } from 'lucide-react';
 
+import { FeatureLists } from '@/components/data';
+import { HomePageCard } from '@/components/homePageCard';
 import { Brand } from '@/components/logo';
 // import { ReviewCard } from '@/components/review-card';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -49,6 +51,8 @@ import { RainbowButton } from '@/components/ui/rainbow-button';
 // import SmallDotPattern from '@/components/ui/small-dot-pattern';
 import SmallDotPattern from '@/components/ui/small-dot-pattern';
 import { cn } from '@/lib/utils';
+
+import { INTEGRATIONS } from './(user)/home/data/integrate';
 
 const navItems = [
   { label: 'Price', href: '#', icon: DollarSign },
@@ -102,7 +106,7 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
                   <Button
                     variant="outline"
                     className="h-9 rounded-lg bg-primary px-4 text-sm text-white transition-colors hover:bg-primary hover:text-primary-foreground dark:bg-primary dark:text-black"
-                    onClick={handleLogin}
+                    // onClick={handleLogin}
                   >
                     Try Numble
                   </Button>
@@ -228,7 +232,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
           <BlurFade delay={0.4}>
             <div className="mt-8">
               <RainbowButton
-                onClick={handleLogin}
+                // onClick={handleLogin}
                 className="h-12 min-w-[180px] text-base transition-all duration-300 hover:scale-105"
               >
                 Try Numble
@@ -264,10 +268,10 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
                 {/* Light mode image */}
                 <div className="relative dark:hidden">
                   <Image
-                    src="/product.png"
-                    alt="Neur AI Interface"
+                    src="/numble.gif"
+                    alt="numble AI Interface"
                     width={1200}
-                    height={675}
+                    height={705}
                     className="w-full rounded-2xl"
                     priority
                   />
@@ -275,19 +279,19 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
                 {/* Dark mode image */}
                 <div className="relative hidden dark:block">
                   <Image
-                    src="/product_dark.png"
-                    alt="Neur AI Interface"
+                    src="/numble.gif"
+                    alt="numble AI Interface"
                     width={1200}
-                    height={675}
+                    height={705}
                     className="w-full rounded-2xl"
                     priority
                   />
                 </div>
-                <BorderBeam
+                {/* <BorderBeam
                   className="opacity-0 group-hover:opacity-100"
                   duration={10}
                   size={300}
-                />
+                /> */}
               </div>
 
               {/* Decorative elements */}
@@ -338,171 +342,29 @@ const Lobsang = () => {
   return (
     <BlurFade delay={0.5} className="relative py-5 sm:py-10">
       <div className="w-fit-content mx-auto w-[70%] px-4 sm:px-6">
-        <motion.div
-          className="mx-auto grid  grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3"
-          animate={controls}
-          initial={{ opacity: 1 }}
-          transition={{ duration: 1, ease: 'easeOut' }}
-        >
-          <motion.div
-            className=" flex flex-col items-center  gap-2 p-0 sm:order-3 xl:order-2 2xl:order-2"
-            animate={inView ? { opacity: 1, x: -10 } : { opacity: 0, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Card className=" h-[280px] w-[350px] p-8">
-              <CardContent className="flex flex-col space-y-4 p-0 ">
-                <Circle>
-                  <WalletIcon></WalletIcon>
-                </Circle>
-                <h3 className="text-lg font-semibold text-neutral-700 dark:text-neutral-300 sm:text-xl">
-                  Wallet Management
-                </h3>
+        <h2 className="mb-3 text-center text-2xl font-bold tracking-tight sm:mb-4 sm:text-4xl">
+          Tailored for Solana
+        </h2>
 
-                <CardDescription className="w-50 max-w-lg text-sm text-neutral-400 sm:text-base">
-                  <h4>Manage secure Solana wallets.</h4>
-                  <h4>Transfer Solana to other addresses.</h4>
-                  <h4>Handle Solana-based token transfers.</h4>
-                </CardDescription>
-              </CardContent>
-            </Card>
-            <Card className="h-[280px] w-[350px] p-8">
-              <CardContent className="flex flex-col  space-y-4 p-0 ">
-                <Circle>
-                  <BadgeDollarSign></BadgeDollarSign>
-                </Circle>
-                <h3 className="text-lg font-semibold text-neutral-700 dark:text-neutral-300 sm:text-xl">
-                  NFT Marketplace Integration
-                </h3>
-
-                <CardDescription className="w-50 max-w-lg text-sm text-neutral-400 sm:text-base">
-                  <h4>Trade Solana NFTs in marketplaces.</h4>
-                  <h4>Analyze NFT trends and opportunities.</h4>
-                  <h4>Mint Solana NFTs during events.</h4>
-                </CardDescription>
-              </CardContent>
-            </Card>
-            <Card className="h-[280px] w-[350px] p-8">
-              <CardContent className="flex flex-col  space-y-4 p-0 ">
-                <Circle>
-                  <WorkflowIcon></WorkflowIcon>
-                </Circle>
-                <h3 className="text-lg font-semibold text-neutral-700 dark:text-neutral-300 sm:text-xl">
-                  Protocol Integrations
-                </h3>
-
-                <CardDescription className="w-50 max-w-lg text-sm text-neutral-400 sm:text-base">
-                  <h4>Integrate with Solana DeFi protocols.</h4>
-                  <h4> Interact with liquidity pools and lending platforms.</h4>
-                  <h4> Handle staking, yield farming, and more.</h4>
-                </CardDescription>
-              </CardContent>
-            </Card>
-          </motion.div>
-          {/* 3 */}
-          <motion.div
-            className=" order-1 flex flex-col items-center justify-start gap-6 sm:order-1 xl:order-3 2xl:order-3"
-            animate={
-              inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }
-            }
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="mb-3 text-2xl font-bold tracking-tight sm:mb-4 sm:text-4xl">
-              Tailored for Solana
-            </h2>
-
-            <Card className="h-[280px] w-[350px] p-8">
-              <CardContent className="flex flex-col  space-y-4 p-0 ">
-                <Circle>
-                  <BrainIcon></BrainIcon>
-                </Circle>
-                <h3 className="text-lg font-semibold text-neutral-700 dark:text-neutral-300 sm:text-xl">
-                  Customizable Automation
-                </h3>
-
-                <CardDescription className="w-50 max-w-lg text-sm text-neutral-400 sm:text-base">
-                  <p>Execute workflows for token trading.</p>
-                  <h4> Pre-set AI strategies handle automated trading.</h4>
-                  <h4> Manage memecoin creation and market actions.</h4>
-                </CardDescription>
-              </CardContent>
-            </Card>
-            <Card className=" h-[280px] w-[350px] p-8">
-              <CardContent className="flex flex-col  space-y-4 p-0 ">
-                <Circle>
-                  <FingerprintIcon></FingerprintIcon>
-                </Circle>
-                <h3 className="text-lg font-semibold text-neutral-700 dark:text-neutral-300 sm:text-xl">
-                  Portfolio Management
-                </h3>
-
-                <CardDescription className="w-50 max-w-lg text-sm text-neutral-400 sm:text-base">
-                  <p>Optimize Solana asset portfolios.</p>
-                  <h4> Monitor performance with detailed analytics.</h4>
-                  <h4> Suggest rebalancing to maximize returns.</h4>
-                </CardDescription>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          {/* 4th */}
-          <motion.div
-            className=" flex flex-col items-center justify-center gap-2 p-0 sm:order-4 xl:order-4 2xl:order-4"
-            animate={inView ? { opacity: 1, x: 10 } : { opacity: 0, x: -10 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Card className="h-[280px] w-[350px] p-8">
-              <CardContent className="flex flex-col  space-y-4 p-0 ">
-                <Circle>
-                  <BotIcon></BotIcon>
-                </Circle>
-                <h3 className="text-lg font-semibold text-neutral-700 dark:text-neutral-300 sm:text-xl">
-                  AI-Driven Market Analysis
-                </h3>
-
-                <CardDescription className="w-50 max-w-lg text-sm text-neutral-400 sm:text-base">
-                  <p>Analyze Solana market trends.</p>
-                  <h4>Track trending tokens with real-time.</h4>
-                  <h4> Predict token price movements for strategies.</h4>
-                </CardDescription>
-              </CardContent>
-            </Card>
-            <motion.div whileHover={{ scale: 1.1, shadow: 'xl' }}>
-              <Card className=" h-[280px] w-[350px] p-8">
-                <CardContent className="flex flex-col  space-y-4 p-0 ">
-                  <Circle>
-                    <ActivityIcon></ActivityIcon>
-                  </Circle>
-                  <h3 className="text-lg font-semibold text-neutral-700 dark:text-neutral-300 sm:text-xl">
-                    Automated Crypto Actions
-                  </h3>
-
-                  <CardDescription className="w-50 max-w-lg text-sm text-neutral-400 sm:text-base">
-                    <p>Create Solana memecoins autonomously</p>
-                    <h4>Automate token purchases based on trends.</h4>
-                    <h4>Analyze sentiment for market impact.</h4>
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <Card className="h-[280px]  w-[360px]  p-8 sm:order-5">
-              <CardContent className="flex flex-col space-y-4  p-0">
-                <Circle>
-                  <FolderKanbanIcon></FolderKanbanIcon>
-                </Circle>
-                <h3 className="text-lg font-semibold text-neutral-700 dark:text-neutral-300 sm:text-xl">
-                  Token Management
-                </h3>
-
-                <CardDescription className="w-50 max-w-lg text-sm text-neutral-400 sm:text-base">
-                  <p>Create and customize private AI agents.</p>
-                  <h4>Market analysis and token purchases.</h4>
-                  <h4> Manage transactions and monitor price movements.</h4>
-                </CardDescription>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </motion.div>
+        <div className="relative">
+          <div className=" grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {FeatureLists.map((item, index) => (
+              <HomePageCard key={item.label} item={item} index={index} />
+            ))}
+          </div>
+          <div
+            className="absolute  w-[1450px] border border-t-2"
+            style={{ left: '-115px', top: '130px' }}
+          ></div>
+          <div
+            className="l-[252px] absolute top-[-48px] h-[400px] border "
+            style={{ left: '414px', height: '355px' }}
+          ></div>
+          <div
+            className="absolute top-[-48px] h-[400px] border "
+            style={{ left: '838px', height: '355px' }}
+          ></div>
+        </div>
       </div>
     </BlurFade>
   );
@@ -512,11 +374,11 @@ const Marque = () => {
   return (
     <BlurFade
       delay={0.5}
-      className="mx-auto mb-6 mt-11  flex w-[50%] flex-col text-muted-foreground"
+      className="mx-auto mb-6 mt-11 flex w-full flex-col text-muted-foreground md:w-[50%]"
     >
       <div className="flex justify-center">
         <h2 className="mb-2 text-2xl font-bold tracking-tight sm:mb-4 sm:text-4xl">
-          Trusted by team around the world.
+          Integrated with
         </h2>
       </div>
       <div className=" white masked-div flex overflow-hidden border-neutral-200 dark:border-neutral-700">
@@ -525,9 +387,20 @@ const Marque = () => {
           animate={{ x: ['0', '-100%'] }}
           transition={{ repeat: Infinity, duration: 10, ease: 'linear' }}
         >
-          {Array.from({ length: 6 }).map((_, idx) => (
-            <div className="w-50 " key={idx}>
-              <Brand className="scale-95 transition-opacity hover:opacity-80" />
+          {INTEGRATIONS.map((item, idx) => (
+            <div
+              className="w-50 flex"
+              style={{ borderRadius: '100%', background: 'black' }}
+              key={idx}
+            >
+              <Image
+                src={`${item.icon}`}
+                alt=""
+                height={50}
+                width={50}
+                style={{ backgroundBlendMode: 'lighten', borderRadius: '50%' }}
+              ></Image>
+              {/* <p className=''>{item.label}</p> */}
             </div>
           ))}
         </motion.div>
@@ -536,9 +409,16 @@ const Marque = () => {
           animate={{ x: ['0', '-100%'] }}
           transition={{ repeat: Infinity, duration: 10, ease: 'linear' }}
         >
-          {Array.from({ length: 6 }).map((_, idx) => (
-            <div className="w-50 " key={idx}>
-              <Brand className="scale-95 transition-opacity hover:opacity-80" />
+          {INTEGRATIONS.map((item, idx) => (
+            <div className="w-50 flex" key={idx}>
+              <Image
+                src={`${item.icon}`}
+                alt=""
+                height={50}
+                width={50}
+                style={{ backgroundBlendMode: 'lighten', borderRadius: '50%' }}
+              ></Image>
+              {/* <p className=''>{item.label}</p> */}
             </div>
           ))}
         </motion.div>
@@ -578,7 +458,7 @@ const Footer = () => {
                 Social
               </h3>
               <div className="flex flex-col">
-                <a href="Twitter url: https://x.com/NumbleAI" target="_blank">
+                <a href="https://x.com/NumbleAI" target="_blank">
                   <h3 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
                     Twitter
                   </h3>
@@ -603,16 +483,6 @@ const Footer = () => {
         <div className="mt-3">
           <p>© 2025 Numble.AI. All rights reserved.</p>
         </div>
-
-        {/* <span>|</span>
-        <Link
-          href="https://x.com/neur_sh"
-          target="_blank"
-          title="Follow us on X"
-          className="transition-colors hover:scale-105 hover:text-primary"
-        >
-          <RiTwitterXFill className="h-4 w-4" />
-        </Link> */}
       </BlurFade>
     </footer>
   );
@@ -635,7 +505,7 @@ export default function Home() {
 
   if (isMaintenanceMode) {
     login = () => {
-      window.location.href = 'https://x.com/neur_sh';
+      window.location.href = 'https://x.com/NumbleAI';
     };
   }
 

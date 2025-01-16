@@ -6,7 +6,6 @@ import { Copy, CopyCheckIcon, ExternalLink } from 'lucide-react';
 import { toast } from 'react-toastify';
 
 import { Button } from '@/components/ui/button';
-import { useToast } from '@/hooks/use-toast';
 
 interface Props {
   text: string;
