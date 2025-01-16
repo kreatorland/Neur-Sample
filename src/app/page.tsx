@@ -266,23 +266,23 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
             >
               <div className="group relative overflow-hidden rounded-2xl border bg-card shadow-2xl">
                 {/* Light mode image */}
-                <div className="relative dark:hidden">
+                <div className="relative p-1 dark:hidden">
                   <Image
-                    src="/numble.gif"
+                    src="/numGif.gif"
                     alt="numble AI Interface"
                     width={1200}
-                    height={705}
+                    height={755}
                     className="w-full rounded-2xl"
                     priority
                   />
                 </div>
                 {/* Dark mode image */}
-                <div className="relative hidden dark:block">
+                <div className="relative hidden p-1 dark:block">
                   <Image
-                    src="/numble.gif"
+                    src="/numGif.gif"
                     alt="numble AI Interface"
                     width={1200}
-                    height={705}
+                    height={755}
                     className="w-full rounded-2xl"
                     priority
                   />
@@ -340,10 +340,10 @@ const Lobsang = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   return (
-    <BlurFade delay={0.5} className="relative py-5 sm:py-10">
+    <BlurFade delay={0.5} className="relative my-6 py-5 sm:py-10">
       <div className="w-fit-content mx-auto w-[70%] px-4 sm:px-6">
         <h2 className="mb-3 text-center text-2xl font-bold tracking-tight sm:mb-4 sm:text-4xl">
-          Tailored for Solana
+          Numble Seamless DeFAI
         </h2>
 
         <div className="relative">
@@ -354,15 +354,15 @@ const Lobsang = () => {
           </div>
           <div
             className="absolute  w-[1450px] border border-t-2"
-            style={{ left: '-115px', top: '130px' }}
+            style={{ left: '-115px', top: '165px' }}
           ></div>
           <div
             className="l-[252px] absolute top-[-48px] h-[400px] border "
-            style={{ left: '414px', height: '355px' }}
+            style={{ left: '414px', height: '426px' }}
           ></div>
           <div
             className="absolute top-[-48px] h-[400px] border "
-            style={{ left: '838px', height: '355px' }}
+            style={{ left: '838px', height: '426px' }}
           ></div>
         </div>
       </div>
@@ -481,7 +481,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-3">
-          <p>© 2025 Numble.AI. All rights reserved.</p>
+          <p>© 2025 Numble</p>
         </div>
       </BlurFade>
     </footer>

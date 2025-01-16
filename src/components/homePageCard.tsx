@@ -29,7 +29,7 @@ export function HomePageCard({ item, index }: IntegrationCardProps) {
         scale: 0.99,
         transition: { duration: 0.1 },
       }}
-      className="group relative flex w-full flex-col items-start gap-3 overflow-hidden rounded-xl bg-muted 
+      className="group relative flex h-[160px] w-full flex-col items-start gap-3 overflow-hidden rounded-xl bg-muted 
         p-4 transition-all duration-200"
     >
       <motion.div
@@ -65,7 +65,7 @@ export function HomePageCard({ item, index }: IntegrationCardProps) {
         </motion.div>
         {item.description && (
           <motion.div
-            className="line-clamp-1 text-xs text-muted-foreground/70"
+            className=" text-xs text-muted-foreground/70"
             initial={false}
           >
             {item.description}
