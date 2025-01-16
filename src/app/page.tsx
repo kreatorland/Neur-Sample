@@ -45,6 +45,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription } from '@/components/ui/card';
 import { Circle } from '@/components/ui/circle';
 import DotPattern from '@/components/ui/dot-pattern';
+import GridDotPattern from '@/components/ui/grid-dot';
 import { IntegrationsBackground } from '@/components/ui/integrations-background';
 import Marquee from '@/components/ui/marquee';
 import { RainbowButton } from '@/components/ui/rainbow-button';
@@ -106,7 +107,7 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
                   <Button
                     variant="outline"
                     className="h-9 rounded-lg bg-primary px-4 text-sm text-white transition-colors hover:bg-primary hover:text-primary-foreground dark:bg-primary dark:text-black"
-                    // onClick={handleLogin}
+                    onClick={handleLogin}
                   >
                     Try Numble
                   </Button>
@@ -340,8 +341,9 @@ const Lobsang = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   return (
-    <BlurFade delay={0.5} className="relative my-6 py-5 sm:py-10">
-      <div className="w-fit-content mx-auto w-[70%] px-4 sm:px-6">
+    <BlurFade delay={0.5} className="py-25 relative my-6 sm:py-10">
+      <GridDotPattern></GridDotPattern>
+      <div className="w-fit-content mx-auto w-[70%] px-4 py-10 sm:px-6">
         <h2 className="mb-3 text-center text-2xl font-bold tracking-tight sm:mb-4 sm:text-4xl">
           Numble Seamless DeFAI
         </h2>
@@ -517,10 +519,12 @@ export default function Home() {
         <Hero handleLogin={login} />
         <Marque></Marque>
         {/* <IntegrationsBackground></IntegrationsBackground> */}
-        <SmallDotPattern></SmallDotPattern>
+        {/* <SmallDotPattern></SmallDotPattern> */}
         {/* <Features /> */}
+
         <Lobsang></Lobsang>
-        <SmallDotPattern></SmallDotPattern>
+
+        {/* <SmallDotPattern></SmallDotPattern> */}
       </main>
       <Footer />
     </div>

@@ -33,6 +33,30 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.png',
   },
+  twitter: {
+    title: 'Numble - The Intelligent AI Agents Engine',
+    description:
+      'The Intelligent AI Agents Engine to perform on-chain tasks on Solana',
+    images: ['/favicon.png'],
+  },
+
+  openGraph: {
+    title: 'Numble - The Intelligent AI Agents Engine',
+    description:
+      'The Intelligent AI Agents Engine to perform on-chain tasks on Solana',
+    // url: 'https://your-domain.com', // Replace with your domain
+    siteName: 'Numble',
+    images: [
+      {
+        url: '/favicon.png', // Ensure this path is correct
+        width: 1200,
+        height: 630,
+        alt: 'Numble Open Graph Image',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({

@@ -65,7 +65,7 @@ export function HomePageCard({ item, index }: IntegrationCardProps) {
         </motion.div>
         {item.description && (
           <motion.div
-            className=" text-xs text-muted-foreground/70"
+            className="line-clamp-3 text-xs text-muted-foreground/70"
             initial={false}
           >
             {item.description}
