@@ -54,7 +54,7 @@ export const FeatureLists: DataIntegration[] = [
   },
   {
     icon: Globe,
-    label: 'Web2-Like UX:',
+    label: 'Web2-Like UX',
     description:
       'Offers a user-friendly interface with dashboards, one-click actions, and mobile optimization, ensuring familiarity for mainstream users.',
   },
