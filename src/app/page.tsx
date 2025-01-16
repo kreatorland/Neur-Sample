@@ -107,7 +107,7 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
                   <Button
                     variant="outline"
                     className="h-9 rounded-lg bg-primary px-4 text-sm text-white transition-colors hover:bg-primary hover:text-primary-foreground dark:bg-primary dark:text-black"
-                    onClick={handleLogin}
+                    // onClick={handleLogin}
                   >
                     Try Numble
                   </Button>
