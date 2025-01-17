@@ -43,7 +43,6 @@ import {
   updateToolCallResults,
 } from '@/server/db/queries';
 import { ToolUpdate } from '@/types/util';
-
 export const maxDuration = 120;
 
 export async function POST(req: Request) {

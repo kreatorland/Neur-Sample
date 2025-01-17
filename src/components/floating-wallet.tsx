@@ -33,7 +33,7 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Toaster } from '@/components/ui/toaster';
 import { useUser } from '@/hooks/use-user';
-import { useToast } from '@/hooks/use-wallets';
+// import { useToast } from '@/hooks/use-wallets';
 import { formatNumber } from '@/lib/format';
 import { cn } from '@/lib/utils';
 import { WalletPortfolio as Portfolio } from '@/types/helius/portfolio';
