@@ -6,7 +6,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import AuthProviders from '@/components/provider-auth';
 import { ThemeProvider } from '@/components/provider-theme';
-import { Toaster } from '@/components/ui/sonner';
+// import { Toaster } from '@/components/ui/sonner';
 import { cn } from '@/lib/utils';
 
 import './globals.css';
@@ -79,7 +79,7 @@ export default function RootLayout({
           >
             <main className="overflow-hidden md:overflow-visible">
               {children}
-              <Toaster />
+              {/* <Toaster /> */}
             </main>
           </ThemeProvider>
         </AuthProviders>
