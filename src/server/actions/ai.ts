@@ -1,79 +1,191 @@
-'use server';
-
-import { type CoreUserMessage, generateText } from 'ai';
-import { SolanaAgentKit } from 'solana-agent-kit';
 import { z } from 'zod';
 
-import { defaultModel } from '@/ai/providers';
-import { RPC_URL } from '@/lib/constants';
-import prisma from '@/lib/prisma';
-import { ActionEmptyResponse, actionClient } from '@/lib/safe-action';
-import { decryptPrivateKey } from '@/lib/solana/wallet-generator';
+import { TIMEFRAME } from '@/types/chart';
 
-import { verifyUser } from './user';
+const API_KEY = process.env.CG_API_KEY;
+const BASE_URL =
+  process.env.CG_BASE_URL || 'https://pro-api.coingecko.com/api/v3';
 
-export async function generateTitleFromUserMessage({
-  message,
-}: {
-  message: CoreUserMessage;
-}) {
-  const { text: title } = await generateText({
-    model: defaultModel,
-    system: `\n
-        - you will generate a short title based on the first message a user begins a conversation with
-        - ensure it is not more than 80 characters long
-        - the title should be a summary of the user's message
-        - do not use quotes or colons`,
-    prompt: JSON.stringify(message),
-  });
+const tokenSchema = z.object({ id: z.string() });
 
-  return title;
+const priceHistorySchema = z.object({
+  prices: z.array(z.tuple([z.number(), z.number()])),
+});
+
+const dexOhlcvApiResponseSchema = z.object({
+  data: z.object({
+    attributes: z.object({
+      ohlcv_list: z.array(z.array(z.number()).length(6)),
+    }),
+  }),
+});
+
+function mapTimeframeToCgInterval(timeFrame: TIMEFRAME): string {
+  switch (timeFrame) {
+    case TIMEFRAME.DAYS:
+      return 'daily';
+    case TIMEFRAME.HOURS:
+      return 'hourly';
+    default:
+      return 'hourly';
+  }
 }
 
-const renameSchema = z.object({
-  id: z.string(),
-  title: z.string().min(1).max(100),
-});
+function mapTimeframeToDexPath(timeFrame: TIMEFRAME): string {
+  switch (timeFrame) {
+    case TIMEFRAME.DAYS:
+      return 'day';
+    case TIMEFRAME.HOURS:
+      return 'hour';
+    case TIMEFRAME.MINUTES:
+      return 'minute';
+    default:
+      return 'minute';
+  }
+}
 
-export const renameConversation = actionClient
-  .schema(renameSchema)
-  .action(
-    async ({ parsedInput: { id, title } }): Promise<ActionEmptyResponse> => {
-      try {
-        await prisma.conversation.update({
-          where: { id },
-          data: { title },
-        });
-        return { success: true };
-      } catch (error) {
-        return { success: false, error: 'UNEXPECTED_ERROR' };
-      }
-    },
-  );
+function validateAggregator(timeFrame: TIMEFRAME, aggregator?: string): string {
+  const agg = aggregator ?? '1';
 
-export const retrieveAgentKit = actionClient.action(async () => {
-  const authResult = await verifyUser();
-  const userId = authResult?.data?.data?.id;
-
-  if (!userId) {
-    return { success: false, error: 'UNAUTHORIZED' };
+  if (timeFrame === TIMEFRAME.DAYS && agg !== '1') {
+    console.warn(`Invalid aggregator '${agg}' for DAYS. Defaulting to '1'.`);
+    return '1';
+  }
+  if (timeFrame === TIMEFRAME.HOURS && !['1', '4', '12'].includes(agg)) {
+    console.warn(`Invalid aggregator '${agg}' for HOURS. Defaulting to '1'.`);
+    return '1';
+  }
+  if (timeFrame === TIMEFRAME.MINUTES && !['1', '5', '15'].includes(agg)) {
+    console.warn(`Invalid aggregator '${agg}' for MINUTES. Defaulting to '1'.`);
+    return '1';
   }
 
-  const wallet = await prisma.wallet.findFirst({
-    where: {
-      ownerId: userId,
-    },
+  return agg;
+}
+
+export async function getTokenId(
+  contractAddress: string,
+  network: string = 'solana',
+): Promise<string> {
+  if (!API_KEY) throw new Error('API key not found');
+  const url = `${BASE_URL}/coins/${network}/contract/${contractAddress}`;
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: { accept: 'application/json', 'x-cg-pro-api-key': API_KEY },
   });
+  if (!response.ok)
+    throw new Error(`Failed to fetch token ID for ${contractAddress}`);
+  const data = await response.json();
+  return tokenSchema.parse(data).id;
+}
 
-  if (!wallet) {
-    return { success: false, error: 'WALLET_NOT_FOUND' };
+export async function getPriceHistoryFromCG(
+  tokenId: string,
+  timeFrame: TIMEFRAME = TIMEFRAME.DAYS,
+  timeDelta: number = 7,
+): Promise<{ time: number; value: number }[]> {
+  if (!API_KEY) throw new Error('API key not found');
+  const interval = mapTimeframeToCgInterval(timeFrame);
+  const url = `${BASE_URL}/coins/${tokenId}/market_chart?vs_currency=usd&days=${timeDelta}&interval=${interval}&precision=18`;
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: { accept: 'application/json', 'x-cg-pro-api-key': API_KEY },
+  });
+  if (!response.ok)
+    throw new Error(`Failed to fetch market_chart for ${tokenId}`);
+  const data = await response.json();
+  const parsed = priceHistorySchema.parse(data);
+  return parsed.prices.map(([time, value]) => ({ time, value }));
+}
+
+async function getTokenPools(
+  contractAddress: string,
+  network: string = 'solana',
+): Promise<string> {
+  if (!API_KEY) throw new Error('API key not found');
+  const url = `${BASE_URL}/onchain/networks/${network}/tokens/${contractAddress}/pools`;
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: { accept: 'application/json', 'x-cg-pro-api-key': API_KEY },
+  });
+  if (!response.ok)
+    throw new Error(`Failed to fetch token pools for ${contractAddress}`);
+  const json = await response.json();
+  const poolData = json.data;
+  if (!Array.isArray(poolData) || poolData.length === 0) {
+    throw new Error(`No pools found for ${contractAddress}`);
   }
+  const topPoolId = poolData[0]?.attributes?.address;
+  if (!topPoolId)
+    throw new Error(`No valid pool ID in the response for ${contractAddress}`);
+  return topPoolId;
+}
 
-  console.log('[retrieveAgentKit] wallet', wallet.publicKey);
+async function getDexOhlcv(
+  poolId: string,
+  network: string = 'solana',
+  timeFrame: TIMEFRAME = TIMEFRAME.MINUTES,
+  aggregator?: string,
+  beforeTimestamp?: number,
+): Promise<{ time: number; value: number }[]> {
+  if (!API_KEY) throw new Error('API key not found');
+  const path = mapTimeframeToDexPath(timeFrame);
+  const agg = validateAggregator(timeFrame, aggregator);
+  let url = `${BASE_URL}/onchain/networks/${network}/pools/${poolId}/ohlcv/${path}?aggregate=${agg}&currency=usd`;
+  if (beforeTimestamp) url += `&before_timestamp=${beforeTimestamp}`;
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: { accept: 'application/json', 'x-cg-pro-api-key': API_KEY },
+  });
+  if (!response.ok)
+    throw new Error(`Failed to fetch DEX OHLCV for pool: ${poolId}`);
+  const data = await response.json();
+  const parsed = dexOhlcvApiResponseSchema.parse(data);
+  const ohlcvList = parsed.data.attributes.ohlcv_list;
 
-  const privateKey = await decryptPrivateKey(wallet?.encryptedPrivateKey);
-  const openaiKey = process.env.OPENAI_API_KEY!;
-  const agent = new SolanaAgentKit(privateKey, RPC_URL, openaiKey);
+  const reversedOhlcv = ohlcvList.map(([timestamp, open, high, low, close]) => {
+    const price = close ?? open ?? 0;
+    return { time: timestamp * 1000, value: price };
+  });
+  reversedOhlcv.reverse();
+  return reversedOhlcv;
+}
 
-  return { success: true, data: { agent } };
-});
+export async function getDexPriceHistory(
+  contractAddress: string,
+  network: string = 'solana',
+  timeFrame: TIMEFRAME = TIMEFRAME.MINUTES,
+  aggregator?: string,
+  beforeTimestamp?: number,
+): Promise<{ time: number; value: number }[]> {
+  const topPoolId = await getTokenPools(contractAddress, network);
+  return getDexOhlcv(
+    topPoolId,
+    network,
+    timeFrame,
+    aggregator,
+    beforeTimestamp,
+  );
+}
+
+export async function getPriceHistory(
+  contractAddress: string,
+  network: string = 'solana',
+  timeFrame: TIMEFRAME = TIMEFRAME.DAYS,
+  timeDelta: number = 7,
+  aggregator?: string,
+  beforeTimestamp?: number,
+): Promise<{ time: number; value: number }[]> {
+  try {
+    const tokenId = await getTokenId(contractAddress, network);
+    return getPriceHistoryFromCG(tokenId, timeFrame, timeDelta);
+  } catch (err) {
+    return getDexPriceHistory(
+      contractAddress,
+      network,
+      timeFrame,
+      aggregator,
+      beforeTimestamp,
+    );
+  }
+}

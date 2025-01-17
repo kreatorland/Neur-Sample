@@ -32,8 +32,8 @@ import {
 } from '@/components/ui/popover';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Toaster } from '@/components/ui/toaster';
-import { useToast } from '@/hooks/use-toast';
 import { useUser } from '@/hooks/use-user';
+import { useToast } from '@/hooks/use-wallets';
 import { formatNumber } from '@/lib/format';
 import { cn } from '@/lib/utils';
 import { WalletPortfolio as Portfolio } from '@/types/helius/portfolio';

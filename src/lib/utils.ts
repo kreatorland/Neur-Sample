@@ -1,3 +1,4 @@
+import { LanguageModelUsage } from 'ai';
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -39,4 +40,22 @@ export function throttle<T extends (...args: any[]) => any>(
       setTimeout(() => (inThrottle = false), limit);
     }
   };
+}
+
+export const isValidTokenUsage = (usage: LanguageModelUsage) =>
+  usage &&
+  !isNaN(usage.promptTokens) &&
+  !isNaN(usage.completionTokens) &&
+  !isNaN(usage.totalTokens);
+
+export function formatDate(date: Date) {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  }).format(date);
 }

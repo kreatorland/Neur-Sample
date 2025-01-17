@@ -89,12 +89,12 @@ export const checkEAPTransaction = actionClient
 
       // Check if user is already in EAP
       const user = await prisma.user.findUnique({ where: { id: userId } });
-      // if (user?.earlyAccess) {
-      //   return {
-      //     success: false,
-      //     error: 'User is already in Early Access Program',
-      //   };
-      // }
+      if (user?.earlyAccess) {
+        return {
+          success: false,
+          error: 'User is already in Early Access Program',
+        };
+      }
 
       try {
         // Parse transaction data
