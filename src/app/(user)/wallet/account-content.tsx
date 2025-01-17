@@ -95,11 +95,11 @@ export function AccountContent() {
         <div className=" space-y-6">
           <Card className="w-full">
             <CardContent className="pt-6">
-              <section className="space-y-4">
+              {/* <section className="space-y-4">
                 {wallets?.map((wallet: EmbeddedWallet) => (
                   <WalletCard key={wallet.id} wallet={wallet} />
                 ))}
-              </section>
+              </section> */}
 
               <Card className="mt-2">
                 {portfolio && (

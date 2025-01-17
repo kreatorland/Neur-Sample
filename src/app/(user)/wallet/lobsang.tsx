@@ -85,14 +85,14 @@ export function AccountContent() {
       <div className="w-full px-8">
         <div className=" space-y-6">
           {/* Embedded Wallet Section */}
-          <section className="space-y-4">
+          {/* <section className="space-y-4">
             <h2 className="text-sm font-medium text-muted-foreground">
               Embedded Wallet
             </h2>
             {wallets?.map((wallet: EmbeddedWallet) => (
               <WalletCard key={wallet.id} wallet={wallet} />
             ))}
-          </section>
+          </section> */}
         </div>
       </div>
     </div>
