@@ -34,7 +34,7 @@ export function IntegrationCard({
         transition: { duration: 0.1 },
       }}
       onClick={onClick}
-      className="group relative flex w-full flex-col items-start gap-3 overflow-hidden rounded-xl bg-muted 
+      className="group relative flex w-full items-center gap-3 overflow-hidden rounded-xl bg-muted 
         p-4 transition-all duration-200"
       style={
         {
@@ -49,7 +49,7 @@ export function IntegrationCard({
           scale: 1.05,
           transition: { type: 'spring', stiffness: 300, damping: 20 },
         }}
-        className="relative z-10 flex h-10 w-10 shrink-0 flex-col items-center justify-center overflow-hidden rounded-lg"
+        className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg"
         style={{
           background: `linear-gradient(135deg, ${item.theme.primary}15, ${item.theme.secondary}10)`,
         }}

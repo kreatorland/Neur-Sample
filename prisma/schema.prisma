@@ -5,7 +5,7 @@ generator client {
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
-  directUrl = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -15,28 +15,33 @@ model User {
   updatedAt DateTime @updatedAt
 
   earlyAccess Boolean @default(false)
-  telegramId  String?
 
   wallets       Wallet[]
   conversations Conversation[]
   Rule          Rule[]
   Action        Action[]
   tokenStats    TokenStat[]
+  TelegramChat  TelegramChat[]
 
   @@map("users")
 }
 
 model Wallet {
-  id                  String   @id @default(cuid())
-  ownerId             String   @unique
+  id                  String       @id @default(cuid())
+  ownerId             String
   name                String
   publicKey           String
-  encryptedPrivateKey String   @db.Text
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  encryptedPrivateKey String?      @db.Text
+  walletSource        WalletSource @default(CUSTOM)
+  chain               Chain        @default(SOLANA)
+  delegated           Boolean      @default(false)
+  active              Boolean      @default(true)
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
 
   owner User @relation(fields: [ownerId], references: [id])
 
+  @@unique([ownerId, publicKey])
   @@map("wallets")
 }
 
@@ -103,6 +108,8 @@ model Action {
   params         Json? // JSON object for action parameters (e.g., inputs for the function)
   timesExecuted  Int       @default(0)
   lastExecutedAt DateTime?
+  lastFailureAt  DateTime?
+  lastSuccessAt  DateTime?
   triggered      Boolean   @default(false) // Whether the action has been triggered. True if triggeredBy is empty
   paused         Boolean   @default(false)
   completed      Boolean   @default(false)
@@ -136,4 +143,25 @@ model TokenStat {
 enum Visibility {
   PRIVATE
   PUBLIC
+}
+
+enum WalletSource {
+  CUSTOM
+  PRIVY
+}
+
+enum Chain {
+  SOLANA
+}
+
+model TelegramChat {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  username  String
+  chatId    String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("telegram_chats")
 }

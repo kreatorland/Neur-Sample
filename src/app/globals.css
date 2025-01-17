@@ -1,51 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.masked-div {
-  mask-image: linear-gradient(
-    to right,
-    hsl(0 0% 0% / 0),
-    hsl(0 0% 0% / 1) 10%,
-    hsl(0 0% 0% / 1) 90%,
-    hsl(0 0% 0% / 0)
-  );
-}
-
-.sidebarMenuItem {
-  background: #27272a;
-}
-
-.sidebarMenuItem:hover {
-  background-color: #fff;
-}
-
-.span_text {
-  color: white;
-}
-
-.sidebarMenuItem:hover .span_text {
-  color: black;
-}
-
-.sidebarMenuItem:hover .iconImage {
-  color: black;
-}
-
-.iconImage {
-  color: white;
-}
-
-.custom-toast {
-  background-color: black !important; /* Black background */
-  border: 1px solid white !important; /* White border */
-  color: white !important; /* White text color */
-  box-shadow: none !important; /* Remove default shadow if any */
-  font-size: 14px !important;
-}
-
-.custom-toast-body {
-  color: white !important; /* Ensure the text remains white */
-}
 
 @layer base {
   :root {
@@ -191,6 +146,32 @@
 
 .animate-fade-in {
   animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes collapsible-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+  }
+}
+
+@keyframes collapsible-up {
+  from {
+    height: var(--radix-collapsible-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+.animate-collapsible-down {
+  animation: collapsible-down 0.2s ease-out;
+}
+
+.animate-collapsible-up {
+  animation: collapsible-up 0.2s ease-out;
 }
 
 @layer utilities {

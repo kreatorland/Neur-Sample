@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,63 +9,31 @@ import { useRouter } from 'next/navigation';
 import { useLogin } from '@privy-io/react-auth';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import { RiTwitterXFill } from '@remixicon/react';
-import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import {
   ActivityIcon,
-  BadgeDollarSign,
   BookOpenIcon,
-  BotIcon,
   BrainCircuitIcon,
-  BrainIcon,
-  DollarSign,
-  FileQuestion,
-  FingerprintIcon,
-  FolderKanbanIcon,
   LinkIcon,
-  SendIcon,
   ShieldIcon,
-  TwitterIcon,
-  WalletIcon,
-  WorkflowIcon,
-  XIcon,
   ZapIcon,
 } from 'lucide-react';
 
-import { FeatureLists } from '@/components/data';
-import { HomePageCard } from '@/components/homePageCard';
 import { Brand } from '@/components/logo';
-// import { ReviewCard } from '@/components/review-card';
-import { ThemeToggle } from '@/components/theme-toggle';
 import { AiParticlesBackground } from '@/components/ui/ai-particles-background';
 import AnimatedShinyText from '@/components/ui/animated-shiny-text';
 import { BentoCard, BentoGrid } from '@/components/ui/bento-grid';
 import BlurFade from '@/components/ui/blur-fade';
 import { BorderBeam } from '@/components/ui/border-beam';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription } from '@/components/ui/card';
-import { Circle } from '@/components/ui/circle';
-import DotPattern from '@/components/ui/dot-pattern';
-import GridDotPattern from '@/components/ui/grid-dot';
 import { IntegrationsBackground } from '@/components/ui/integrations-background';
 import Marquee from '@/components/ui/marquee';
 import { RainbowButton } from '@/components/ui/rainbow-button';
-// import SmallDotPattern from '@/components/ui/small-dot-pattern';
-import SmallDotPattern from '@/components/ui/small-dot-pattern';
 import { cn } from '@/lib/utils';
 
-import { INTEGRATIONS } from './(user)/home/data/integrate';
-
 const navItems = [
-  { label: 'Price', href: '#', icon: DollarSign },
-  { label: 'FAQ', href: '#', icon: FileQuestion },
-  { label: 'Github', href: '#', icon: GitHubLogoIcon },
-  { label: 'Docs', href: 'https://docs.numble.ai/', icon: BookOpenIcon },
-];
-
-const socailMedia = [
-  { href: 'https://x.com/Numble_ai', icon: TwitterIcon },
-  { href: 'https://t.me/numble_ai', icon: SendIcon },
-  // { href: 'https://x.com/Numble_ai', icon: DiscordIcon },
+  { label: 'Github', href: 'https://git.new/neur', icon: GitHubLogoIcon },
+  { label: 'Docs', href: 'https://docs.neur.sh', icon: BookOpenIcon },
 ];
 
 const Header = ({ handleLogin }: { handleLogin: () => void }) => {
@@ -74,19 +42,18 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
   return (
     <BlurFade delay={0.1} className="relative z-50">
       <header className="fixed left-0 right-0 top-0">
-        <div className="mx-auto  px-4 py-4">
-          <div className="rounded-xl ">
+        <div className="mx-auto max-w-6xl px-4 py-4">
+          <div className="rounded-xl border border-border/50 bg-muted/70 shadow-lg backdrop-blur-md">
             <div className="flex items-center justify-between px-4 py-2">
               <div className="relative">
                 <Brand className="scale-95 transition-opacity hover:opacity-80" />
               </div>
 
-              <nav className="hidden  md:mr-8 md:flex">
+              <nav className="hidden md:ml-auto md:mr-8 md:flex">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   return (
-                    <motion.a
-                      whileHover={{ scale: 1.1 }}
+                    <a
                       key={item.label}
                       href={item.href}
                       target="_blank"
@@ -96,22 +63,19 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
                       <Icon className="h-4 w-4" />
                       {item.label}
                       <span className="absolute inset-x-4 -bottom-px h-px scale-x-0 bg-gradient-to-r from-primary/0 via-primary/70 to-primary/0 transition-transform duration-300 group-hover:scale-x-100" />
-                    </motion.a>
+                    </a>
                   );
                 })}
-                {/* <ThemeToggle></ThemeToggle> */}
               </nav>
 
               <div className="flex items-center gap-3">
-                <motion.div whileHover={{ scale: 1.1 }}>
-                  <Button
-                    variant="outline"
-                    className="h-9 rounded-lg bg-primary px-4 text-sm text-white transition-colors hover:bg-primary hover:text-primary-foreground dark:bg-primary dark:text-black"
-                    onClick={handleLogin}
-                  >
-                    Try Numble
-                  </Button>
-                </motion.div>
+                <Button
+                  variant="outline"
+                  className="h-9 rounded-lg px-4 text-sm transition-colors hover:bg-primary hover:text-primary-foreground"
+                  onClick={handleLogin}
+                >
+                  Login
+                </Button>
 
                 <Button
                   variant="ghost"
@@ -184,49 +148,24 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
       {/* Content */}
       <div className="relative mx-auto max-w-screen-xl px-6 pb-6 pt-12 text-center md:pb-8 md:pt-16">
         <div className="mx-auto max-w-3xl">
-          <BlurFade delay={0.4}>
-            <div className="mb-8 mt-8 flex justify-center gap-4">
-              {socailMedia.map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <motion.a
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9, rotate: '2.5deg' }}
-                    key={index}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative flex items-center gap-1 px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    <Icon className="h-7 w-7" />
-                  </motion.a>
-                );
-              })}
-            </div>
-          </BlurFade>
-
           <BlurFade delay={0.3} className="pointer-events-none select-none">
-            <div className="relative inline-flex items-center bg-transparent backdrop-blur-sm">
-              <div className="relative text-[60px] font-medium text-primary sm:text-[60px] md:text-[140px] lg:text-[160px] xl:text-[80px] 2xl:text-[100px]">
-                NUMBLE.AI
-                {/* Top-right border */}
-                <div className="absolute right-[-28px] top-[6px] h-10 w-10 border-r-2 border-t-2 border-gray-800 dark:border-white"></div>
-                {/* Bottom-left border */}
-                <div className="absolute bottom-[-7px] left-[-30px] h-10 w-10 border-b-2 border-l-2 border-gray-800 dark:border-white"></div>
-              </div>
+            <div className="inline-flex items-center rounded-full border border-primary/20 bg-muted/80 px-4 py-1.5 shadow-lg backdrop-blur-sm">
+              <span className="text-sm font-medium text-primary">
+                ✨ Introducing Neur Agent
+              </span>
             </div>
 
             <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
               The{' '}
               <AnimatedShinyText className="inline">
-                <span>Intelligent AI Agent Engine </span>
+                <span>Intelligent Copilot</span>
               </AnimatedShinyText>{' '}
-              to perform on-chain tasks on <span>Solana</span>
+              for <span>Solana</span>
             </h1>
 
             <p className="mt-4 text-lg text-muted-foreground">
-              Experience Solana on-chain actions using powerful AI Engine from
-              Numble
+              Elevate your Solana experience with AI-powered insights and
+              delegated actions
             </p>
           </BlurFade>
 
@@ -236,7 +175,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
                 onClick={handleLogin}
                 className="h-12 min-w-[180px] text-base transition-all duration-300 hover:scale-105"
               >
-                Try Numble
+                Getting Started
               </RainbowButton>
             </div>
           </BlurFade>
@@ -267,32 +206,32 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
             >
               <div className="group relative overflow-hidden rounded-2xl border bg-card shadow-2xl">
                 {/* Light mode image */}
-                <div className="relative p-1 dark:hidden">
+                <div className="relative dark:hidden">
                   <Image
-                    src="/numGif.gif"
-                    alt="numble AI Interface"
+                    src="/product.png"
+                    alt="Neur AI Interface"
                     width={1200}
-                    height={755}
+                    height={675}
                     className="w-full rounded-2xl"
                     priority
                   />
                 </div>
                 {/* Dark mode image */}
-                <div className="relative hidden p-1 dark:block">
+                <div className="relative hidden dark:block">
                   <Image
-                    src="/numGif.gif"
-                    alt="numble AI Interface"
+                    src="/product_dark.png"
+                    alt="Neur AI Interface"
                     width={1200}
-                    height={755}
+                    height={675}
                     className="w-full rounded-2xl"
                     priority
                   />
                 </div>
-                {/* <BorderBeam
+                <BorderBeam
                   className="opacity-0 group-hover:opacity-100"
                   duration={10}
                   size={300}
-                /> */}
+                />
               </div>
 
               {/* Decorative elements */}
@@ -306,124 +245,106 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
   );
 };
 
-// const Features = () => {
-//   return (
-//     <BlurFade delay={0.5} className="sm:py-15 py-15 relative mb-10">
-//       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-//         <Marquee className="absolute inset-0 h-[100px] [--duration:15s] [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)]">
-//           {Array.from({ length: 5 }).map((_, idx) => (
-//             <ReviewCard key={idx} />
-//           ))}
-//         </Marquee>
-//       </div>
-//     </BlurFade>
-//   );
-// };
-
-const Lobsang = () => {
-  const [inView, setInView] = useState(false);
-  const controls = useAnimation();
-
-  const handleScroll = () => {
-    const position = window.scrollY;
-    console.log('positon', position);
-    if (position > 1400) {
-      // alert('inview');
-      // Adjust the scroll trigger value
-      setInView(true);
-    } else {
-      setInView(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  return (
-    <BlurFade delay={0.5} className="py-25 relative my-6 sm:py-10">
-      <GridDotPattern></GridDotPattern>
-      <div className="w-fit-content mx-auto w-[70%] px-4 py-10 sm:px-6">
-        <h2 className="mb-3 text-center text-2xl font-bold tracking-tight sm:mb-4 sm:text-4xl">
-          Numble Seamless DeFAI
-        </h2>
-
-        <div className="relative">
-          <div className=" grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {FeatureLists.map((item, index) => (
-              <HomePageCard key={item.label} item={item} index={index} />
-            ))}
-          </div>
-          <div
-            className="absolute  w-[1450px] border border-t-2"
-            style={{ left: '-115px', top: '165px' }}
-          ></div>
-          <div
-            className="l-[252px] absolute top-[-48px] h-[400px] border "
-            style={{ left: '414px', height: '426px' }}
-          ></div>
-          <div
-            className="absolute top-[-48px] h-[400px] border "
-            style={{ left: '838px', height: '426px' }}
-          ></div>
+const features = [
+  {
+    Icon: BrainCircuitIcon,
+    name: 'Cutting-Edge AI Intelligence',
+    description:
+      "Harness the power of the world's most advanced AI models, including Claude 3.5-Sonnet and GPT-4o, to intelligently analyze your Solana transactions in real-time, providing data-driven insights and seamless automated actions.",
+    className: 'col-span-1 sm:col-span-3 lg:col-span-2',
+    background: (
+      <div className="absolute inset-0 flex items-center justify-center opacity-20">
+        <div className="relative h-full w-full">
+          <div className="absolute left-10 top-10 h-32 w-32 animate-blob rounded-full bg-primary/30 mix-blend-multiply blur-xl"></div>
+          <div className="animation-delay-2000 absolute right-10 top-10 h-32 w-32 animate-blob rounded-full bg-secondary/30 mix-blend-multiply blur-xl"></div>
+          <div className="animation-delay-4000 absolute bottom-10 left-20 h-32 w-32 animate-blob rounded-full bg-accent/30 mix-blend-multiply blur-xl"></div>
         </div>
       </div>
-    </BlurFade>
-  );
-};
-
-const Marque = () => {
-  return (
-    <BlurFade
-      delay={0.5}
-      className="mx-auto mb-6 mt-11 flex w-full flex-col text-muted-foreground md:w-[50%]"
-    >
-      <div className="flex justify-center">
-        <h2 className="mb-2 text-2xl font-bold tracking-tight sm:mb-4 sm:text-4xl">
-          Integrated with
-        </h2>
+    ),
+  },
+  {
+    Icon: ZapIcon,
+    name: 'Seamless Execution',
+    description:
+      'Experience ultra-efficient, frictionless transactions powered by our deep Solana integration. Enjoy smooth, rapid execution without the need for compromise.',
+    className: 'col-span-1 sm:col-span-3 lg:col-span-1',
+    background: (
+      <Marquee
+        pauseOnHover
+        className="absolute inset-0 [--duration:15s] [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)]"
+      >
+        {Array.from({ length: 5 }).map((_, idx) => (
+          <div
+            key={idx}
+            className="mx-2 flex items-center gap-2 rounded-xl border border-primary/20 bg-muted/30 px-3 py-2"
+          >
+            <div className="text-sm font-medium">
+              {idx % 2 === 0 ? 'Instant, frictionless' : 'Seamless transaction'}
+            </div>
+          </div>
+        ))}
+      </Marquee>
+    ),
+  },
+  {
+    Icon: LinkIcon,
+    name: 'Comprehensive Ecosystem Integration',
+    description:
+      "Effortlessly connect with the full spectrum of Solana's protocols and services. Our platform is designed for seamless AI-powered collaboration, ensuring full synergy with the ecosystem.",
+    className: 'col-span-1 sm:col-span-3 lg:col-span-3',
+    background: <IntegrationsBackground />,
+  },
+  {
+    Icon: GitHubLogoIcon,
+    name: 'Open Source & Community Driven',
+    description:
+      'Built with transparency and collaboration in mind. Our full-stack application is completely open source, community-driven, and welcomes contributions from developers worldwide to shape the future of Solana AI tools.',
+    className: 'col-span-1 sm:col-span-3 lg:col-span-1',
+    background: (
+      <div className="absolute inset-0 flex items-center justify-center opacity-20">
+        <div className="h-32 w-32 animate-pulse rounded-full border-4 border-accent"></div>
       </div>
-      <div className=" white masked-div flex overflow-hidden border-neutral-200 dark:border-neutral-700">
-        <motion.div
-          className="flex w-[100%] shrink-0 items-center justify-around  whitespace-nowrap py-10"
-          animate={{ x: ['0', '-100%'] }}
-          transition={{ repeat: Infinity, duration: 10, ease: 'linear' }}
-        >
-          {INTEGRATIONS.map((item, idx) => (
-            <div
-              className="w-50 flex"
-              style={{ borderRadius: '100%', background: 'black' }}
+    ),
+  },
+  {
+    Icon: ActivityIcon,
+    name: 'AI-Driven Automations & Agents',
+    description:
+      'Revolutionize your workflows with powerful AI agents and custom automations designed to handle complex tasks. *Coming soon* to streamline your operations even further.',
+    className: 'col-span-1 sm:col-span-3 lg:col-span-2',
+    background: (
+      <div className="absolute inset-0 flex items-center justify-center opacity-20">
+        <div className="h-32 w-32 animate-pulse rounded-full border-4 border-accent"></div>
+      </div>
+    ),
+  },
+];
+
+const Features = () => {
+  return (
+    <BlurFade delay={0.5} className="relative py-16 sm:py-24">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="mb-12 text-center sm:mb-16">
+          <h2 className="mb-3 text-2xl font-bold tracking-tight sm:mb-4 sm:text-4xl">
+            Tailored for Solana
+          </h2>
+          <p className="text-sm text-muted-foreground sm:text-base">
+            Seamless integration with the world&apos;s leading AI-models
+          </p>
+        </div>
+
+        <BentoGrid className="grid-rows-[auto]">
+          {features.map((feature, idx) => (
+            <BentoCard
               key={idx}
-            >
-              <Image
-                src={`${item.icon}`}
-                alt=""
-                height={50}
-                width={50}
-                style={{ backgroundBlendMode: 'lighten', borderRadius: '50%' }}
-              ></Image>
-              {/* <p className=''>{item.label}</p> */}
-            </div>
+              {...feature}
+              className={cn(
+                'group relative overflow-hidden rounded-2xl border bg-card p-4 shadow-lg transition-all hover:shadow-xl sm:rounded-3xl sm:p-6',
+                feature.className,
+              )}
+            />
           ))}
-        </motion.div>
-        <motion.div
-          className="flex w-[100%] shrink-0 items-center justify-around whitespace-nowrap py-10"
-          animate={{ x: ['0', '-100%'] }}
-          transition={{ repeat: Infinity, duration: 10, ease: 'linear' }}
-        >
-          {INTEGRATIONS.map((item, idx) => (
-            <div className="w-50 flex" key={idx}>
-              <Image
-                src={`${item.icon}`}
-                alt=""
-                height={50}
-                width={50}
-                style={{ backgroundBlendMode: 'lighten', borderRadius: '50%' }}
-              ></Image>
-              {/* <p className=''>{item.label}</p> */}
-            </div>
-          ))}
-        </motion.div>
+        </BentoGrid>
       </div>
     </BlurFade>
   );
@@ -431,60 +352,21 @@ const Marque = () => {
 
 const Footer = () => {
   return (
-    <footer className="h-22 mt-8 py-4">
+    <footer className="mt-auto py-4">
       <BlurFade
         delay={0.5}
-        className="mx-auto flex  w-[75%] flex-col text-muted-foreground"
+        className="flex items-center justify-center gap-3 text-sm text-muted-foreground"
       >
-        <div className="b flex justify-between gap-3 border-b border-dotted border-neutral-200 pb-4 dark:border-neutral-700">
-          <div>
-            <Brand className="scale-95 transition-opacity hover:opacity-80" />
-          </div>
-
-          <div className="flex  gap-4">
-            <div>
-              <h3 className="text-lg font-semibold text-neutral-700 dark:text-neutral-300 sm:text-xl">
-                Site
-              </h3>
-              <div className="flex flex-col">
-                {/* flex items-center gap-1.5 px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary */}
-                <a href="https://docs.numble.ai/" target="_blank">
-                  <h3 className="text-sm  font-medium text-muted-foreground transition-colors hover:text-primary ">
-                    Docs
-                  </h3>
-                </a>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-neutral-700 dark:text-neutral-300 sm:text-xl">
-                Social
-              </h3>
-              <div className="flex flex-col">
-                <a href="https://x.com/NumbleAI" target="_blank">
-                  <h3 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-                    Twitter
-                  </h3>
-                </a>
-
-                <a href="https://t.me/numble_ai" target="_blank">
-                  <motion.h3 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-                    Telegram
-                  </motion.h3>
-                </a>
-
-                <a href="https://discord.gg/9MN5bjBF" target="_blank">
-                  <motion.h3 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-                    Discord
-                  </motion.h3>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-3">
-          <p>© 2025 Numble</p>
-        </div>
+        <p>© 2024 Neur. All rights reserved.</p>
+        <span>|</span>
+        <Link
+          href="https://x.com/neur_sh"
+          target="_blank"
+          title="Follow us on X"
+          className="transition-colors hover:scale-105 hover:text-primary"
+        >
+          <RiTwitterXFill className="h-4 w-4" />
+        </Link>
       </BlurFade>
     </footer>
   );
@@ -494,7 +376,7 @@ export default function Home() {
   const isMaintenanceMode = process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true';
   const router = useRouter();
   let { login } = useLogin({
-    onComplete: (
+    onComplete: async (
       user,
       isNewUser,
       wasAlreadyAuthenticated,
@@ -507,24 +389,17 @@ export default function Home() {
 
   if (isMaintenanceMode) {
     login = () => {
-      window.location.href = 'https://x.com/NumbleAI';
+      window.location.href = 'https://x.com/neur_sh';
     };
   }
 
   return (
     <div className="flex flex-col">
-      <DotPattern />
+      <AiParticlesBackground />
       <Header handleLogin={login} />
       <main className="flex-1">
         <Hero handleLogin={login} />
-        <Marque></Marque>
-        {/* <IntegrationsBackground></IntegrationsBackground> */}
-        {/* <SmallDotPattern></SmallDotPattern> */}
-        {/* <Features /> */}
-
-        <Lobsang></Lobsang>
-
-        {/* <SmallDotPattern></SmallDotPattern> */}
+        <Features />
       </main>
       <Footer />
     </div>

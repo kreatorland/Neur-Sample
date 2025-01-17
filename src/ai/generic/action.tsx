@@ -1,5 +1,6 @@
 import { z } from 'zod';
 
+import { ActionEmitter } from '@/components/action-emitter';
 import { Card } from '@/components/ui/card';
 import { verifyUser } from '@/server/actions/user';
 import { dbCreateAction } from '@/server/db/queries';
@@ -104,7 +105,8 @@ function CreateActionResult({
 }
 
 const createActionTool = {
-  description: 'Create an action in the database (requires confirmation)',
+  description:
+    'Create an action in the database (requires confirmation). Do proper checks if the action requires additional setup before creating an action',
   displayName: '⚡ Create Action',
   parameters: z.object({
     requiresConfirmation: z.boolean().optional().default(true),
@@ -114,7 +116,9 @@ const createActionTool = {
       .describe('Conversation that the action belongs to'),
     description: z
       .string()
-      .describe('Action description to display as the main content'),
+      .describe(
+        'Action description to display as the main content. Should not contain the frequency or max executions',
+      ),
     frequency: z
       .number()
       .describe(
@@ -154,6 +158,8 @@ const createActionTool = {
         params: {},
         timesExecuted: 0,
         lastExecutedAt: null,
+        lastFailureAt: null,
+        lastSuccessAt: null,
       });
 
       if (!action) {
@@ -199,12 +205,15 @@ const createActionTool = {
     };
 
     return (
-      <CreateActionResult
-        id={id}
-        description={description}
-        frequency={frequency}
-        maxExecutions={maxExecutions}
-      />
+      <>
+        <ActionEmitter actionId={id} />
+        <CreateActionResult
+          id={id}
+          description={description}
+          frequency={frequency}
+          maxExecutions={maxExecutions}
+        />
+      </>
     );
   },
 };

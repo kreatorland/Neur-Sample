@@ -124,9 +124,9 @@ export function HomeContent() {
   const handleSend = async (value: string) => {
     if (!value.trim()) return;
 
-    // if (!user?.earlyAccess) {
-    //   return;
-    // }
+    if (!user?.earlyAccess) {
+      return;
+    }
 
     const fakeEvent = new Event('submit') as any;
     fakeEvent.preventDefault = () => {};
@@ -225,8 +225,7 @@ export function HomeContent() {
     );
   }
 
-  const hasEAP = true;
-  // const hasEAP = user?.earlyAccess === true;
+  const hasEAP = user?.earlyAccess === true;
 
   const mainContent = (
     <div
@@ -239,20 +238,11 @@ export function HomeContent() {
         <TypingAnimation
           className="mb-12 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-center text-4xl font-semibold tracking-tight text-transparent md:text-4xl lg:text-5xl"
           duration={50}
-          text="What can I do for you?"
+          text="How can I assist you?"
         />
       </BlurFade>
 
       <div className="mx-auto w-full max-w-3xl space-y-8">
-        {/* {hasEAP && (
-          <BlurFade delay={0.4}>
-            <div className="space-y-2">
-              <SectionTitle>Integrations</SectionTitle>
-              <IntegrationsGrid />
-            </div>
-          </BlurFade>
-        )} */}
-
         <BlurFade delay={0.1}>
           <ConversationInput
             value={input}
@@ -266,7 +256,7 @@ export function HomeContent() {
             <BlurFade delay={0.2}>
               <div className="space-y-2">
                 <SectionTitle>Suggestions</SectionTitle>
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4">
+                <div className="grid grid-cols-2 gap-4">
                   {suggestions.map((suggestion, index) => (
                     <SuggestionCard
                       key={suggestion.title}
@@ -276,6 +266,13 @@ export function HomeContent() {
                     />
                   ))}
                 </div>
+              </div>
+            </BlurFade>
+
+            <BlurFade delay={0.4}>
+              <div className="space-y-2">
+                <SectionTitle>Integrations</SectionTitle>
+                <IntegrationsGrid />
               </div>
             </BlurFade>
           </div>
@@ -369,7 +366,7 @@ export function HomeContent() {
     <div className="relative h-screen">
       <div
         className={cn(
-          'absolute inset-0 flex items-center transition-opacity duration-300',
+          'absolute inset-0 transition-opacity duration-300',
           showChat ? 'pointer-events-none opacity-0' : 'opacity-100',
         )}
       >

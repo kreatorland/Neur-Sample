@@ -1,4 +1,5 @@
 import { Action, Prisma, Message as PrismaMessage } from '@prisma/client';
+import { CoreToolMessage } from 'ai';
 import _ from 'lodash';
 
 import prisma from '@/lib/prisma';
@@ -12,12 +13,15 @@ import { NewAction } from '@/types/db';
  */
 export async function dbGetConversation({
   conversationId,
+  includeMessages,
 }: {
   conversationId: string;
+  includeMessages?: boolean;
 }) {
   try {
     return await prisma.conversation.findUnique({
       where: { id: conversationId },
+      include: includeMessages ? { messages: true } : undefined,
     });
   } catch (error) {
     console.error('[DB Error] Failed to get conversation:', {
@@ -81,6 +85,68 @@ export async function dbCreateMessages({
     });
     return null;
   }
+}
+
+/**
+ * Updates the tool-call results for any toolCallIds
+ * in the provided `messageData.content` array.
+ *
+ * @param conversationId - The ID of the conversation
+ * @param messageData    - An object with role: "tool" and an array of tool-result items
+ * @returns An array of updated Messages or an empty array if no matches
+ */
+export async function updateToolCallResults(
+  conversationId: string,
+  messageData: CoreToolMessage,
+): Promise<PrismaMessage[]> {
+  const updatedMessages: PrismaMessage[] = [];
+
+  for (const item of messageData.content) {
+    const toolCallId = item.toolCallId;
+    const newResultObj = item.result;
+    const toolMessages = await prisma.message.findMany({
+      where: {
+        conversationId,
+        role: 'tool',
+      },
+    });
+
+    let messageToUpdate: PrismaMessage | null = null;
+    for (const msg of toolMessages) {
+      const contentArray = msg.content as any[];
+      const hasMatchingToolCallId = contentArray.some(
+        (c) => c.toolCallId === toolCallId,
+      );
+      if (hasMatchingToolCallId) {
+        messageToUpdate = msg;
+        break;
+      }
+    }
+
+    if (!messageToUpdate) {
+      continue;
+    }
+
+    const oldContentArray = messageToUpdate.content as any[];
+    const newContentArray = oldContentArray.map((c) => {
+      if (c.toolCallId === toolCallId) {
+        return {
+          ...c,
+          result: newResultObj,
+        };
+      }
+      return c;
+    });
+
+    const updatedMessage = await prisma.message.update({
+      where: { id: messageToUpdate.id },
+      data: { content: newContentArray },
+    });
+
+    updatedMessages.push(updatedMessage);
+  }
+
+  return updatedMessages;
 }
 
 /**
@@ -262,28 +328,17 @@ export async function dbCreateTokenStat({
 }
 
 /**
- * Updates the Telegram ID for a user
- * @param {Object} params - The parameters object
- * @param {string} params.userId - The ID of the user
- * @param {string} params.telegramId - The new Telegram ID to set
- * @returns {Promise<User | null>} The updated user object or null if update fails
+ * Retrieves the Telegram ID for a user
  */
-export async function dbUpdateUserTelegramId({
-  userId,
-  telegramId,
-}: {
-  userId: string;
-  telegramId: string;
-}) {
+export async function dbGetUserTelegramChat({ userId }: { userId: string }) {
   try {
-    return await prisma.user.update({
-      where: { id: userId },
-      data: { telegramId: telegramId },
+    return await prisma.telegramChat.findUnique({
+      where: { userId },
+      select: { username: true, chatId: true },
     });
   } catch (error) {
-    console.error('[DB Error] Failed to update user Telegram ID:', {
+    console.error('[DB Error] Failed to get user Telegram Chat:', {
       userId,
-      telegramId,
       error,
     });
     return null;
@@ -291,23 +346,99 @@ export async function dbUpdateUserTelegramId({
 }
 
 /**
- * Retrieves the Telegram ID for a user
- * @param {Object} params - The parameters object
- * @param {string} params.userId - The ID of the user
- * @returns {Promise<string | null>} The Telegram ID or null if not found/error occurs
+ * Updates the Telegram Chat for a user
  */
-export async function dbGetUserTelegramId({ userId }: { userId: string }) {
+export async function dbUpdateUserTelegramChat({
+  userId,
+  username,
+  chatId,
+}: {
+  userId: string;
+  username: string;
+  chatId?: string;
+}) {
   try {
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
-      select: { telegramId: true },
+    return await prisma.telegramChat.upsert({
+      where: { userId },
+      update: { username, chatId },
+      create: { userId, username, chatId },
     });
-    return user?.telegramId || null;
   } catch (error) {
-    console.error('[DB Error] Failed to get user Telegram ID:', {
+    console.error('[DB Error] Failed to update user Telegram Chat:', {
+      userId,
+      username,
+      error: `${error}`,
+    });
+    return null;
+  }
+}
+
+export async function dbGetUserActions({ userId }: { userId: string }) {
+  try {
+    const actions = await prisma.action.findMany({
+      where: {
+        userId,
+        completed: false,
+      },
+      orderBy: { createdAt: 'desc' },
+    });
+    return actions;
+  } catch (error) {
+    console.error('[DB Error] Failed to get user actions:', {
       userId,
       error,
     });
+    return [];
+  }
+}
+
+export async function dbDeleteAction({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
+  try {
+    return await prisma.action.delete({
+      where: {
+        id,
+        userId, // Ensure user owns the action
+      },
+    });
+  } catch (error) {
+    console.error('[DB Error] Failed to delete action:', { id, userId, error });
+    throw error;
+  }
+}
+
+export async function dbUpdateAction({
+  id,
+  userId,
+  data,
+}: {
+  id: string;
+  userId: string;
+  data: Partial<Action>;
+}) {
+  try {
+    // Validate and clean the data before update
+    const validData = {
+      description: data.description,
+      frequency: data.frequency === 0 ? null : data.frequency,
+      maxExecutions: data.maxExecutions === 0 ? null : data.maxExecutions,
+      // Only include fields we want to update
+    } as const;
+
+    return await prisma.action.update({
+      where: {
+        id,
+        userId,
+      },
+      data: validData,
+    });
+  } catch (error) {
+    console.error('[DB Error] Failed to update action:', { id, userId, error });
     return null;
   }
 }

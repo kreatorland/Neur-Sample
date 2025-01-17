@@ -23,39 +23,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Numble',
-    default:
-      'Numble - The Intelligent AI Agents Engine to perform on-chain tasks on Solana',
+    template: '%s | Neur',
+    default: 'Neur - The Intelligent Copilot for Solana',
   },
-  description:
-    'The Intelligent AI Agents Engine to perform on-chain tasks on Solana',
+  description: 'The Intelligent Copilot elevating your Solana experience.',
 
   icons: {
-    icon: '/favicon.png',
-  },
-  twitter: {
-    title: 'Numble - The Intelligent AI Agents Engine',
-    description:
-      'The Intelligent AI Agents Engine to perform on-chain tasks on Solana',
-    images: ['/favicon.png'],
-  },
-
-  openGraph: {
-    title: 'Numble - The Intelligent AI Agents Engine',
-    description:
-      'The Intelligent AI Agents Engine to perform on-chain tasks on Solana',
-    // url: 'https://your-domain.com', // Replace with your domain
-    siteName: 'Numble',
-    images: [
-      {
-        url: '/favicon.png', // Ensure this path is correct
-        width: 1200,
-        height: 630,
-        alt: 'Numble Open Graph Image',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
+    icon: '/logo.svg',
   },
 };
 
@@ -73,7 +47,7 @@ export default function RootLayout({
         <AuthProviders>
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
