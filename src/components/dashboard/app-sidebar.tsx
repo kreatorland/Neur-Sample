@@ -116,7 +116,7 @@ const ExploreItems = [
   },
   {
     title: 'Support',
-    url: '/memories',
+    url: '/setting',
     segment: 'support',
     icon: HeartHandshakeIcon,
     external: false,
