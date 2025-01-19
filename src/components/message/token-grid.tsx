@@ -125,7 +125,7 @@ function TokenCard({ token, className }: TokenCardProps) {
 
         <div className="flex flex-col">
           {/* Metrics */}
-          <div className="grid grid-cols-2 gap-px bg-border/50">
+          <div className="grid grid-cols-3 gap-px bg-border/50">
             <div className="bg-background/50 p-3">
               <p className="text-[10px] font-medium text-muted-foreground">
                 Market Cap
@@ -142,17 +142,23 @@ function TokenCard({ token, className }: TokenCardProps) {
                 {formatNumber(token.volume24, 'currency')}
               </p>
             </div>
+
+            <div className="bg-background/50 p-3">
+              <p className="text-[10px] font-medium text-muted-foreground">
+                Holders
+              </p>
+              <p className="mt-0.5 text-sm font-medium">
+                <span>{formatHoldersCount(token.holdersCount)}</span>
+              </p>
+            </div>
           </div>
 
           {/* Additional Info */}
-          <div className="grid grid-cols-3 bg-border/50">
-            <div className="flex items-center gap-2 border-r-2">
-              <span>{formatHoldersCount(token.holdersCount)} holders</span>
-            </div>
-            <div className="flex items-center gap-2 border-r-2">
+          <div className="grid grid-cols-2 bg-border/50">
+            <div className="flex items-center justify-center gap-2 border-r-2">
               <span>Listed {formatListedTime(token.listedAt)}</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2">
               <span className="rounded bg-muted/50 px-1.5 py-0.5">
                 {formatNumber(token.transactions24h, 'number')} txns
               </span>
