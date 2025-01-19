@@ -353,7 +353,7 @@ function ChatMessage({
         {message.content && (
           <div
             className={cn(
-              'relative flex flex-col gap-2 rounded-2xl px-4 py-3 text-sm shadow-sm',
+              'relative grid grid-cols-3 gap-2 rounded-2xl px-4 py-3 text-sm shadow-sm',
               isUser ? 'bg-primary text-primary-foreground' : 'bg-muted/60',
             )}
           >
@@ -405,20 +405,6 @@ function ChatMessage({
                       />
                     );
                   },
-                  ul: ({ node, ...props }) => (
-                    <ul
-                      {...props}
-                      className="grid list-none grid-cols-2 gap-4 p-0"
-                    />
-                  ),
-                  li: ({ node, ...props }) => (
-                    <li
-                      {...props}
-                      className="rounded-md bg-gray-100 p-2 shadow"
-                    >
-                      {props.children}
-                    </li>
-                  ),
                 }}
               >
                 {processedContent}
