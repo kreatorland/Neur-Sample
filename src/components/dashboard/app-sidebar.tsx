@@ -115,7 +115,7 @@ const ExploreItems = [
     external: true,
   },
   {
-    title: 'Support',
+    title: 'Settings',
     url: '/setting',
     segment: 'support',
     icon: HeartHandshakeIcon,

@@ -403,7 +403,7 @@ function ChatMessage({
                   },
                 }}
               >
-                {processedContent}
+                {/* {processedContent} */}
               </ReactMarkdown>
             </div>
           </div>

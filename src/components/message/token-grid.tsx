@@ -125,7 +125,7 @@ function TokenCard({ token, className }: TokenCardProps) {
 
         <div className="p-[10px]">
           {/* Metrics */}
-          <div className="grid grid-cols-4 gap-px bg-border/50">
+          <div className="grid grid-cols-4 gap-px rounded-md bg-border/50">
             <div className="bg-background/50 p-3">
               <p className="text-[10px] font-medium text-muted-foreground">
                 Market Cap
