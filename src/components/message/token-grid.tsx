@@ -113,7 +113,7 @@ function TokenCard({ token, className }: TokenCardProps) {
             </div>
             <div
               className={cn(
-                'mt-1 text-xs font-medium',
+                'mt-1 flex justify-center text-xs font-medium',
                 change >= 0 ? 'text-green-500' : 'text-red-500',
               )}
             >
@@ -145,10 +145,11 @@ function TokenCard({ token, className }: TokenCardProps) {
           </div>
 
           {/* Additional Info */}
-          <div className="flex items-center justify-between border-t border-border/50 px-3 py-2 text-[10px] text-muted-foreground">
+          <div className="gird grid-cols-3 bg-border/50">
             <div className="flex items-center gap-2">
               <span>{formatHoldersCount(token.holdersCount)} holders</span>
-              <span className="h-3 w-px bg-border/50" />
+            </div>
+            <div className="flex items-center gap-2">
               <span>Listed {formatListedTime(token.listedAt)}</span>
             </div>
             <div className="flex items-center gap-2">
@@ -157,6 +158,7 @@ function TokenCard({ token, className }: TokenCardProps) {
               </span>
             </div>
           </div>
+          <div className="flex items-center justify-between border-t border-border/50 px-3 py-2 text-[10px] text-muted-foreground"></div>
         </div>
       </div>
     </a>
