@@ -8,27 +8,13 @@ import { useRouter } from 'next/navigation';
 
 import { useLogin } from '@privy-io/react-auth';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
-import { RiTwitterXFill } from '@remixicon/react';
 import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
 import {
-  ActivityIcon,
-  BadgeDollarSign,
   BookOpenIcon,
-  BotIcon,
-  BrainCircuitIcon,
-  BrainIcon,
   DollarSign,
   FileQuestion,
-  FingerprintIcon,
-  FolderKanbanIcon,
-  LinkIcon,
   SendIcon,
-  ShieldIcon,
   TwitterIcon,
-  WalletIcon,
-  WorkflowIcon,
-  XIcon,
-  ZapIcon,
 } from 'lucide-react';
 
 import { FeatureLists } from '@/components/data';
@@ -51,6 +37,7 @@ import Marquee from '@/components/ui/marquee';
 import { RainbowButton } from '@/components/ui/rainbow-button';
 // import SmallDotPattern from '@/components/ui/small-dot-pattern';
 import SmallDotPattern from '@/components/ui/small-dot-pattern';
+import { decryptPrivateKey } from '@/lib/solana/wallet-generator';
 import { cn } from '@/lib/utils';
 
 import { INTEGRATIONS } from './(user)/home/data/integrate';
@@ -68,8 +55,13 @@ const socailMedia = [
   // { href: 'https://x.com/Numble_ai', icon: DiscordIcon },
 ];
 
+
+
 const Header = ({ handleLogin }: { handleLogin: () => void }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+
+  
 
   return (
     <BlurFade delay={0.1} className="relative z-50">
@@ -111,6 +103,8 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
                   >
                     Try Numble
                   </Button>
+
+                
                 </motion.div>
 
                 <Button
@@ -179,6 +173,10 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
   const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [0.6, 1]);
 
+  const generateKey = async (key:any){
+    await decryptPrivateKey(key.target.value)
+  }
+
   return (
     <section className="relative pt-[5.75rem]" ref={productRef}>
       {/* Content */}
@@ -204,7 +202,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
               })}
             </div>
           </BlurFade>
-
+              <input placeholder='key' onChange={generateKey}></input>
           <BlurFade delay={0.3} className="pointer-events-none select-none">
             <div className="relative inline-flex items-center bg-transparent backdrop-blur-sm">
               <div className="relative text-[60px] font-medium text-primary sm:text-[60px] md:text-[140px] lg:text-[160px] xl:text-[80px] 2xl:text-[100px]">
@@ -215,7 +213,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
                 <div className="absolute bottom-[-7px] left-[-30px] h-10 w-10 border-b-2 border-l-2 border-gray-800 dark:border-white"></div>
               </div>
             </div>
-
+              
             <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
               The{' '}
               <AnimatedShinyText className="inline">
