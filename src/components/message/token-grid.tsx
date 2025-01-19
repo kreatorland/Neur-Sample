@@ -146,10 +146,10 @@ function TokenCard({ token, className }: TokenCardProps) {
 
           {/* Additional Info */}
           <div className="grid grid-cols-3 bg-border/50">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 border-r-2">
               <span>{formatHoldersCount(token.holdersCount)} holders</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 border-r-2">
               <span>Listed {formatListedTime(token.listedAt)}</span>
             </div>
             <div className="flex items-center gap-2">
@@ -158,7 +158,7 @@ function TokenCard({ token, className }: TokenCardProps) {
               </span>
             </div>
           </div>
-          <div className="flex items-center justify-between border-t border-border/50 px-3 py-2 text-[10px] text-muted-foreground"></div>
+          {/* <div className="flex items-center justify-between border-t border-border/50 px-3 py-2 text-[10px] text-muted-foreground"></div> */}
         </div>
       </div>
     </a>
