@@ -239,11 +239,11 @@ const PopularCollections = ({
                   }}
                 />
               </div>
+              <div className="flex justify-center">
+                <Badge variant="outline">#{index + 1}</Badge>
+              </div>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2">
-                  <Badge variant="outline" className="ml-2">
-                    #{index + 1}
-                  </Badge>
                   <h4 className="truncate text-sm font-medium">
                     {collection.name}
                   </h4>
