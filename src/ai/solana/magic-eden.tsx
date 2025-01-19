@@ -217,7 +217,7 @@ const PopularCollections = ({
   return (
     <Card className="space-y-4 bg-muted/50 p-4">
       <h3 className="text-lg font-medium">Popular Collections on Solana</h3>
-      <div className="gird grid-cols-3 space-y-3">
+      <div className="grid grid-cols-3 gap-3 space-y-3">
         {collections.map((collection, index) => (
           <a
             key={index}
@@ -240,19 +240,17 @@ const PopularCollections = ({
                 />
               </div>
               <div className="min-w-0 flex-1">
-                <div className="flex items-center justify-between">
-                  <h4 className="truncate text-sm font-medium">
-                    {collection.name}
-                  </h4>
+                <div className="flex items-center gap-2">
                   <Badge variant="outline" className="ml-2">
                     #{index + 1}
                   </Badge>
+                  <h4 className="truncate text-sm font-medium">
+                    {collection.name}
+                  </h4>
                 </div>
                 <div className="mt-1 flex items-center gap-3 text-sm text-muted-foreground">
-                  <span>Floor: ◎ {formatSOL(collection.floorPrice)}</span>
-                  <span>
-                    Volume: ◎ {formatLargeNumber(collection.volumeAll)}
-                  </span>
+                  <span>Floor: {formatSOL(collection.floorPrice)}</span>
+                  <span>Volume: {formatLargeNumber(collection.volumeAll)}</span>
                 </div>
               </div>
             </div>
