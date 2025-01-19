@@ -83,13 +83,13 @@ const ExploreItems = [
     external: false,
   },
 
-  {
-    title: 'Agents',
-    url: '/agent',
-    segment: 'agents',
-    icon: ActivityIcon,
-    external: false,
-  },
+  // {
+  //   title: 'Agents',
+  //   url: '/agent',
+  //   segment: 'agents',
+  //   icon: ActivityIcon,
+  //   external: false,
+  // },
 
   {
     title: 'Portfolio',
@@ -99,13 +99,13 @@ const ExploreItems = [
     external: false,
   },
 
-  // {
-  //   title: 'Integration',
-  //   url: '/integration',
-  //   segment: 'integration',
-  //   icon: Brain,
-  //   external: false,
-  // },
+  {
+    title: 'Integration',
+    url: '/integration',
+    segment: 'integration',
+    icon: Brain,
+    external: false,
+  },
 
   {
     title: 'Docs',
