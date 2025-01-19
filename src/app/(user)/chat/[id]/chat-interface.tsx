@@ -342,11 +342,11 @@ function ChatMessage({
           <div
             className={cn('w-full max-w-[400px]', message.content && 'mb-2')}
           >
-            <MessageAttachments
+            {/* <MessageAttachments
               attachments={message.experimental_attachments!}
               messageId={message.id}
               onPreviewImage={onPreviewImage}
-            />
+            /> */}
           </div>
         )}
 
@@ -399,15 +399,15 @@ function ChatMessage({
                     const height = isThumbnail ? 40 : 300;
 
                     // Fallback to Image component with default dimensions
-                    return (
-                      <Image
-                        src={src}
-                        alt={alt || ''}
-                        width={width}
-                        height={height}
-                        className="inline-block align-middle"
-                      />
-                    );
+                    // return (
+                    //   <Image
+                    //     src={src}
+                    //     alt={alt || ''}
+                    //     width={width}
+                    //     height={height}
+                    //     className="inline-block align-middle"
+                    //   />
+                    // );
                   },
                 }}
               >
@@ -417,12 +417,12 @@ function ChatMessage({
           </div>
         )}
 
-        {message.toolInvocations && (
+        {/* {message.toolInvocations && (
           <MessageToolInvocations
             toolInvocations={message.toolInvocations}
             addToolResult={addToolResult}
           />
-        )}
+        )} */}
       </div>
     </div>
   );
