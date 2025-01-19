@@ -125,7 +125,7 @@ function TokenCard({ token, className }: TokenCardProps) {
 
         <div className="p-[10px]">
           {/* Metrics */}
-          <div className="grid grid-cols-3 gap-px bg-border/50">
+          <div className="grid grid-cols-4 gap-px bg-border/50">
             <div className="bg-background/50 p-3">
               <p className="text-[10px] font-medium text-muted-foreground">
                 Market Cap
@@ -151,17 +151,21 @@ function TokenCard({ token, className }: TokenCardProps) {
                 <span>{formatHoldersCount(token.holdersCount)}</span>
               </p>
             </div>
+
+            <div className="bg-background/50 p-3">
+              <p className="text-[10px] font-medium text-muted-foreground">
+                Txns
+              </p>
+              <p className="mt-0.5 text-sm font-medium">
+                {formatNumber(token.transactions24h, 'number')}
+              </p>
+            </div>
           </div>
 
           {/* Additional Info */}
-          <div className="grid grid-cols-2 bg-border/50">
-            <div className="flex items-center justify-center gap-2 border-r-2 p-3">
+          <div className="flex bg-border/50">
+            <div className="flex items-center justify-center gap-2 border-r-2 bg-background/50 p-3">
               <span>Listed {formatListedTime(token.listedAt)}</span>
-            </div>
-            <div className="flex items-center justify-center gap-2 p-3">
-              <span className="rounded bg-muted/50 px-1.5 py-0.5">
-                {formatNumber(token.transactions24h, 'number')} txns
-              </span>
             </div>
           </div>
           {/* <div className="flex items-center justify-between border-t border-border/50 px-3 py-2 text-[10px] text-muted-foreground"></div> */}
