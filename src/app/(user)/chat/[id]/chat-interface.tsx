@@ -301,6 +301,14 @@ function ChatMessage({
     (_, alt, src, width, height) => `![${alt}](${src}#size=${width}x${height})`,
   );
 
+  console.log(
+    'kkkkkk',
+    processedContent,
+    'messages',
+    messages,
+    'message',
+    message,
+  );
   return (
     <div
       className={cn(
@@ -403,7 +411,7 @@ function ChatMessage({
                   },
                 }}
               >
-                {/* {processedContent} */}
+                {processedContent}
               </ReactMarkdown>
             </div>
           </div>
