@@ -233,7 +233,7 @@ export function WalletCard({ wallet, mutateWallets }: WalletCardProps) {
             </div>
           </div>
 
-          <div className="flex justify-between">
+          <div className="flex items-end justify-between">
             {/* Balance Section */}
             <div className="space-y-1">
               <Label className="text-xs font-normal text-muted-foreground">
