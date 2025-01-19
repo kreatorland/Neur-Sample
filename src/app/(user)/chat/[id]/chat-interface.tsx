@@ -342,18 +342,18 @@ function ChatMessage({
           <div
             className={cn('w-full max-w-[400px]', message.content && 'mb-2')}
           >
-            {/* <MessageAttachments
+            <MessageAttachments
               attachments={message.experimental_attachments!}
               messageId={message.id}
               onPreviewImage={onPreviewImage}
-            /> */}
+            />
           </div>
         )}
 
         {message.content && (
           <div
             className={cn(
-              'relative grid grid-cols-3 gap-2 rounded-2xl px-4 py-3 text-sm shadow-sm',
+              'relative flex flex-col gap-2 rounded-2xl px-4 py-3 text-sm shadow-sm',
               isUser ? 'bg-primary text-primary-foreground' : 'bg-muted/60',
             )}
           >
@@ -369,11 +369,13 @@ function ChatMessage({
                     if (!src) return null;
 
                     try {
+                      // Handle both relative and absolute URLs safely
                       const url = new URL(src, 'http://dummy.com');
                       const size = url.hash.match(/size=(\d+)x(\d+)/);
 
                       if (size) {
                         const [, width, height] = size;
+                        // Remove hash from src
                         url.hash = '';
                         return (
                           <Image
@@ -386,6 +388,7 @@ function ChatMessage({
                         );
                       }
                     } catch (e) {
+                      // If URL parsing fails, fallback to original src
                       console.warn('Failed to parse image URL:', e);
                     }
 
@@ -395,6 +398,7 @@ function ChatMessage({
                     const width = isThumbnail ? 40 : 500;
                     const height = isThumbnail ? 40 : 300;
 
+                    // Fallback to Image component with default dimensions
                     return (
                       <Image
                         src={src}
