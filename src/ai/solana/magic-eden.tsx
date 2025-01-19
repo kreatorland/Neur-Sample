@@ -243,12 +243,16 @@ const PopularCollections = ({
                 <Badge variant="outline">#{index + 1}</Badge>
               </div>
               <div className="min-w-0 flex-1 justify-center">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center gap-2">
                   <h4 className="truncate text-sm font-medium">
-                    {collection.name}
+                    {collection.name.length > 22 ? (
+                      <>{collection.name.slice(0, 20)}...</>
+                    ) : (
+                      collection.name.slice(0, 6)
+                    )}
                   </h4>
                 </div>
-                <div className="mt-1 flex items-center gap-3 text-sm text-muted-foreground">
+                <div className="mt-1 flex items-center gap-3 bg-background/50 text-sm text-muted-foreground">
                   {/* <span>Floor: {formatSOL(collection.floorPrice)}</span>
                   <span>Volume: {formatLargeNumber(collection.volumeAll)}</span> */}
                   <div className="bg-background/50 p-3">
