@@ -369,13 +369,11 @@ function ChatMessage({
                     if (!src) return null;
 
                     try {
-                      // Handle both relative and absolute URLs safely
                       const url = new URL(src, 'http://dummy.com');
                       const size = url.hash.match(/size=(\d+)x(\d+)/);
 
                       if (size) {
                         const [, width, height] = size;
-                        // Remove hash from src
                         url.hash = '';
                         return (
                           <Image
@@ -388,7 +386,6 @@ function ChatMessage({
                         );
                       }
                     } catch (e) {
-                      // If URL parsing fails, fallback to original src
                       console.warn('Failed to parse image URL:', e);
                     }
 
@@ -398,17 +395,30 @@ function ChatMessage({
                     const width = isThumbnail ? 40 : 500;
                     const height = isThumbnail ? 40 : 300;
 
-                    // Fallback to Image component with default dimensions
-                    // return (
-                    //   <Image
-                    //     src={src}
-                    //     alt={alt || ''}
-                    //     width={width}
-                    //     height={height}
-                    //     className="inline-block align-middle"
-                    //   />
-                    // );
+                    return (
+                      <Image
+                        src={src}
+                        alt={alt || ''}
+                        width={width}
+                        height={height}
+                        className="inline-block align-middle"
+                      />
+                    );
                   },
+                  ul: ({ node, ...props }) => (
+                    <ul
+                      {...props}
+                      className="grid list-none grid-cols-2 gap-4 p-0"
+                    />
+                  ),
+                  li: ({ node, ...props }) => (
+                    <li
+                      {...props}
+                      className="rounded-md bg-gray-100 p-2 shadow"
+                    >
+                      {props.children}
+                    </li>
+                  ),
                 }}
               >
                 {processedContent}
