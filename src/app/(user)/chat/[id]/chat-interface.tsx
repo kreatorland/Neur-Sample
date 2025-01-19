@@ -255,9 +255,9 @@ function MessageToolInvocations({
             <span className="truncate text-xs font-medium text-foreground/90">
               {finalDisplayName}
             </span>
-            <span className="ml-auto font-mono text-[10px] text-muted-foreground/70">
+            {/* <span className="ml-auto font-mono text-[10px] text-muted-foreground/70">
               {toolCallId.slice(0, 9)}
-            </span>
+            </span> */}
           </div>
         );
 

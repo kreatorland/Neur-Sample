@@ -95,7 +95,7 @@ function TokenCard({ token, className }: TokenCardProps) {
         className,
       )}
     >
-      <div className="flex flex-row">
+      <div className="flex flex-row justify-between">
         {/* Token Info */}
         <div className="flex flex-col items-center gap-3 p-3">
           <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg">
@@ -123,7 +123,7 @@ function TokenCard({ token, className }: TokenCardProps) {
           </div>
         </div>
 
-        <div className="">
+        <div className="p-[10px]">
           {/* Metrics */}
           <div className="grid grid-cols-3 gap-px bg-border/50">
             <div className="bg-background/50 p-3">
