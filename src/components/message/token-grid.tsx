@@ -145,7 +145,7 @@ function TokenCard({ token, className }: TokenCardProps) {
           </div>
 
           {/* Additional Info */}
-          <div className="gird grid-cols-3 bg-border/50">
+          <div className="grid grid-cols-3 bg-border/50">
             <div className="flex items-center gap-2">
               <span>{formatHoldersCount(token.holdersCount)} holders</span>
             </div>
