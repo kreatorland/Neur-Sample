@@ -252,7 +252,7 @@ const PopularCollections = ({
                     )}
                   </h4>
                 </div>
-                <div className="mt-1 flex items-center gap-3 bg-[#181818] text-sm text-muted-foreground">
+                <div className="mt-1 flex items-center gap-3 rounded-md bg-[#181818] text-sm text-muted-foreground">
                   {/* <span>Floor: {formatSOL(collection.floorPrice)}</span>
                   <span>Volume: {formatLargeNumber(collection.volumeAll)}</span> */}
                   <div className=" p-3">
