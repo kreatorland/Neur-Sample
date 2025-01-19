@@ -29,7 +29,7 @@ const openai = createOpenAI({
 
 export const orchestratorModel = openai('gpt-4o-mini');
 
-const openAiModel = openai(process.env.OPENAI_MODEL_NAME || 'gpt-4o-mini');
+const openAiModel = openai(process.env.OPENAI_MODEL_NAME || 'gpt-4o');
 
 export const defaultSystemPrompt = `
 Your name is Numble (Agent).

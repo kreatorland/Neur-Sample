@@ -223,27 +223,6 @@ export function WalletCard({ wallet, mutateWallets }: WalletCardProps) {
             )}
           </div>
 
-          {/* Balance Section */}
-          <div className="space-y-1">
-            <Label className="text-xs font-normal text-muted-foreground">
-              Available Balance
-            </Label>
-            <div className="flex items-baseline gap-2">
-              {isBalanceLoading ? (
-                <Skeleton className="h-9 w-32" />
-              ) : (
-                <>
-                  <span className="text-3xl font-bold tabular-nums tracking-tight">
-                    {balance?.toFixed(4)}
-                  </span>
-                  <span className="text-sm font-medium text-muted-foreground">
-                    SOL
-                  </span>
-                </>
-              )}
-            </div>
-          </div>
-
           {/* Public Key Section */}
           <div className="space-y-1.5">
             <Label className="text-xs font-normal text-muted-foreground">
@@ -254,65 +233,87 @@ export function WalletCard({ wallet, mutateWallets }: WalletCardProps) {
             </div>
           </div>
 
-          {/* Action Buttons */}
-          <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
-            <Button
-              className="w-full sm:w-auto"
-              onClick={handleFundWallet}
-              disabled={isLoading}
-            >
-              <Banknote className="mr-2 h-4 w-4" />
-              Fund
-            </Button>
+          <div className="flex justify-between">
+            {/* Balance Section */}
+            <div className="space-y-1">
+              <Label className="text-xs font-normal text-muted-foreground">
+                Available Balance
+              </Label>
+              <div className="flex items-baseline gap-2">
+                {isBalanceLoading ? (
+                  <Skeleton className="h-9 w-32" />
+                ) : (
+                  <>
+                    <span className="text-3xl font-bold tabular-nums tracking-tight">
+                      {balance?.toFixed(4)}
+                    </span>
+                    <span className="text-sm font-medium text-muted-foreground">
+                      SOL
+                    </span>
+                  </>
+                )}
+              </div>
+            </div>
+            {/* Action Buttons */}
+            <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
+              <Button
+                className="w-full sm:w-auto"
+                onClick={handleFundWallet}
+                disabled={isLoading}
+              >
+                <Banknote className="mr-2 h-4 w-4" />
+                Deposit
+              </Button>
 
-            <Button
-              variant="outline"
-              className="w-full sm:w-auto"
-              onClick={() => setIsSendDialogOpen(true)}
-              disabled={isLoading}
-            >
-              <ArrowUpDown className="mr-2 h-4 w-4" />
-              Send
-            </Button>
-
-            {isPrivyWallet && (
-              <>
-                <Button
-                  variant="outline"
-                  className="w-full sm:w-auto"
-                  onClick={() => exportWallet({ address: wallet.publicKey })}
-                  disabled={isLoading}
-                >
-                  <ArrowRightFromLine className="mr-2 h-4 w-4" />
-                  Export
-                </Button>
-
-                <Button
-                  variant="outline"
-                  className={cn(
-                    'w-full sm:w-auto',
-                    wallet?.delegated ? 'hover:bg-destructive' : '',
-                  )}
-                  onClick={handleDelegationToggle}
-                  disabled={isLoading}
-                >
-                  <Users className="mr-2 h-4 w-4" />
-                  {wallet?.delegated ? 'Revoke' : 'Delegate'}
-                </Button>
-              </>
-            )}
-
-            {!wallet?.active && (
               <Button
                 variant="outline"
                 className="w-full sm:w-auto"
-                onClick={handleSetActive}
+                onClick={() => setIsSendDialogOpen(true)}
                 disabled={isLoading}
               >
-                <Wallet className="mr-2 h-4 w-4" />
-                Set Active
+                <ArrowUpDown className="mr-2 h-4 w-4" />
+                Wtihdraw
               </Button>
-            )}
+
+              {isPrivyWallet && (
+                <>
+                  <Button
+                    variant="outline"
+                    className="w-full sm:w-auto"
+                    onClick={() => exportWallet({ address: wallet.publicKey })}
+                    disabled={isLoading}
+                  >
+                    <ArrowRightFromLine className="mr-2 h-4 w-4" />
+                    Export
+                  </Button>
+
+                  <Button
+                    variant="outline"
+                    className={cn(
+                      'w-full sm:w-auto',
+                      wallet?.delegated ? 'hover:bg-destructive' : '',
+                    )}
+                    onClick={handleDelegationToggle}
+                    disabled={isLoading}
+                  >
+                    <Users className="mr-2 h-4 w-4" />
+                    {wallet?.delegated ? 'Revoke' : 'Delegate'}
+                  </Button>
+                </>
+              )}
+
+              {!wallet?.active && (
+                <Button
+                  variant="outline"
+                  className="w-full sm:w-auto"
+                  onClick={handleSetActive}
+                  disabled={isLoading}
+                >
+                  <Wallet className="mr-2 h-4 w-4" />
+                  Set Active
+                </Button>
+              )}
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -438,13 +439,13 @@ export function WalletCard({ wallet, mutateWallets }: WalletCardProps) {
           )}
 
           <AlertDialogFooter className="flex items-center justify-between gap-4">
-            <Link
+            {/* <Link
               href="/faq#send-sol"
               className="flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               <HelpCircle className="mr-2 h-4 w-4" />
               Need help?
-            </Link>
+            </Link> */}
 
             <div className="flex gap-2">
               {sendStatus === 'idle' && (

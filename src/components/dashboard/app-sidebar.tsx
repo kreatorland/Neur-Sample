@@ -98,20 +98,14 @@ const ExploreItems = [
     icon: WalletIcon,
     external: false,
   },
-  {
-    title: 'Settings',
-    url: '/setting',
-    segment: 'setting',
-    icon: SettingsIcon,
-    external: false,
-  },
-  {
-    title: 'Integration',
-    url: '/integration',
-    segment: 'integration',
-    icon: Brain,
-    external: false,
-  },
+
+  // {
+  //   title: 'Integration',
+  //   url: '/integration',
+  //   segment: 'integration',
+  //   icon: Brain,
+  //   external: false,
+  // },
 
   {
     title: 'Docs',

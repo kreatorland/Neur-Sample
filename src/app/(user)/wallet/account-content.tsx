@@ -130,7 +130,7 @@ export function AccountContent() {
           <Card className="w-full">
             <CardContent className="pt-6">
               {/* Privy Embedded Wallet Section */}
-              <section className="space-y-4">
+              {/* <section className="space-y-4">
                 <h2 className="text-sm font-medium text-muted-foreground">
                   Privy Embedded Wallets
                 </h2>
@@ -174,7 +174,7 @@ export function AccountContent() {
                         </CardContent>
                       </Card>
                     )}
-              </section>
+              </section> */}
 
               {/* Legacy Embedded Wallet Section */}
               <section className="space-y-4">
