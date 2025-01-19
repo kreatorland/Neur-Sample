@@ -216,8 +216,8 @@ const PopularCollections = ({
 }) => {
   return (
     <Card className="space-y-4 bg-muted/50 p-4">
-      <h3 className="text-lg font-medium">Popular Collections</h3>
-      <div className="space-y-3">
+      <h3 className="text-lg font-medium">Popular Collections on Solana</h3>
+      <div className="gird grid-cols-3 space-y-3">
         {collections.map((collection, index) => (
           <a
             key={index}
@@ -226,7 +226,8 @@ const PopularCollections = ({
             rel="noopener noreferrer"
             className="block transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
           >
-            <div className="flex items-center gap-4 rounded-lg bg-background/50 p-3 hover:bg-background/80">
+            <div></div>
+            <div className="flex flex-col items-center gap-4 rounded-lg bg-background/50 p-3 hover:bg-background/80">
               <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl">
                 <img
                   src={processImageUrl(collection.image)}
