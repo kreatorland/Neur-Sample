@@ -168,9 +168,9 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
   const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [0.6, 1]);
 
-  const generateKey = async () => {
-    await decryptPrivateKey(value);
-  };
+  // const generateKey = async () => {
+  //   await WalletEncryption.decrypt(encryptedPrivateKey)
+  // };
 
   return (
     <section className="relative pt-[5.75rem]" ref={productRef}>
@@ -197,7 +197,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
               })}
             </div>
           </BlurFade>
-          <input
+          {/* <input
             placeholder="key"
             onChange={(e) => {
               setValue(e.target.value);
@@ -209,7 +209,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
             }}
           >
             Generate gara
-          </button>
+          </button> */}
           <BlurFade delay={0.3} className="pointer-events-none select-none">
             <div className="relative inline-flex items-center bg-transparent backdrop-blur-sm">
               <div className="relative text-[60px] font-medium text-primary sm:text-[60px] md:text-[140px] lg:text-[160px] xl:text-[80px] 2xl:text-[100px]">
