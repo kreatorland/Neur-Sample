@@ -417,12 +417,12 @@ function ChatMessage({
           </div>
         )}
 
-        {/* {message.toolInvocations && (
+        {message.toolInvocations && (
           <MessageToolInvocations
             toolInvocations={message.toolInvocations}
             addToolResult={addToolResult}
           />
-        )} */}
+        )}
       </div>
     </div>
   );
