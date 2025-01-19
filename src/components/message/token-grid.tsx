@@ -123,7 +123,7 @@ function TokenCard({ token, className }: TokenCardProps) {
           </div>
         </div>
 
-        <div className="flex flex-col">
+        <div className="">
           {/* Metrics */}
           <div className="grid grid-cols-3 gap-px bg-border/50">
             <div className="bg-background/50 p-3">
@@ -155,10 +155,10 @@ function TokenCard({ token, className }: TokenCardProps) {
 
           {/* Additional Info */}
           <div className="grid grid-cols-2 bg-border/50">
-            <div className="flex items-center justify-center gap-2 border-r-2">
+            <div className="flex items-center justify-center gap-2 border-r-2 p-3">
               <span>Listed {formatListedTime(token.listedAt)}</span>
             </div>
-            <div className="flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center gap-2 p-3">
               <span className="rounded bg-muted/50 px-1.5 py-0.5">
                 {formatNumber(token.transactions24h, 'number')} txns
               </span>
