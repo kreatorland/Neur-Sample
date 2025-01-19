@@ -157,6 +157,8 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
 
 const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
   const productRef = useRef<HTMLDivElement>(null);
+
+  const [value, setValue] = useState('');
   const { scrollYProgress } = useScroll({
     target: productRef,
     offset: ['start end', 'end start'],
@@ -166,8 +168,8 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
   const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [0.6, 1]);
 
-  const generateKey = async (key: any) => {
-    await decryptPrivateKey(key.target.value);
+  const generateKey = async () => {
+    await decryptPrivateKey(value);
   };
 
   return (
@@ -195,7 +197,19 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
               })}
             </div>
           </BlurFade>
-          <input placeholder="key" onChange={generateKey}></input>
+          <input
+            placeholder="key"
+            onChange={(e) => {
+              setValue(e.target.value);
+            }}
+          ></input>
+          <button
+            onClick={() => {
+              generateKey();
+            }}
+          >
+            Generate gara
+          </button>
           <BlurFade delay={0.3} className="pointer-events-none select-none">
             <div className="relative inline-flex items-center bg-transparent backdrop-blur-sm">
               <div className="relative text-[60px] font-medium text-primary sm:text-[60px] md:text-[140px] lg:text-[160px] xl:text-[80px] 2xl:text-[100px]">
