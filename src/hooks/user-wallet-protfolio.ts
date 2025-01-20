@@ -11,7 +11,7 @@ export function userWalletPortfolio() {
   const walletAddress = user?.wallets?.[0]?.publicKey;
 
   const { data, mutate, isLoading } = useSWR<WalletPortfolio>(
-    walletAddress ? ['wallet-portfolio', walletAddress] : null,
+    walletAddress ? ['wallet-portfolios', walletAddress] : null,
     async () => {
       if (!walletAddress) throw new Error('No wallet address');
 
