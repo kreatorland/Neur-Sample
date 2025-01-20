@@ -24,7 +24,6 @@ import usePolling from '@/hooks/use-polling';
 import { useWalletPortfolio } from '@/hooks/use-wallet-portfolio';
 import { uploadImage } from '@/lib/upload';
 import { cn, throttle } from '@/lib/utils';
-import { convertToUIMessages } from '@/lib/utils/ai';
 import { type ToolActionResult, ToolUpdate } from '@/types/util';
 
 // Types
@@ -658,8 +657,6 @@ export default function ChatInterface({
       if (!data || !data.messages) {
         return;
       }
-
-      const messages = convertToUIMessages(data?.messages);
 
       if (messages && messages.length) {
         setMessages(messages);
