@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { RiTwitterXFill } from '@remixicon/react';
+import { JSONValue } from 'ai';
 import { useChat } from 'ai/react';
 import { CheckCircle2, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
@@ -79,12 +80,12 @@ export function HomeContent() {
         refreshConversations();
       }
     },
-    // experimental_prepareRequestBody: ({ messages }) => {
-    //   return {
-    //     message: messages[messages.length - 1],
-    //     id: chatId,
-    //   } as unknown as JSONValue;
-    // },
+    experimental_prepareRequestBody: ({ messages }) => {
+      return {
+        message: messages[messages.length - 1],
+        id: chatId,
+      } as unknown as JSONValue;
+    },
   });
 
   // Verification effect
@@ -130,9 +131,10 @@ export function HomeContent() {
   const handleSend = async (value: string) => {
     if (!value.trim()) return;
 
-    // if (!user?.earlyAccess) {
-    //   return;
-    // }
+    if (!user?.earlyAccess) {
+      console.log('user early', user);
+      // return;
+    }
 
     const fakeEvent = new Event('submit') as any;
     fakeEvent.preventDefault = () => {};
