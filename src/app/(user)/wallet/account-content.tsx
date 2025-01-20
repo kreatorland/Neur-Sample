@@ -34,7 +34,7 @@ import { EmbeddedWallet } from '@/types/db';
 
 import { LoadingStateSkeleton } from '../account/loading-skeleton';
 import { WalletDetail } from './table';
-
+import { FungableWalletDetail } from './table-component';
 export function AccountContent() {
   const router = useRouter();
   const { ready } = usePrivy();
@@ -135,52 +135,7 @@ export function AccountContent() {
         <div className=" space-y-6">
           <Card className="w-full">
             <CardContent className="pt-6">
-              {/* <section className="space-y-4">
-                <h2 className="text-sm font-medium text-muted-foreground">
-                  Privy Embedded Wallets
-                </h2>
-                {privyWallets.length > 0
-                  ? privyWallets.map((wallet) => (
-                      <WalletCard
-                        key={wallet.id}
-                        wallet={wallet}
-                        mutateWallets={mutateWallets}
-                        allWalletAddresses={allWalletAddresses}
-                      />
-                    ))
-                  : ready && (
-                      <Card className="bg-sidebar">
-                        <CardContent className="pt-6">
-                          <div className="space-y-4">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center space-x-3">
-                                <div>
-                                  <p className="text-sm font-medium">
-                                    Public Key
-                                  </p>
-                                  <p className="text-xs text-muted-foreground">
-                                    None created yet
-                                  </p>
-                                </div>
-                              </div>
-                              <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={() =>
-                                  createSolanaWallet().then(() =>
-                                    mutateWallets(),
-                                  )
-                                }
-                                className={cn('min-w-[100px] text-xs')}
-                              >
-                                Create
-                              </Button>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    )}
-              </section> */}
+            
 
               {/* Legacy Embedded Wallet Section */}
               <section className="space-y-4">
@@ -198,13 +153,36 @@ export function AccountContent() {
               </section>
 
               {/* <Card className="mt-2">
-                {portfolio && (
+                {portfolio &&  (
                   <WalletDetail
                     data={portfolio}
                     isLoading={isPortfolioLoading}
                   ></WalletDetail>
                 )}
               </Card> */}
+
+                <Card className="mt-2">
+               
+
+                {
+
+                  portfolio && portfolio.address  ? (
+                    <>
+                     <WalletDetail
+                    data={portfolio}
+                    isLoading={isPortfolioLoading}
+                  ></WalletDetail>
+                    </>
+                  ) : (
+                    <>
+                     <FungableWalletDetail
+                      data={portfolio}
+                  ></FungableWalletDetail>
+                    </>
+                  )
+
+                }
+              </Card>
             </CardContent>
           </Card>
         </div>
