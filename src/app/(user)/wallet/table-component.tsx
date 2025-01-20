@@ -98,10 +98,12 @@ export function FungableWalletDetail({
                 </TableCell>
 
                 <TableCell>
-                  <span className="text-md md:text-md font-medium">
-                    {/* {token?.token_info.balance / 1000000000 || 0} */}
-                  </span>
+                <span className="text-md md:text-md font-medium">
+  {((token?.token_info?.balance || 0) / Math.pow(10, token?.token_info?.decimals || 9)).toFixed(2)}
+</span>
                 </TableCell>
+
+
                 <TableCell>
                   <span className="text-md md:text-md font-medium">
                   
