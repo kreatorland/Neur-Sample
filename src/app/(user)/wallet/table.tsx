@@ -71,6 +71,8 @@ export function WalletDetail({
         </TableRow>
       </TableHeader>
       <TableBody>
+
+        
         {data?.tokens.length > 0 ? (
           <>
             {data.tokens.map((token, index) => (
