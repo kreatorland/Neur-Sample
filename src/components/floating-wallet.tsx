@@ -102,7 +102,7 @@ export function FloatingWallet({
             className="flex w-[200px] items-center justify-around rounded-md bg-white p-2"
           >
             <span className="max-w-[120px] truncate text-sm text-black">
-              {data.address.slice(0, 6)}...{data.address.slice(-6)}
+              {data?.address?.slice(0, 6)}...{data?.address?.slice(-6)}
             </span>
 
             <Wallet className="h-4 w-4 text-black" style={{ color: 'black' }} />
