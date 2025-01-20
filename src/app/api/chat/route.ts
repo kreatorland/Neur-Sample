@@ -43,9 +43,10 @@ export async function POST(req: Request) {
 
   // Check for valid user session and required parameters
   const session = await verifyUser();
+
   const userId = session?.data?.data?.id;
   const publicKey = session?.data?.data?.publicKey;
-
+  console.log('api/chat/', userId, publicKey);
   if (!userId) {
     return new Response('Unauthorized', { status: 401 });
   }
@@ -59,6 +60,7 @@ export async function POST(req: Request) {
     // Get the (newest) message sent to the API
     const { id: conversationId, message }: { id: string; message: Message } =
       await req.json();
+    console.log('conversationId and message line 63', conversationId, message);
     if (!message) return new Response('No message found', { status: 400 });
     logWithTiming(startTime, '[chat/route] message received');
 
