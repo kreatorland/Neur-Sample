@@ -270,6 +270,7 @@ function MessageToolInvocations({
               <span className="truncate text-xs font-medium text-foreground/90">
                 {finalDisplayName}
               </span>
+             
             </div>
           );
 
@@ -329,7 +330,7 @@ function ChatMessage({
     >
       {showAvatar ? (
         <Avatar className="mt-0.5 h-8 w-8 shrink-0 select-none">
-          <img
+            <img
             src="/numbleAi.png"
             alt=""
             style={{ width: '100%', height: '100%' }}
@@ -543,18 +544,15 @@ function LoadingMessage() {
   return (
     <div className="flex w-full items-start gap-3">
       <Avatar className="mt-0.5 h-8 w-8 shrink-0 select-none">
-        {/* <Logo /> */}
-        {/* <AvatarFallback>AI</AvatarFallback> */}
-        <img
-          src="/numbleAi.png"
-          alt=""
-          style={{ width: '100%', height: '100%' }}
-        />
+      <img
+            src="/numbleAi.png"
+            alt=""
+            style={{ width: '100%', height: '100%' }}
+          />
       </Avatar>
 
       <div className="relative flex max-w-[85%] flex-col items-start gap-2">
-        <div className="relative flex gap-2 rounded-2xl bg-muted/60 px-4 py-3 text-sm shadow-sm">
-          <p className="text-sm font-medium">Numble is listening</p>
+        <div className="relative flex flex-col gap-2 rounded-2xl bg-muted/60 px-4 py-3 text-sm shadow-sm">
           <div className="flex items-center gap-1">
             <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-foreground/50 [animation-delay:-0.3s]" />
             <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-foreground/50 [animation-delay:-0.15s]" />
@@ -780,10 +778,7 @@ export default function ChatInterface({
       <div className="sticky bottom-0 z-10">
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/95 to-background/0" />
         <div className="relative mx-auto w-full max-w-3xl px-4 py-4">
-          {/* Floating Wallet */}
-          {/* {portfolio && (
-            <FloatingWallet data={portfolio} isLoading={isPortfolioLoading} />
-          )} */}
+          
 
           <form onSubmit={handleFormSubmit} className="space-y-4">
             <div className="relative overflow-hidden rounded-2xl bg-muted">

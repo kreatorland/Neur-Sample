@@ -49,12 +49,12 @@ export function FloatingWallet({
   className,
   isLoading = false,
 }: FloatingWalletProps) {
+  console.log("floationg wallet dataa", data)
   const { isLoading: loading, user, logout } = useUser();
   const [isExpanded, setIsExpanded] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState('');
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopy = (text: string) => {
@@ -64,12 +64,7 @@ export function FloatingWallet({
 
     toast.success('Address copied to clipboard');
   };
-  const frameworks = [
-    {
-      value: 'next.js',
-      label: 'Next.js',
-    },
-  ];
+ 
   useEffect(() => {
     setMounted(true);
     // Preload all token images
@@ -118,7 +113,7 @@ export function FloatingWallet({
               onClick={() => handleCopy(data.address)}
             >
               <p className="max-w-[120px] truncate text-sm text-white">
-                {data.address.slice(0, 4)}...{data.address.slice(-4)}
+                {data?.address.slice(0, 4)}...{data.address.slice(-4)}
               </p>
               {isCopied ? (
                 <CopyCheckIcon className="h-3.5 w-3.5 text-white" />

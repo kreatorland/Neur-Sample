@@ -14,8 +14,6 @@ import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 
 import { getToolConfig } from '@/ai/providers';
-import { FloatingWallet } from '@/components/floating-wallet';
-import Logo from '@/components/logo';
 import { ToolResult } from '@/components/message/tool-result';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -757,10 +755,7 @@ export default function ChatInterface({
       <div className="sticky bottom-0 z-10">
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/95 to-background/0" />
         <div className="relative mx-auto w-full max-w-3xl px-4 py-4">
-          {/* Floating Wallet */}
-          {/* {portfolio && (
-            <FloatingWallet data={portfolio} isLoading={isPortfolioLoading} />
-          )} */}
+          
 
           <form onSubmit={handleFormSubmit} className="space-y-4">
             <div className="relative overflow-hidden rounded-2xl bg-muted">

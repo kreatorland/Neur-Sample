@@ -34,7 +34,7 @@ export function WalletDetail({
   className,
   isLoading = false,
 }: FloatingWalletProps) {
-  console.log('profolio data', data);
+  
   const [isExpanded, setIsExpanded] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);

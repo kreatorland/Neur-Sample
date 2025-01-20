@@ -12,6 +12,8 @@ export default function WalletComponent() {
     isLoading: isPortfolioLoading,
     refresh,
   } = useWalletPortfolio();
+
+  console.log("kkkk data aayo", portfolio)
   return (
     <div>
       {portfolio && (
