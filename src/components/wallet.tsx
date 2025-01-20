@@ -12,35 +12,23 @@ export default function WalletComponent() {
     data: portfolio,
     isLoading: isPortfolioLoading,
     refresh,
-  } = useWalletPortfolio();
-
-  const {
-    data: newData,
-    isLoading: isLoading,
-    refresh:re,
   } = userWalletPortfolio();
 
-  console.log("kkkk data aayo", portfolio,newData)
+
+
+  console.log("kkkk data aayo", portfolio)
   return (
     <div>
     
+{
+   portfolio?.tokens  &&(
+    <>
+    <FloatingWallet data={portfolio} isLoading={isPortfolioLoading} />
+    </>
+  ) 
+}
 
-
-      {
       
-                        portfolio?.tokens  && portfolio.address  ? (
-                          <>
-                          <FloatingWallet data={portfolio} isLoading={isPortfolioLoading} />
-                          </>
-                        ) : (
-                          <>
-                           <ChangeFloatingWallet
-                            data={portfolio}
-                        ></ChangeFloatingWallet>
-                          </>
-                        )
-      
-                      }
     </div>
   );
 }
