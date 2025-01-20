@@ -16,14 +16,12 @@ export default function WalletComponent() {
   console.log("kkkk data aayo", portfolio)
   return (
     <div>
-      {portfolio?.tokens  && (
-        <FloatingWallet data={portfolio} isLoading={isPortfolioLoading} />
-      )}
+    
 
 
       {
       
-                        portfolio && portfolio.address  ? (
+                        portfolio?.tokens  && portfolio.address  ? (
                           <>
                           <FloatingWallet data={portfolio} isLoading={isPortfolioLoading} />
                           </>
