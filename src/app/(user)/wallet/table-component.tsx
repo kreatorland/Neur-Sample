@@ -125,7 +125,7 @@ export function FungableWalletDetail({
         <TableRow>
           <TableCell colSpan={3}>Total</TableCell>
           <TableCell className="text-right">
-            ${parseFloat(data.totalBalance.toFixed(2))}
+            {/* ${parseFloat(data.totalBalance.toFixed(2))} */}
           </TableCell>
         </TableRow>
       </TableFooter>
