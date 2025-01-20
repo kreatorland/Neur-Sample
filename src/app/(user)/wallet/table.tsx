@@ -34,7 +34,7 @@ export function WalletDetail({
   className,
   isLoading = false,
 }: FloatingWalletProps) {
-  
+  console.log("table mk aayo", data)
   const [isExpanded, setIsExpanded] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -73,7 +73,7 @@ export function WalletDetail({
       <TableBody>
 
         
-        {data?.tokens.length > 0 ? (
+        {/* {data?.tokens.length > 0 ? (
           <>
             {data.tokens.map((token, index) => (
               <TableRow key={index}>
@@ -105,7 +105,7 @@ export function WalletDetail({
                 </TableCell>
                 <TableCell>
                   <span className="text-md md:text-md font-medium">
-                    {/* {token.balance * token.pricePerToken} */}
+                  
                     {parseFloat(
                       (token.balance * token.pricePerToken).toFixed(2),
                     )}
@@ -120,13 +120,13 @@ export function WalletDetail({
               <p className="text-md font-medium">No Tokens</p>
             </div>
           </>
-        )}
+        )} */}
       </TableBody>
       <TableFooter>
         <TableRow>
           <TableCell colSpan={3}>Total</TableCell>
           <TableCell className="text-right">
-            ${parseFloat(data.totalBalance.toFixed(2))}
+            {/* ${parseFloat(data.totalBalance.toFixed(2))} */}
           </TableCell>
         </TableRow>
       </TableFooter>
