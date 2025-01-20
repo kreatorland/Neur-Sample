@@ -8,16 +8,31 @@ import { useRouter } from 'next/navigation';
 
 import { useLogin } from '@privy-io/react-auth';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
+import { RiTwitterXFill } from '@remixicon/react';
 import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
 import {
+  ActivityIcon,
+  BadgeDollarSign,
   BookOpenIcon,
+  BotIcon,
+  BrainCircuitIcon,
+  BrainIcon,
   DollarSign,
   FileQuestion,
+  FingerprintIcon,
+  FolderKanbanIcon,
+  LinkIcon,
   SendIcon,
+  ShieldIcon,
   TwitterIcon,
+  WalletIcon,
+  WorkflowIcon,
+  XIcon,
+  ZapIcon,
 } from 'lucide-react';
 
 import { FeatureLists } from '@/components/data';
+import { HelperComponent } from '@/components/helper-component';
 import { HomePageCard } from '@/components/homePageCard';
 import { Brand } from '@/components/logo';
 // import { ReviewCard } from '@/components/review-card';
@@ -37,7 +52,6 @@ import Marquee from '@/components/ui/marquee';
 import { RainbowButton } from '@/components/ui/rainbow-button';
 // import SmallDotPattern from '@/components/ui/small-dot-pattern';
 import SmallDotPattern from '@/components/ui/small-dot-pattern';
-import { decryptPrivateKey } from '@/lib/solana/wallet-generator';
 import { cn } from '@/lib/utils';
 
 import { INTEGRATIONS } from './(user)/home/data/integrate';
@@ -94,7 +108,7 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
                   <Button
                     variant="outline"
                     className="h-9 rounded-lg bg-primary px-4 text-sm text-white transition-colors hover:bg-primary hover:text-primary-foreground dark:bg-primary dark:text-black"
-                    onClick={handleLogin}
+                    // onClick={handleLogin}
                   >
                     Try Numble
                   </Button>
@@ -157,8 +171,6 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
 
 const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
   const productRef = useRef<HTMLDivElement>(null);
-
-  const [value, setValue] = useState('');
   const { scrollYProgress } = useScroll({
     target: productRef,
     offset: ['start end', 'end start'],
@@ -167,10 +179,6 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
   const rotateX = useTransform(scrollYProgress, [0, 0.5], [30, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [0.6, 1]);
-
-  // const generateKey = async () => {
-  //   await WalletEncryption.decrypt(encryptedPrivateKey)
-  // };
 
   return (
     <section className="relative pt-[5.75rem]" ref={productRef}>
@@ -197,19 +205,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
               })}
             </div>
           </BlurFade>
-          {/* <input
-            placeholder="key"
-            onChange={(e) => {
-              setValue(e.target.value);
-            }}
-          ></input>
-          <button
-            onClick={() => {
-              generateKey();
-            }}
-          >
-            Generate gara
-          </button> */}
+
           <BlurFade delay={0.3} className="pointer-events-none select-none">
             <div className="relative inline-flex items-center bg-transparent backdrop-blur-sm">
               <div className="relative text-[60px] font-medium text-primary sm:text-[60px] md:text-[140px] lg:text-[160px] xl:text-[80px] 2xl:text-[100px]">
@@ -238,7 +234,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
           <BlurFade delay={0.4}>
             <div className="mt-8">
               <RainbowButton
-                onClick={handleLogin}
+                // onClick={handleLogin}
                 className="h-12 min-w-[180px] text-base transition-all duration-300 hover:scale-105"
               >
                 Try Numble
@@ -353,7 +349,7 @@ const Lobsang = () => {
           Numble Seamless DeFAI
         </h2>
 
-        <div className="relative">
+        {/* <div className="relative">
           <div className=" grid grid-cols-1 gap-4 sm:grid-cols-3">
             {FeatureLists.map((item, index) => (
               <HomePageCard key={item.label} item={item} index={index} />
@@ -371,7 +367,9 @@ const Lobsang = () => {
             className="absolute top-[-48px] h-[400px] border "
             style={{ left: '838px', height: '426px' }}
           ></div>
-        </div>
+        </div> */}
+
+        <HelperComponent></HelperComponent>
       </div>
     </BlurFade>
   );
