@@ -196,14 +196,14 @@ export function AccountContent() {
                 ))}
               </section>
 
-              <Card className="mt-2">
+              {/* <Card className="mt-2">
                 {portfolio && (
                   <WalletDetail
                     data={portfolio}
                     isLoading={isPortfolioLoading}
                   ></WalletDetail>
                 )}
-              </Card>
+              </Card> */}
             </CardContent>
           </Card>
         </div>

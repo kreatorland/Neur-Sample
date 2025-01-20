@@ -696,7 +696,7 @@ export default function ChatInterface({
     isLoading: isPortfolioLoading,
     refresh,
   } = useWalletPortfolio();
-
+  console.log("kkkkkkkkkk in chat", portfolio)
   const scrollToBottom = useCallback(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
