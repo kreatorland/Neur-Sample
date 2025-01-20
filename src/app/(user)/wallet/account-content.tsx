@@ -56,6 +56,7 @@ export function AccountContent() {
     isLoading: isPortfolioLoading,
     refresh,
   } = useWalletPortfolio();
+  
   console.log("wallelt profolio", portfolio, isPortfolioLoading)
   const {
     data: embeddedWallets = [],
