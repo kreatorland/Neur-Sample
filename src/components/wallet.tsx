@@ -5,7 +5,7 @@ import React from 'react';
 import { useWalletPortfolio } from '@/hooks/use-wallet-portfolio';
 
 import { FloatingWallet } from './floating-wallet';
-
+import { ChangeFloatingWallet } from './different-wallet';
 export default function WalletComponent() {
   const {
     data: portfolio,
@@ -16,9 +16,26 @@ export default function WalletComponent() {
   console.log("kkkk data aayo", portfolio)
   return (
     <div>
-      {portfolio && (
+      {portfolio?.tokens  && (
         <FloatingWallet data={portfolio} isLoading={isPortfolioLoading} />
       )}
+
+
+      {
+      
+                        portfolio && portfolio.address  ? (
+                          <>
+                          <FloatingWallet data={portfolio} isLoading={isPortfolioLoading} />
+                          </>
+                        ) : (
+                          <>
+                           <ChangeFloatingWallet
+                            data={portfolio}
+                        ></ChangeFloatingWallet>
+                          </>
+                        )
+      
+                      }
     </div>
   );
 }

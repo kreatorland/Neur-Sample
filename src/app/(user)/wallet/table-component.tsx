@@ -38,27 +38,27 @@ export function FungableWalletDetail({
   const [mounted, setMounted] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
-  // useEffect(() => {
-  //   setMounted(true);
-  //   // Preload all token images
-  //   if (data.tokens.length > 0) {
-  //     Promise.all(
-  //       data.tokens.map((token) => {
-  //         if (!token.imageUrl) return Promise.resolve();
-  //         return new Promise((resolve) => {
-  //           const img = new Image();
-  //           img.src = token.imageUrl;
-  //           img.onload = resolve;
-  //           img.onerror = resolve;
-  //         });
-  //       }),
-  //     ).then(() => setImagesLoaded(true));
-  //   } else {
-  //     setImagesLoaded(true);
-  //   }
-  // }, [data.tokens]);
+  useEffect(() => {
+    setMounted(true);
+    // Preload all token images
+    if (data.tokens.length > 0) {
+      Promise.all(
+        data.fungibleTokens.map((token:any) => {
+            if (!token.content.links.image) return Promise.resolve();
+          return new Promise((resolve) => {
+            const img = new Image();
+            img.src = token.content.links.image;
+            img.onload = resolve;
+            img.onerror = resolve;
+          });
+        }),
+      ).then(() => setImagesLoaded(true));
+    } else {
+      setImagesLoaded(true);
+    }
+  }, [data.tokens]);
 
-  // if (!mounted || !imagesLoaded) return null;
+  if (!mounted || !imagesLoaded) return null;
 
   return (
     <Table>
@@ -97,19 +97,19 @@ export function FungableWalletDetail({
                   </div>
                 </TableCell>
 
-                {/* <TableCell>
+                <TableCell>
                   <span className="text-md md:text-md font-medium">
-                    {token.balance}
+                    {token?.token_info.balance / 1000000000 || 0}
                   </span>
-                </TableCell> */}
-                {/* <TableCell>
+                </TableCell>
+                <TableCell>
                   <span className="text-md md:text-md font-medium">
                   
-                    {parseFloat(
-                      (token.balance * token.pricePerToken).toFixed(2),
-                    )}
+                   
+                     {token?.token_info.price_info.total_price.toFixed(2) || 0}
+                    
                   </span>
-                </TableCell> */}
+                </TableCell>
               </TableRow>
             ))}
           </>
