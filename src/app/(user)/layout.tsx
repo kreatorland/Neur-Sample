@@ -30,7 +30,7 @@ export default async function UserLayout({
             <SidebarTrigger />
 
             <div>
-              {/* <WalletComponent></WalletComponent> */}
+              <WalletComponent></WalletComponent>
             </div>
             {/* <div className="flex items-center gap-1.5">
               <ThemeToggle />
