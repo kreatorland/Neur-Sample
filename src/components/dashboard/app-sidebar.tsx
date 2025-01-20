@@ -180,7 +180,7 @@ export function AppSidebar() {
         </SidebarGroup>
 
         <AppSidebarConversations />
-        <AppSidebarAutomations />
+        {/* <AppSidebarAutomations /> */}
       </SidebarContent>
 
       <AppSidebarFooter />
