@@ -79,6 +79,12 @@ export function HomeContent() {
         refreshConversations();
       }
     },
+    // experimental_prepareRequestBody: ({ messages }) => {
+    //   return {
+    //     message: messages[messages.length - 1],
+    //     id: chatId,
+    //   } as unknown as JSONValue;
+    // },
   });
 
   // Verification effect

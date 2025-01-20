@@ -270,7 +270,6 @@ function MessageToolInvocations({
               <span className="truncate text-xs font-medium text-foreground/90">
                 {finalDisplayName}
               </span>
-             
             </div>
           );
 
@@ -305,6 +304,7 @@ function ChatMessage({
   onPreviewImage,
   addToolResult,
 }: ChatMessageProps) {
+  console.log('messages kk aayo', messages, message);
   const isUser = message.role === 'user';
   const hasAttachments =
     message.experimental_attachments &&
@@ -330,7 +330,7 @@ function ChatMessage({
     >
       {showAvatar ? (
         <Avatar className="mt-0.5 h-8 w-8 shrink-0 select-none">
-           <img
+          <img
             src="/numbleAi.png"
             alt=""
             style={{ width: '100%', height: '100%' }}
@@ -544,11 +544,11 @@ function LoadingMessage() {
   return (
     <div className="flex w-full items-start gap-3">
       <Avatar className="mt-0.5 h-8 w-8 shrink-0 select-none">
-      <img
-            src="/numbleAi.png"
-            alt=""
-            style={{ width: '100%', height: '100%' }}
-          />
+        <img
+          src="/numbleAi.png"
+          alt=""
+          style={{ width: '100%', height: '100%' }}
+        />
       </Avatar>
 
       <div className="relative flex max-w-[85%] flex-col items-start gap-2">
@@ -696,7 +696,7 @@ export default function ChatInterface({
     isLoading: isPortfolioLoading,
     refresh,
   } = useWalletPortfolio();
-  console.log("kkkkkkkkkk in chat", portfolio)
+
   const scrollToBottom = useCallback(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
