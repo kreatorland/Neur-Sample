@@ -79,11 +79,11 @@ export function FungableWalletDetail({
                 <TableCell>
                   <div className="flex items-center gap-1">
                     <Avatar className="h-8 w-8 shrink-0 rounded-lg bg-background">
-                      <AvatarImage
+                      {/* <AvatarImage
                         src={token.content.links.image}
                         alt={token.name}
                         className="object-cover transition-transform duration-150 group-hover:scale-105"
-                      />
+                      /> */}
                       {/* <AvatarFallback className="rounded-lg text-xs">
                         {token.symbol.slice(0, 2)}
                       </AvatarFallback> */}
