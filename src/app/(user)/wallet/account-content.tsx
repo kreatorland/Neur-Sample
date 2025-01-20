@@ -122,6 +122,11 @@ export function AccountContent() {
       throw new Error(`Failed to grant Discord role: ${error}`);
     }
   }
+  const allWalletAddresses = [
+    ...(linkedSolanaWallet ? [linkedSolanaWallet.address] : []),
+    ...privyWallets.map((w) => w.publicKey),
+    ...legacyWallets.map((w) => w.publicKey),
+  ];
 
   return (
     <div className="flex flex-1 flex-col py-8">
@@ -129,8 +134,7 @@ export function AccountContent() {
         <div className=" space-y-6">
           <Card className="w-full">
             <CardContent className="pt-6">
-              {/* Privy Embedded Wallet Section */}
-              {/* <section className="space-y-4">
+              <section className="space-y-4">
                 <h2 className="text-sm font-medium text-muted-foreground">
                   Privy Embedded Wallets
                 </h2>
@@ -140,6 +144,7 @@ export function AccountContent() {
                         key={wallet.id}
                         wallet={wallet}
                         mutateWallets={mutateWallets}
+                        allWalletAddresses={allWalletAddresses}
                       />
                     ))
                   : ready && (
@@ -174,7 +179,7 @@ export function AccountContent() {
                         </CardContent>
                       </Card>
                     )}
-              </section> */}
+              </section>
 
               {/* Legacy Embedded Wallet Section */}
               <section className="space-y-4">
@@ -186,14 +191,10 @@ export function AccountContent() {
                     key={wallet.id}
                     wallet={wallet}
                     mutateWallets={mutateWallets}
+                    allWalletAddresses={allWalletAddresses}
                   />
                 ))}
               </section>
-              {/* <section className="space-y-4">
-                {wallets?.map((wallet: EmbeddedWallet) => (
-                  <WalletCard key={wallet.id} wallet={wallet} />
-                ))}
-              </section> */}
 
               <Card className="mt-2">
                 {portfolio && (

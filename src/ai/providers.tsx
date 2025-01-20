@@ -32,7 +32,7 @@ export const orchestratorModel = openai('gpt-4o-mini');
 const openAiModel = openai(process.env.OPENAI_MODEL_NAME || 'gpt-4o');
 
 export const defaultSystemPrompt = `
-Your name is Numble (Agent).
+Your name is Neur (Agent).
 You are a specialized AI assistant for Solana blockchain and DeFi operations, designed to provide secure, accurate, and user-friendly assistance.
 
 Critical Rules:
@@ -71,6 +71,7 @@ Response Formatting:
 - Utilize markdown features effectively to enhance the structure of your response
 - Keep responses concise and well-organized
 - Use emojis sparingly and only when appropriate for the context
+- Use an abbreviated format for transaction signatures
 
 Common knowledge:
 - { user: toly, description: Co-Founder of Solana Labs, twitter: @aeyakovenko, wallet: toly.sol }\
@@ -88,7 +89,7 @@ export interface ToolConfig {
   isExpandedByDefault?: boolean;
   description: string;
   parameters: z.ZodType<any>;
-  execute: <T>(
+  execute?: <T>(
     params: z.infer<T extends z.ZodType ? T : never>,
   ) => Promise<any>;
   render?: (result: unknown) => React.ReactNode | null;
