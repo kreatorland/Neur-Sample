@@ -39,27 +39,27 @@ export function WalletDetail({
   const [mounted, setMounted] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-    // Preload all token images
-    if (data.tokens.length > 0) {
-      Promise.all(
-        data.tokens.map((token) => {
-          if (!token.imageUrl) return Promise.resolve();
-          return new Promise((resolve) => {
-            const img = new Image();
-            img.src = token.imageUrl;
-            img.onload = resolve;
-            img.onerror = resolve;
-          });
-        }),
-      ).then(() => setImagesLoaded(true));
-    } else {
-      setImagesLoaded(true);
-    }
-  }, [data.tokens]);
+  // useEffect(() => {
+  //   setMounted(true);
+  //   // Preload all token images
+  //   if (data.tokens.length > 0) {
+  //     Promise.all(
+  //       data.tokens.map((token) => {
+  //         if (!token.imageUrl) return Promise.resolve();
+  //         return new Promise((resolve) => {
+  //           const img = new Image();
+  //           img.src = token.imageUrl;
+  //           img.onload = resolve;
+  //           img.onerror = resolve;
+  //         });
+  //       }),
+  //     ).then(() => setImagesLoaded(true));
+  //   } else {
+  //     setImagesLoaded(true);
+  //   }
+  // }, [data.tokens]);
 
-  if (!mounted || !imagesLoaded) return null;
+  // if (!mounted || !imagesLoaded) return null;
 
   return (
     <Table>
