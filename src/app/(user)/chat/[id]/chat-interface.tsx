@@ -256,7 +256,12 @@ function ChatMessage({
     /!\[(.*?)\]\((.*?)\s+=(\d+)x(\d+)\)/g,
     (_, alt, src, width, height) => `![${alt}](${src}#size=${width}x${height})`,
   );
-
+  console.log(
+    'ddda chat-interface processedContent',
+    message,
+    messages,
+    processedContent,
+  );
   return (
     <div
       className={cn(
@@ -575,7 +580,7 @@ export default function ChatInterface({
         refresh();
       },
     });
-
+  console.log('meassage k aaxu', messages);
   const [previewImage, setPreviewImage] = useState<ImagePreview | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
