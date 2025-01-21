@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 
 import { createAnthropic } from '@ai-sdk/anthropic';
 import { createOpenAI } from '@ai-sdk/openai';
-import { createGroq } from '@ai-sdk/groq';
 import { z } from 'zod';
 
 import { actionTools } from './generic/action';
@@ -39,7 +38,7 @@ const openai = createOpenAI({
 const openAiModel = openai(process.env.OPENAI_MODEL_NAME || 'gpt-4o-mini');
 
 export const defaultSystemPrompt = `
-Your name is Neur (Agent).
+Your name is Numble.
 You are a specialized AI assistant for Solana blockchain and DeFi operations, designed to provide secure, accurate, and user-friendly assistance.
 
 Critical Rules:

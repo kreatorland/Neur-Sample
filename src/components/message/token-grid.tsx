@@ -95,64 +95,80 @@ function TokenCard({ token, className }: TokenCardProps) {
         className,
       )}
     >
-      {/* Token Info */}
-      <div className="flex items-center gap-3 p-3">
-        <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg">
-          <Image
-            src={token.image || '/placeholder.png'}
-            alt={token.name}
-            className="object-cover transition-transform duration-300 group-hover:scale-110"
-            fill
-            sizes="40px"
-          />
-        </div>
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2">
-            <h3 className="truncate text-sm font-medium">{token.name}</h3>
+      <div className="flex flex-row justify-between">
+        {/* Token Info */}
+        <div className="flex flex-col items-center gap-3 p-3">
+          <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg">
+            <Image
+              src={token.image || '/placeholder.png'}
+              alt={token.name}
+              className="object-cover transition-transform duration-300 group-hover:scale-110"
+              fill
+              sizes="40px"
+            />
           </div>
-          <div
-            className={cn(
-              'mt-1 text-xs font-medium',
-              change >= 0 ? 'text-green-500' : 'text-red-500',
-            )}
-          >
-            {change >= 0 ? '+' : ''}
-            {change.toFixed(2)}%
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2">
+              <h3 className="truncate text-sm font-medium">{token.name}</h3>
+            </div>
+            <div
+              className={cn(
+                'mt-1 flex justify-center text-xs font-medium',
+                change >= 0 ? 'text-green-500' : 'text-red-500',
+              )}
+            >
+              {change >= 0 ? '+' : ''}
+              {change.toFixed(2)}%
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Metrics */}
-      <div className="grid grid-cols-2 gap-px bg-border/50">
-        <div className="bg-background/50 p-3">
-          <p className="text-[10px] font-medium text-muted-foreground">
-            Market Cap
-          </p>
-          <p className="mt-0.5 text-sm font-medium">
-            {formatNumber(token.marketCap, 'currency')}
-          </p>
-        </div>
-        <div className="bg-background/50 p-3">
-          <p className="text-[10px] font-medium text-muted-foreground">
-            24h Volume
-          </p>
-          <p className="mt-0.5 text-sm font-medium">
-            {formatNumber(token.volume24, 'currency')}
-          </p>
-        </div>
-      </div>
+        <div className="p-[10px]">
+          {/* Metrics */}
+          <div className="grid grid-cols-4 gap-px rounded-md bg-border/50">
+            <div className="bg-background/50 p-3">
+              <p className="text-[10px] font-medium text-muted-foreground">
+                Market Cap
+              </p>
+              <p className="mt-0.5 text-sm font-medium">
+                {formatNumber(token.marketCap, 'currency')}
+              </p>
+            </div>
+            <div className="bg-background/50 p-3">
+              <p className="text-[10px] font-medium text-muted-foreground">
+                24h Volume
+              </p>
+              <p className="mt-0.5 text-sm font-medium">
+                {formatNumber(token.volume24, 'currency')}
+              </p>
+            </div>
 
-      {/* Additional Info */}
-      <div className="flex items-center justify-between border-t border-border/50 px-3 py-2 text-[10px] text-muted-foreground">
-        <div className="flex items-center gap-2">
-          <span>{formatHoldersCount(token.holdersCount)} holders</span>
-          <span className="h-3 w-px bg-border/50" />
-          <span>Listed {formatListedTime(token.listedAt)}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="rounded bg-muted/50 px-1.5 py-0.5">
-            {formatNumber(token.transactions24h, 'number')} txns
-          </span>
+            <div className="bg-background/50 p-3">
+              <p className="text-[10px] font-medium text-muted-foreground">
+                Holders
+              </p>
+              <p className="mt-0.5 text-sm font-medium">
+                <span>{formatHoldersCount(token.holdersCount)}</span>
+              </p>
+            </div>
+
+            <div className="bg-background/50 p-3">
+              <p className="text-[10px] font-medium text-muted-foreground">
+                Txns
+              </p>
+              <p className="mt-0.5 text-sm font-medium">
+                {formatNumber(token.transactions24h, 'number')}
+              </p>
+            </div>
+          </div>
+
+          {/* Additional Info */}
+          <div className="flex bg-border/50">
+            <div className="flex items-center justify-center gap-2 border-r-2 bg-background/50 p-3">
+              <span>Listed {formatListedTime(token.listedAt)}</span>
+            </div>
+          </div>
+          {/* <div className="flex items-center justify-between border-t border-border/50 px-3 py-2 text-[10px] text-muted-foreground"></div> */}
         </div>
       </div>
     </a>
@@ -167,13 +183,7 @@ export function TokenGrid({
 }: TokenGridProps) {
   if (isLoading) {
     return (
-      <div
-        className={cn(
-          'grid gap-4',
-          'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
-          className,
-        )}
-      >
+      <div className={cn('flex flex-col gap-4', className)}>
         {Array.from({ length: 6 }).map((_, i) => (
           <TokenCardSkeleton key={i} />
         ))}
@@ -184,15 +194,7 @@ export function TokenGrid({
   if (!tokens?.length) return null;
 
   return (
-    <div
-      className={cn(
-        'grid gap-4',
-        tokens.length === 1
-          ? 'grid-cols-1'
-          : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
-        className,
-      )}
-    >
+    <div className={cn('flex flex-col gap-4', className)}>
       {tokens.map((token) => (
         <TokenCard key={token.address} token={token} />
       ))}

@@ -32,6 +32,7 @@ import {
 } from 'lucide-react';
 
 import { FeatureLists } from '@/components/data';
+import { HelperComponent } from '@/components/helper-component';
 import { HomePageCard } from '@/components/homePageCard';
 import { Brand } from '@/components/logo';
 // import { ReviewCard } from '@/components/review-card';
@@ -348,7 +349,7 @@ const Lobsang = () => {
           Numble Seamless DeFAI
         </h2>
 
-        <div className="relative">
+        {/* <div className="relative">
           <div className=" grid grid-cols-1 gap-4 sm:grid-cols-3">
             {FeatureLists.map((item, index) => (
               <HomePageCard key={item.label} item={item} index={index} />
@@ -366,7 +367,9 @@ const Lobsang = () => {
             className="absolute top-[-48px] h-[400px] border "
             style={{ left: '838px', height: '426px' }}
           ></div>
-        </div>
+        </div> */}
+
+        <HelperComponent></HelperComponent>
       </div>
     </BlurFade>
   );

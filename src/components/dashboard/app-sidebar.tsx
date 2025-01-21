@@ -82,13 +82,13 @@ const ExploreItems = [
     external: false,
   },
 
-  {
-    title: 'Agents',
-    url: '/agent',
-    segment: 'agents',
-    icon: ActivityIcon,
-    external: false,
-  },
+  // {
+  //   title: 'Agents',
+  //   url: '/agent',
+  //   segment: 'agents',
+  //   icon: ActivityIcon,
+  //   external: false,
+  // },
 
   {
     title: 'Portfolio',
@@ -97,13 +97,7 @@ const ExploreItems = [
     icon: WalletIcon,
     external: false,
   },
-  {
-    title: 'Settings',
-    url: '/setting',
-    segment: 'setting',
-    icon: SettingsIcon,
-    external: false,
-  },
+
   {
     title: 'Integration',
     url: '/integration',
@@ -119,11 +113,12 @@ const ExploreItems = [
     icon: BookOpen,
     external: true,
   },
+
   {
-    title: 'Support',
-    url: '/memories',
-    segment: 'support',
-    icon: HeartHandshakeIcon,
+    title: 'Settings',
+    url: '/setting',
+    segment: 'setting',
+    icon: SettingsIcon,
     external: false,
   },
 ] as const;

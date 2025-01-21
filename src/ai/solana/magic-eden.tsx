@@ -216,8 +216,8 @@ const PopularCollections = ({
 }) => {
   return (
     <Card className="space-y-4 bg-muted/50 p-4">
-      <h3 className="text-lg font-medium">Popular Collections</h3>
-      <div className="space-y-3">
+      <h3 className="text-lg font-medium">Popular Collections on Solana</h3>
+      <div className="grid grid-cols-3 gap-3 space-y-1">
         {collections.map((collection, index) => (
           <a
             key={index}
@@ -226,7 +226,8 @@ const PopularCollections = ({
             rel="noopener noreferrer"
             className="block transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
           >
-            <div className="flex items-center gap-4 rounded-lg bg-background/50 p-3 hover:bg-background/80">
+            <div></div>
+            <div className="flex flex-col items-center gap-3 rounded-lg bg-background/50 p-3 hover:bg-background/80">
               <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl">
                 <img
                   src={processImageUrl(collection.image)}
@@ -238,20 +239,39 @@ const PopularCollections = ({
                   }}
                 />
               </div>
-              <div className="min-w-0 flex-1">
-                <div className="flex items-center justify-between">
+              <div className="flex justify-center">
+                <Badge variant="outline">#{index + 1}</Badge>
+              </div>
+              <div className="min-w-0 flex-1 justify-center">
+                <div className="flex items-center justify-center gap-2">
                   <h4 className="truncate text-sm font-medium">
-                    {collection.name}
+                    {collection.name.length > 22 ? (
+                      <>{collection.name.slice(0, 20)}...</>
+                    ) : (
+                      collection.name.slice(0, 6)
+                    )}
                   </h4>
-                  <Badge variant="outline" className="ml-2">
-                    #{index + 1}
-                  </Badge>
                 </div>
-                <div className="mt-1 flex items-center gap-3 text-sm text-muted-foreground">
-                  <span>Floor: ◎ {formatSOL(collection.floorPrice)}</span>
-                  <span>
-                    Volume: ◎ {formatLargeNumber(collection.volumeAll)}
-                  </span>
+                <div className="mt-1 flex items-center gap-3 rounded-md bg-[#181818] text-sm text-muted-foreground">
+                  {/* <span>Floor: {formatSOL(collection.floorPrice)}</span>
+                <span>Volume: {formatLargeNumber(collection.volumeAll)}</span> */}
+                  <div className=" p-3">
+                    <p className="text-[14px] font-medium text-muted-foreground">
+                      Floor
+                    </p>
+                    <p className="mt-0.5 text-sm font-medium">
+                      {formatSOL(collection.floorPrice)}
+                    </p>
+                  </div>
+
+                  <div className=" p-3">
+                    <p className="text-[14px] font-medium text-muted-foreground">
+                      Volume
+                    </p>
+                    <p className="mt-0.5 text-sm font-medium">
+                      {formatLargeNumber(collection.volumeAll)}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
