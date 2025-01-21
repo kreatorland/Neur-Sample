@@ -321,6 +321,20 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
 //   );
 // };
 
+const Mobile = () => {
+  return (
+    <BlurFade delay={0.5} className="py-25 relative my-6 sm:py-10">
+      <GridDotPattern></GridDotPattern>
+      <div className="w-fit-content mx-auto w-[70%] px-4 py-10 sm:px-6">
+        <AnimatedShinyText className="inline">
+          <h2 className="mb-3 text-center text-2xl font-bold tracking-tight sm:mb-4 sm:text-4xl">
+            Upcoming Soon
+          </h2>
+        </AnimatedShinyText>
+      </div>
+    </BlurFade>
+  );
+};
 const Lobsang = () => {
   const [inView, setInView] = useState(false);
   const controls = useAnimation();
@@ -348,26 +362,6 @@ const Lobsang = () => {
         <h2 className="mb-3 text-center text-2xl font-bold tracking-tight sm:mb-4 sm:text-4xl">
           Numble Seamless DeFAI
         </h2>
-
-        {/* <div className="relative">
-          <div className=" grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {FeatureLists.map((item, index) => (
-              <HomePageCard key={item.label} item={item} index={index} />
-            ))}
-          </div>
-          <div
-            className="absolute  w-[1450px] border border-t-2"
-            style={{ left: '-115px', top: '165px' }}
-          ></div>
-          <div
-            className="l-[252px] absolute top-[-48px] h-[400px] border "
-            style={{ left: '414px', height: '426px' }}
-          ></div>
-          <div
-            className="absolute top-[-48px] h-[400px] border "
-            style={{ left: '838px', height: '426px' }}
-          ></div>
-        </div> */}
 
         <HelperComponent></HelperComponent>
       </div>
