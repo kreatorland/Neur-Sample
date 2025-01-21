@@ -73,7 +73,7 @@
     "recharts": "^2.15.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.0",
-    "solana-agent-kit": "git+https://github.com/slimeonmyhead/solana-agent-kit.git#9f8b3a5afafe9e14dec694c3c99fcbd19d84e70c",
+    "solana-agent-kit": "github:slimeonmyhead/solana-agent-kit#c571e8b59ed7d399a705578af2d58c95f7e9e826",
     "sonner": "^1.7.1",
     "swr": "^2.3.0",
     "tailwind-merge": "^2.6.0",
@@ -87,6 +87,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
+    "@tailwindcss/typography": "^0.5.16",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/lodash": "^4.17.14",
     "@types/node": "^20.17.12",
