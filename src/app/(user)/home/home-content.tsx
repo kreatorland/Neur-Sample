@@ -252,14 +252,7 @@ export function HomeContent() {
       </BlurFade>
 
       <div className="mx-auto w-full max-w-3xl space-y-8">
-        {/* {hasEAP && (
-          <BlurFade delay={0.4}>
-            <div className="space-y-2">
-              <SectionTitle>Integrations</SectionTitle>
-              <IntegrationsGrid />
-            </div>
-          </BlurFade>
-        )} */}
+       
 
         <BlurFade delay={0.1}>
           <ConversationInput
