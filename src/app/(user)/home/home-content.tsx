@@ -131,9 +131,9 @@ export function HomeContent() {
   const handleSend = async (value: string) => {
     if (!value.trim()) return;
 
-    if (!user?.earlyAccess) {
-      return;
-    }
+    // if (!user?.earlyAccess) {
+    //   return;
+    // }
 
     const fakeEvent = new Event('submit') as any;
     fakeEvent.preventDefault = () => {};
@@ -232,7 +232,7 @@ export function HomeContent() {
     );
   }
 
-  const hasEAP = user?.earlyAccess === true;
+  const hasEAP = true;
 
   const mainContent = (
     <div
