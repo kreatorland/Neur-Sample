@@ -2,11 +2,10 @@
 
 import React from 'react';
 
-import { useWalletPortfolio } from '@/hooks/use-wallet-portfolio';
+import { userWalletPortfolio } from '@/hooks/user-wallet-protfolio';
 
 import { FloatingWallet } from './floating-wallet';
-import { ChangeFloatingWallet } from './different-wallet';
-import { userWalletPortfolio } from '@/hooks/user-wallet-protfolio';
+
 export default function WalletComponent() {
   const {
     data: portfolio,
@@ -14,21 +13,14 @@ export default function WalletComponent() {
     refresh,
   } = userWalletPortfolio();
 
-
-
-  console.log("kkkk data aayo", portfolio)
+  console.log('kkkk data aayo', portfolio);
   return (
     <div>
-    
-{
-   portfolio?.tokens  &&(
-    <>
-    <FloatingWallet data={portfolio} isLoading={isPortfolioLoading} />
-    </>
-  ) 
-}
-
-      
+      {portfolio?.tokens && (
+        <>
+          <FloatingWallet data={portfolio} isLoading={isPortfolioLoading} />
+        </>
+      )}
     </div>
   );
 }
