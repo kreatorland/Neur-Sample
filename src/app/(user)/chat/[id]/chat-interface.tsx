@@ -16,6 +16,7 @@ import { Attachment, JSONValue, Message } from 'ai';
 import { useChat } from 'ai/react';
 import {
   Bookmark,
+  ForwardIcon,
   Image as ImageIcon,
   Loader2,
   SendHorizontal,
@@ -294,9 +295,9 @@ function MessageToolInvocations({
               <span className="truncate text-xs font-medium text-foreground/90">
                 {finalDisplayName}
               </span>
-              <span className="ml-auto font-mono text-[10px] text-muted-foreground/70">
+              {/* <span className="ml-auto font-mono text-[10px] text-muted-foreground/70">
                 {toolCallId.slice(0, 9)}
-              </span>
+              </span> */}
             </div>
           );
 
@@ -384,8 +385,11 @@ function ChatMessage({
     >
       {showAvatar ? (
         <Avatar className="mt-0.5 h-8 w-8 shrink-0 select-none">
-          <Logo />
-          <AvatarFallback>AI</AvatarFallback>
+          <img
+            src="/numbleAi.png"
+            alt=""
+            style={{ width: '100%', height: '100%' }}
+          />
         </Avatar>
       ) : !isUser ? (
         <div className="w-8" aria-hidden="true" />
@@ -602,8 +606,11 @@ function LoadingMessage() {
   return (
     <div className="flex w-full items-start gap-3">
       <Avatar className="mt-0.5 h-8 w-8 shrink-0 select-none">
-        <Logo />
-        <AvatarFallback>AI</AvatarFallback>
+        <img
+          src="/numbleAi.png"
+          alt=""
+          style={{ width: '100%', height: '100%' }}
+        />
       </Avatar>
 
       <div className="relative flex max-w-[85%] flex-col items-start gap-2">
@@ -883,9 +890,9 @@ export default function ChatInterface({
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/95 to-background/0" />
         <div className="relative mx-auto w-full max-w-3xl px-4 py-4">
           {/* Floating Wallet */}
-          {portfolio && (
+          {/* {portfolio && (
             <FloatingWallet data={portfolio} isLoading={isPortfolioLoading} />
-          )}
+          )} */}
 
           <form onSubmit={handleFormSubmit} className="relative space-y-4">
             <SavedPromptsMenu
@@ -956,7 +963,13 @@ export default function ChatInterface({
                   onClick={() => fileInputRef.current?.click()}
                   disabled={isLoading}
                 >
-                  <ImageIcon className="h-5 w-5" />
+                  <div className="rounded-lg bg-[#111111] p-2">
+                    <ImageIcon
+                      className="color-[#adad39] h-6 w-6 transition-transform 
+                      duration-200 ease-out group-hover:scale-110"
+                    />
+                  </div>
+                  {/* <ImageIcon className="h-5 w-5" /> */}
                 </Button>
 
                 <Button
@@ -970,7 +983,12 @@ export default function ChatInterface({
                   }
                   className="h-8 w-8 hover:bg-muted"
                 >
-                  <SendHorizontal className="h-5 w-5" />
+                  <div className="rounded-lg bg-[#111111] p-2">
+                    <ForwardIcon
+                      className="color-[#adad39] h-6 w-6 transition-transform 
+                      duration-200 ease-out group-hover:scale-110"
+                    />
+                  </div>
                 </Button>
               </div>
             </div>

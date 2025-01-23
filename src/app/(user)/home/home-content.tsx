@@ -265,7 +265,7 @@ export function HomeContent() {
         <TypingAnimation
           className="mb-12 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-center text-4xl font-semibold tracking-tight text-transparent md:text-4xl lg:text-5xl"
           duration={50}
-          text="How can I assist you?"
+          text="What can I do for you?"
         />
       </BlurFade>
 
@@ -296,7 +296,7 @@ export function HomeContent() {
               </div>
             </BlurFade>
 
-            {!isFetchingSavedPrompts && savedPrompts.length !== 0 && (
+            {/* {!isFetchingSavedPrompts && savedPrompts.length !== 0 && (
               <BlurFade delay={0.3}>
                 <div className="space-y-2">
                   <SectionTitle>Saved Prompts</SectionTitle>
@@ -312,6 +312,7 @@ export function HomeContent() {
                           <SuggestionCard
                             id={savedPrompt.id}
                             useSubtitle={true}
+                          
                             title={savedPrompt.title}
                             subtitle={savedPrompt.content}
                             key={savedPrompt.id}
@@ -323,14 +324,7 @@ export function HomeContent() {
                   )}
                 </div>
               </BlurFade>
-            )}
-
-            <BlurFade delay={0.4}>
-              <div className="space-y-2">
-                <SectionTitle>Integrations</SectionTitle>
-                <IntegrationsGrid />
-              </div>
-            </BlurFade>
+            )} */}
           </div>
         )}
       </div>

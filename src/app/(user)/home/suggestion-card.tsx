@@ -12,11 +12,21 @@ interface SuggestionCardProps extends Suggestion {
 
 export function SuggestionCard({
   title,
+  icon,
   subtitle,
   delay = 0,
   useSubtitle = false,
   onSelect,
 }: SuggestionCardProps) {
+  const Icon = icon;
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
   return (
     <div className="flex flex-col gap-1.5 rounded-xl bg-muted/50 p-3.5 transition-colors duration-200 hover:bg-primary/5">
       <motion.button
@@ -29,11 +39,19 @@ export function SuggestionCard({
         }}
         whileTap={{ scale: 0.99 }}
         onClick={() => onSelect(useSubtitle ? subtitle : title)}
-        className="text-left"
+        className="gap-1.2 py-2.2 flex flex-col items-center justify-center rounded-xl 
+        bg-muted/50  px-1 text-left transition-colors duration-200 hover:bg-primary/5"
       >
-        <div className="mb-1.5 truncate text-sm font-medium">{title}</div>
-        <div className="truncate text-xs text-muted-foreground/80">
-          {subtitle}
+        <div className="flex items-center space-x-2 py-2 text-center text-[12px] font-medium">
+          <Icon
+            className={`color-${getRandomColor()}`}
+            style={{
+              height: '15px',
+              width: '15px',
+              color: `${getRandomColor()}`,
+            }}
+          ></Icon>
+          <p>{title}</p>
         </div>
       </motion.button>
     </div>

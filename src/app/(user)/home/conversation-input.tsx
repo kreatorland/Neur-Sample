@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import { SendHorizontal } from 'lucide-react';
+import { ForwardIcon, SendHorizontal } from 'lucide-react';
 import { toast } from 'sonner';
 
 import { BorderBeam } from '@/components/ui/border-beam';
@@ -82,15 +82,15 @@ export function ConversationInput({
                 duration-200 ease-in-out
                 hover:bg-primary hover:text-primary-foreground active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              <SendHorizontal
-                className="h-4 w-4 transition-transform duration-200 
-                  ease-out group-hover:scale-110"
-              />
+              <div className="rounded-lg bg-[#111111] p-2">
+                <ForwardIcon
+                  className="color-[#adad39] h-6 w-6 transition-transform 
+                  duration-200 ease-out group-hover:scale-110"
+                />
+              </div>
             </Button>
           </div>
         </form>
-
-        <BorderBeam size={250} duration={8} delay={9} />
       </div>
     </div>
   );
