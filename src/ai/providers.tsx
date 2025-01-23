@@ -15,6 +15,7 @@ import { jupiterTools } from './solana/jupiter';
 import { magicEdenTools } from './solana/magic-eden';
 import { pumpfunTools } from './solana/pumpfun';
 import { solanaTools } from './solana/solana';
+import { birdeyeTools } from './solana/birdeye';
 
 const usingAnthropic = !!process.env.ANTHROPIC_API_KEY;
 
@@ -174,6 +175,7 @@ export const defaultTools: Record<string, ToolConfig> = {
   ...utilTools,
   ...chartTools,
   ...telegramTools,
+  ...birdeyeTools,
 };
 
 export const coreTools: Record<string, ToolConfig> = {
@@ -200,6 +202,10 @@ export const toolsets: Record<
     tools: ['solanaTools', 'dexscreenerTools'],
     description:
       'Tools for interacting with DeFi protocols on Solana, including swaps, market data, token definitions.',
+  },
+  traderTools: {
+    tools: ['birdeyeTools'],
+    description: 'Tools for analyzing and tracking traders and trades on Solana DEXes.',
   },
   financeTools: {
     tools: ['definedTools'],
