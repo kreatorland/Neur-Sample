@@ -41,7 +41,7 @@ export function SuggestionCard({
       className="gap-1.2 py-2.2 flex flex-col items-center justify-center rounded-xl 
     bg-muted/50  px-1 text-left transition-colors duration-200 hover:bg-primary/5"
     >
-      <div className="flex items-center space-x-2 py-2 text-center text-[12px] font-medium">
+      <div className="flex items-center space-x-3 py-2 text-center text-[12px] font-medium">
         <Icon
           className={`color-${getRandomColor()}`}
           style={{
@@ -50,7 +50,7 @@ export function SuggestionCard({
             color: `${getRandomColor()}`,
           }}
         ></Icon>
-        <p>{title}</p>
+        <p style={{ margin: '0px' }}>{title}</p>
       </div>
     </motion.button>
   );
