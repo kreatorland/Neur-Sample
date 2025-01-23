@@ -283,7 +283,7 @@ export function HomeContent() {
             <BlurFade delay={0.2}>
               <div className="space-y-2">
                 <SectionTitle>Suggestions</SectionTitle>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-4 gap-4">
                   {suggestions.map((suggestion, index) => (
                     <SuggestionCard
                       key={suggestion.title}

@@ -963,7 +963,12 @@ export default function ChatInterface({
                   onClick={() => fileInputRef.current?.click()}
                   disabled={isLoading}
                 >
-                  <div className="rounded-lg bg-[#111111] p-2">
+                  <div
+                    className="rounded-lg bg-[#111111] p-2"
+                    style={{
+                      border: '1px solid #adad39',
+                    }}
+                  >
                     <ImageIcon
                       className="color-[#adad39] h-6 w-6 transition-transform 
                       duration-200 ease-out group-hover:scale-110"
@@ -983,7 +988,12 @@ export default function ChatInterface({
                   }
                   className="h-8 w-8 hover:bg-muted"
                 >
-                  <div className="rounded-lg bg-[#111111] p-2">
+                  <div
+                    className="rounded-lg bg-[#111111] p-2"
+                    style={{
+                      border: '1px solid #adad39',
+                    }}
+                  >
                     <ForwardIcon
                       className="color-[#adad39] h-6 w-6 transition-transform 
                       duration-200 ease-out group-hover:scale-110"

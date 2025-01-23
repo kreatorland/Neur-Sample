@@ -28,32 +28,30 @@ export function SuggestionCard({
     return color;
   }
   return (
-    <div className="flex flex-col gap-1.5 rounded-xl bg-muted/50 p-3.5 transition-colors duration-200 hover:bg-primary/5">
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4, delay }}
-        whileHover={{
-          scale: 1.01,
-          transition: { duration: 0.2 },
-        }}
-        whileTap={{ scale: 0.99 }}
-        onClick={() => onSelect(useSubtitle ? subtitle : title)}
-        className="gap-1.2 py-2.2 flex flex-col items-center justify-center rounded-xl 
-        bg-muted/50  px-1 text-left transition-colors duration-200 hover:bg-primary/5"
-      >
-        <div className="flex items-center space-x-2 py-2 text-center text-[12px] font-medium">
-          <Icon
-            className={`color-${getRandomColor()}`}
-            style={{
-              height: '15px',
-              width: '15px',
-              color: `${getRandomColor()}`,
-            }}
-          ></Icon>
-          <p>{title}</p>
-        </div>
-      </motion.button>
-    </div>
+    <motion.button
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4, delay }}
+      whileHover={{
+        scale: 1.01,
+        transition: { duration: 0.2 },
+      }}
+      whileTap={{ scale: 0.99 }}
+      onClick={() => onSelect(useSubtitle ? subtitle : title)}
+      className="gap-1.2 py-2.2 flex flex-col items-center justify-center rounded-xl 
+    bg-muted/50  px-1 text-left transition-colors duration-200 hover:bg-primary/5"
+    >
+      <div className="flex items-center space-x-2 py-2 text-center text-[12px] font-medium">
+        <Icon
+          className={`color-${getRandomColor()}`}
+          style={{
+            height: '15px',
+            width: '15px',
+            color: `${getRandomColor()}`,
+          }}
+        ></Icon>
+        <p>{title}</p>
+      </div>
+    </motion.button>
   );
 }

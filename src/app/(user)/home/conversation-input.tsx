@@ -67,7 +67,7 @@ export function ConversationInput({
             onChange={handleTextareaChange}
             onKeyDown={handleKeyDown}
             maxLength={MAX_CHARS}
-            placeholder="Start a new conversation..."
+            placeholder="Crypto confusing? Let's talk..."
             className="min-h-[110px] w-full resize-none overflow-hidden border-0 bg-transparent px-4 py-3 text-base focus-visible:ring-0"
           />
 

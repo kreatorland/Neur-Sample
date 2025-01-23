@@ -28,7 +28,7 @@ export const AppSidebarUser = () => {
       className={` items-center justify-around ${open ? 'flex' : 'flex flex-col gap-1'}`}
     >
       <div className="flex justify-center rounded-md bg-[#302f2f] p-2">
-        <a href="Twitter url: https://x.com/NumbleAI" target="_blank">
+        <a href="https://x.com/NumbleAI" target="_blank">
           <RiTwitterXFill className=" h-6 w-6" />
         </a>
       </div>
