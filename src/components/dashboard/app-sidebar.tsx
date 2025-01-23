@@ -38,7 +38,6 @@ import { APP_VERSION, IS_BETA } from '@/lib/constants';
 import { Brand } from '../logo';
 import NLogo from '../n-logo';
 import { Card, CardContent } from '../ui/card';
-import { AppSidebarAutomations } from './app-sidebar-automations';
 import { AppSidebarConversations } from './app-sidebar-conversations';
 import { AppSidebarUser } from './app-sidebar-user';
 
@@ -114,11 +113,12 @@ const ExploreItems = [
     icon: BookOpen,
     external: true,
   },
+
   {
     title: 'Settings',
     url: '/setting',
-    segment: 'support',
-    icon: HeartHandshakeIcon,
+    segment: 'setting',
+    icon: SettingsIcon,
     external: false,
   },
 ] as const;
@@ -180,7 +180,6 @@ export function AppSidebar() {
         </SidebarGroup>
 
         <AppSidebarConversations />
-        {/* <AppSidebarAutomations /> */}
       </SidebarContent>
 
       <AppSidebarFooter />
