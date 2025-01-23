@@ -35,6 +35,7 @@ import { EmbeddedWallet } from '@/types/db';
 import { LoadingStateSkeleton } from '../account/loading-skeleton';
 import { WalletDetail } from './table';
 import { FungableWalletDetail } from './table-component';
+
 export function AccountContent() {
   const router = useRouter();
   const { ready } = usePrivy();
@@ -56,8 +57,8 @@ export function AccountContent() {
     isLoading: isPortfolioLoading,
     refresh,
   } = useWalletPortfolio();
-  
-  console.log("wallelt profolio", portfolio, isPortfolioLoading, refresh)
+
+  console.log('wallelt profolio', portfolio, isPortfolioLoading, refresh);
   const {
     data: embeddedWallets = [],
     error: walletsError,
@@ -135,12 +136,10 @@ export function AccountContent() {
         <div className=" space-y-6">
           <Card className="w-full">
             <CardContent className="pt-6">
-            
-
               {/* Legacy Embedded Wallet Section */}
               <section className="space-y-4">
                 <h2 className="text-sm font-medium text-muted-foreground">
-                  Legacy Embedded Wallet
+                  Embedded Wallet
                 </h2>
                 {legacyWallets.map((wallet: EmbeddedWallet) => (
                   <WalletCard
@@ -161,27 +160,21 @@ export function AccountContent() {
                 )}
               </Card> */}
 
-                <Card className="mt-2">
-               
-
-                {
-
-                  portfolio && portfolio.address  ? (
-                    <>
-                     <WalletDetail
-                    data={portfolio}
-                    isLoading={isPortfolioLoading}
-                  ></WalletDetail>
-                    </>
-                  ) : (
-                    <>
-                     <FungableWalletDetail
+              <Card className="mt-2">
+                {portfolio && portfolio.address ? (
+                  <>
+                    <WalletDetail
                       data={portfolio}
-                  ></FungableWalletDetail>
-                    </>
-                  )
-
-                }
+                      isLoading={isPortfolioLoading}
+                    ></WalletDetail>
+                  </>
+                ) : (
+                  <>
+                    <FungableWalletDetail
+                      data={portfolio}
+                    ></FungableWalletDetail>
+                  </>
+                )}
               </Card>
             </CardContent>
           </Card>
