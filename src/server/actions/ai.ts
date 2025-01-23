@@ -116,10 +116,11 @@ export const retrieveAgentKit = actionClient
     }
 
     const openaiKey = process.env.OPENAI_API_KEY!;
-    const agent = new SolanaAgentKit(walletAdapter, RPC_URL, {
-      OPENAI_API_KEY: openaiKey,
-      HELIUS_API_KEY: process.env.HELIUS_API_KEY!,
-    });
+    // const agent = new SolanaAgentKit(walletAdapter, RPC_URL, {
+    //   OPENAI_API_KEY: openaiKey,
+    //   HELIUS_API_KEY: process.env.HELIUS_API_KEY!,
+    // });
+    const agent = new SolanaAgentKit(walletAdapter, RPC_URL, openaiKey);
 
     return { success: true, data: { agent } };
   });
