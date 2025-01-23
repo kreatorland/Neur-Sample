@@ -308,20 +308,6 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
   );
 };
 
-// const Features = () => {
-//   return (
-//     <BlurFade delay={0.5} className="sm:py-15 py-15 relative mb-10">
-//       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-//         <Marquee className="absolute inset-0 h-[100px] [--duration:15s] [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)]">
-//           {Array.from({ length: 5 }).map((_, idx) => (
-//             <ReviewCard key={idx} />
-//           ))}
-//         </Marquee>
-//       </div>
-//     </BlurFade>
-//   );
-// };
-
 const Lobsang = () => {
   const [inView, setInView] = useState(false);
   const controls = useAnimation();
@@ -349,27 +335,6 @@ const Lobsang = () => {
         <h2 className="mb-3 text-center text-2xl font-bold tracking-tight sm:mb-4 sm:text-4xl">
           Numble Seamless DeFAI
         </h2>
-
-        {/* <div className="relative">
-          <div className=" grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {FeatureLists.map((item, index) => (
-              <HomePageCard key={item.label} item={item} index={index} />
-            ))}
-          </div>
-          <div
-            className="absolute  w-[1450px] border border-t-2"
-            style={{ left: '-115px', top: '165px' }}
-          ></div>
-          <div
-            className="l-[252px] absolute top-[-48px] h-[400px] border "
-            style={{ left: '414px', height: '426px' }}
-          ></div>
-          <div
-            className="absolute top-[-48px] h-[400px] border "
-            style={{ left: '838px', height: '426px' }}
-          ></div>
-        </div> */}
-
         <HelperComponent></HelperComponent>
       </div>
     </BlurFade>
@@ -522,13 +487,8 @@ export default function Home() {
       <main className="flex-1">
         <Hero handleLogin={login} />
         <Marque></Marque>
-        {/* <IntegrationsBackground></IntegrationsBackground> */}
-        {/* <SmallDotPattern></SmallDotPattern> */}
-        {/* <Features /> */}
 
         <Lobsang></Lobsang>
-
-        {/* <SmallDotPattern></SmallDotPattern> */}
       </main>
       <Footer />
     </div>
