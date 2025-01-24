@@ -23,6 +23,7 @@ import { Separator } from '@/components/ui/separator';
 import { useUser } from '@/hooks/use-user';
 import { useWalletPortfolio } from '@/hooks/use-wallet-portfolio';
 import { useEmbeddedWallets } from '@/hooks/use-wallets';
+import { userWalletPortfolio } from '@/hooks/user-wallet-protfolio';
 import { cn } from '@/lib/utils';
 import {
   formatPrivyId,
@@ -56,7 +57,7 @@ export function AccountContent() {
     data: portfolio,
     isLoading: isPortfolioLoading,
     refresh,
-  } = useWalletPortfolio();
+  } = userWalletPortfolio();
 
   console.log('wallelt profolio', portfolio, isPortfolioLoading, refresh);
   const {
