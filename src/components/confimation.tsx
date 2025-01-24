@@ -15,7 +15,7 @@ export const Confirmation = ({
 }) => {
   return (
     <div className={message ? 'mt-2 w-full' : 'mt-2'}>
-      <div className={message ? 'w-full rounded-lg bg-muted/40 px-3 py-2' : ''}>
+      <div className={message ? 'w-full rounded-md bg-muted/40 px-3 py-2' : ''}>
         <div className="flex min-w-0 flex-1 items-center gap-2">
           <div
             className={cn(
@@ -26,11 +26,11 @@ export const Confirmation = ({
             )}
           />
           <span className="truncate text-xs font-medium text-foreground/90">
-            ⚠️ Confirmation
+            Confirmation
           </span>
-          <span className="ml-auto font-mono text-[10px] text-muted-foreground/70">
+          {/* <span className="ml-auto font-mono text-[10px] text-muted-foreground/70">
             {toolCallId.slice(0, 9)}
-          </span>
+          </span> */}
         </div>
       </div>
       <div className="mt-2 sm:px-4">
@@ -48,7 +48,7 @@ export const Confirmation = ({
             <div className="flex justify-end space-x-2">
               {result === 'deny' && (
                 <Button variant="destructive" size="sm" disabled>
-                  Denied
+                  Cancel
                 </Button>
               )}
               {result === 'confirm' && (
@@ -64,7 +64,7 @@ export const Confirmation = ({
                     addResultUtility('deny');
                   }}
                 >
-                  Deny
+                  Cancel
                 </Button>
               )}
               {!result && addResultUtility && (

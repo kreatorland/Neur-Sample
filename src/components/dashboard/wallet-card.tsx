@@ -182,7 +182,7 @@ export function WalletCard({
             </div>
           </div>
 
-          <div className="flex items-baseline justify-between">
+          <div className="flex items-end justify-between">
             {/* Public Key Section */}
             <div className="space-y-1.5">
               <Label className="text-xs font-normal text-muted-foreground">
