@@ -98,13 +98,13 @@ const ExploreItems = [
     external: false,
   },
 
-  {
-    title: 'Integration',
-    url: '/integration',
-    segment: 'integration',
-    icon: Brain,
-    external: false,
-  },
+  // {
+  //   title: 'Integration',
+  //   url: '/integration',
+  //   segment: 'integration',
+  //   icon: Brain,
+  //   external: false,
+  // },
 
   {
     title: 'Docs',

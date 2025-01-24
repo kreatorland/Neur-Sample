@@ -75,6 +75,7 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
 
   return (
     <BlurFade delay={0.1} className="relative z-50">
+      <DotPattern />
       <header className="fixed left-0 right-0 top-0">
         <div className="mx-auto  px-4 py-4">
           <div className="rounded-xl ">
@@ -482,7 +483,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      <DotPattern />
+      {/* <DotPattern /> */}
       <Header handleLogin={login} />
       <main className="flex-1">
         <Hero handleLogin={login} />
