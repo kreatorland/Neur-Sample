@@ -146,7 +146,7 @@ export function WalletCard({
       <Card className="relative overflow-hidden transition-all duration-300 hover:border-primary/30">
         <CardContent className="space-y-4 p-6">
           {/* Status Badges */}
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             {wallet?.active && (
               <div className="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-600 dark:text-emerald-400">
                 <CheckCircle2 className="mr-1.5 h-3.5 w-3.5" />
@@ -159,7 +159,7 @@ export function WalletCard({
                 Delegated
               </div>
             )}
-          </div>
+          </div> */}
 
           {/* Balance Section */}
           <div className="space-y-1">
@@ -182,75 +182,77 @@ export function WalletCard({
             </div>
           </div>
 
-          {/* Public Key Section */}
-          <div className="space-y-1.5">
-            <Label className="text-xs font-normal text-muted-foreground">
-              Public Key
-            </Label>
-            <div className="rounded-lg bg-muted/50 px-3 py-2">
-              <CopyableText text={wallet?.publicKey || ''} showSolscan />
+          <div className="flex items-baseline justify-between">
+            {/* Public Key Section */}
+            <div className="space-y-1.5">
+              <Label className="text-xs font-normal text-muted-foreground">
+                Public Key
+              </Label>
+              <div className="rounded-lg bg-muted/50 px-3 py-2">
+                <CopyableText text={wallet?.publicKey || ''} showSolscan />
+              </div>
             </div>
-          </div>
 
-          {/* Action Buttons */}
-          <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
-            <Button
-              className="w-full sm:w-auto"
-              onClick={handleFundWallet}
-              disabled={isLoading}
-            >
-              <Banknote className="mr-2 h-4 w-4" />
-              Fund
-            </Button>
+            {/* Action Buttons */}
+            <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
+              <Button
+                className="w-full sm:w-auto"
+                onClick={handleFundWallet}
+                disabled={isLoading}
+              >
+                <Banknote className="mr-2 h-4 w-4" />
+                Deposite
+              </Button>
 
-            <Button
-              variant="outline"
-              className="w-full sm:w-auto"
-              onClick={() => setIsSendDialogOpen(true)}
-              disabled={isLoading}
-            >
-              <ArrowUpDown className="mr-2 h-4 w-4" />
-              Send
-            </Button>
-
-            {isPrivyWallet && (
-              <>
-                <Button
-                  variant="outline"
-                  className="w-full sm:w-auto"
-                  onClick={() => exportWallet({ address: wallet.publicKey })}
-                  disabled={isLoading}
-                >
-                  <ArrowRightFromLine className="mr-2 h-4 w-4" />
-                  Export
-                </Button>
-
-                <Button
-                  variant="outline"
-                  className={cn(
-                    'w-full sm:w-auto',
-                    wallet?.delegated ? 'hover:bg-destructive' : '',
-                  )}
-                  onClick={handleDelegationToggle}
-                  disabled={isLoading}
-                >
-                  <Users className="mr-2 h-4 w-4" />
-                  {wallet?.delegated ? 'Revoke' : 'Delegate'}
-                </Button>
-              </>
-            )}
-
-            {!wallet?.active && (
               <Button
                 variant="outline"
                 className="w-full sm:w-auto"
-                onClick={handleSetActive}
+                onClick={() => setIsSendDialogOpen(true)}
                 disabled={isLoading}
               >
-                <Wallet className="mr-2 h-4 w-4" />
-                Set Active
+                <ArrowUpDown className="mr-2 h-4 w-4" />
+                Withdraw
               </Button>
-            )}
+
+              {isPrivyWallet && (
+                <>
+                  <Button
+                    variant="outline"
+                    className="w-full sm:w-auto"
+                    onClick={() => exportWallet({ address: wallet.publicKey })}
+                    disabled={isLoading}
+                  >
+                    <ArrowRightFromLine className="mr-2 h-4 w-4" />
+                    Export
+                  </Button>
+
+                  <Button
+                    variant="outline"
+                    className={cn(
+                      'w-full sm:w-auto',
+                      wallet?.delegated ? 'hover:bg-destructive' : '',
+                    )}
+                    onClick={handleDelegationToggle}
+                    disabled={isLoading}
+                  >
+                    <Users className="mr-2 h-4 w-4" />
+                    {wallet?.delegated ? 'Revoke' : 'Delegate'}
+                  </Button>
+                </>
+              )}
+
+              {!wallet?.active && (
+                <Button
+                  variant="outline"
+                  className="w-full sm:w-auto"
+                  onClick={handleSetActive}
+                  disabled={isLoading}
+                >
+                  <Wallet className="mr-2 h-4 w-4" />
+                  Set Active
+                </Button>
+              )}
+            </div>
           </div>
         </CardContent>
       </Card>

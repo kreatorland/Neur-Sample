@@ -139,7 +139,7 @@ export function AccountContent() {
               {/* Legacy Embedded Wallet Section */}
               <section className="space-y-4">
                 <h2 className="text-sm font-medium text-muted-foreground">
-                  Embedded Wallet
+                  Wallet
                 </h2>
                 {legacyWallets.map((wallet: EmbeddedWallet) => (
                   <WalletCard
