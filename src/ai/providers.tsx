@@ -14,7 +14,9 @@ import { definedTools } from './solana/defined-fi';
 import { dexscreenerTools } from './solana/dexscreener';
 import { jupiterTools } from './solana/jupiter';
 import { magicEdenTools } from './solana/magic-eden';
+import { NFTDetails } from './solana/nft';
 import { pumpfunTools } from './solana/pumpfun';
+import { RugCheck } from './solana/rug-check';
 import { solanaTools } from './solana/solana';
 
 const usingAnthropic = !!process.env.ANTHROPIC_API_KEY;
@@ -176,6 +178,8 @@ export const defaultTools: Record<string, ToolConfig> = {
   ...chartTools,
   ...telegramTools,
   ...birdeyeTools,
+  ...NFTDetails,
+  ...RugCheck,
 };
 
 export const coreTools: Record<string, ToolConfig> = {
@@ -231,6 +235,16 @@ export const toolsets: Record<
     tools: ['telegramTools'],
     description:
       'Tools for interacting with Telegram for notifications and messaging.',
+  },
+
+  NFTDetails: {
+    tools: ['NFTDetails'],
+    description: 'Tools for listing nft and cancel listing',
+  },
+
+  RugCheck: {
+    tools: ['RugCheck'],
+    description: 'Tools for token RugCheck',
   },
 };
 

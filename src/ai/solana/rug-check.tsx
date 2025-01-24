@@ -6,22 +6,15 @@ import { LaunchResult } from '@/components/message/pumpfun-launch';
 import { Card } from '@/components/ui/card';
 import { retrieveAgentKit } from '@/server/actions/ai';
 
-export const NFTDetails = {
-  listNFT: {
+export const RugCheck = {
+  rugcheck: {
     agentKit: null,
-    description: 'List NFT on Magic eden',
-    displayName: 'List NFT',
+    description: 'Token Rugcheck',
+    displayName: 'Token Rugcheck',
     parameters: z.object({
-      price: z.number(),
       address: z.string(),
     }),
-    execute: async function ({
-      price,
-      address,
-    }: {
-      price: number;
-      address: string;
-    }) {
+    execute: async function ({ address }: { address: string }) {
       try {
         const agent =
           this.agentKit ||
@@ -31,7 +24,7 @@ export const NFTDetails = {
           return { success: false, error: 'Failed to retrieve agent' };
         }
 
-        const result = await agent.tensorListNFT(new PublicKey(address), price);
+        const result = await agent.fetchTokenReportSummary(address);
 
         return { success: true, data: result };
       } catch (error) {
