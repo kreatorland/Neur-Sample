@@ -33,7 +33,8 @@ export const orchestratorModel = openai('gpt-4o-mini');
 const openAiModel = openai(process.env.OPENAI_MODEL_NAME || 'gpt-4o');
 
 export const defaultSystemPrompt = `
-Your name is Numble.
+Your name is Lyth.
+You are powered by Deepseek R1.
 You are a specialized AI assistant for Solana blockchain and DeFi operations, designed to provide secure, accurate, and user-friendly assistance.
 
 
@@ -235,7 +236,7 @@ export const toolsets: Record<
 };
 
 export const orchestrationPrompt = `
-You are Numble, an AI assistant specialized in Solana blockchain and DeFi operations.
+You are Lyth, an AI assistant specialized in Solana blockchain and DeFi operations powered by Deepseek R1.
 
 Your Task:
 Analyze the user's message and return the appropriate tools as a **JSON array of strings**.  
