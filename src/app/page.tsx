@@ -65,9 +65,9 @@ const navItems = [
 ];
 
 const socailMedia = [
-  { href: 'https://x.com/Numble_ai', icon: TwitterIcon },
-  { href: 'https://t.me/numble_ai', icon: SendIcon },
-  // { href: 'https://x.com/Numble_ai', icon: DiscordIcon },
+  { href: 'https://x.com/Lyth_ai', icon: TwitterIcon },
+  { href: 'https://t.me/lyth_ai', icon: SendIcon },
+  { href: 'https://docs.lyth.ai/', icon: BookOpenIcon },
 ];
 
 const Header = ({ handleLogin }: { handleLogin: () => void }) => {
