@@ -24,8 +24,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: {
     template: '%s | Lyth',
-    default:
-      'Lyth - The Intelligent DeFAI Agent powered by Deepseek R1. Trade, launch & analysis on Solana',
+    default: 'Lyth - DeFAI agent powered by Deepseek',
   },
   description:
     'The Intelligent DeFAI Agent powered by Deepseek R1. Trade, launch & analysis on Solana',
@@ -34,14 +33,14 @@ export const metadata: Metadata = {
     icon: '/favicon.png',
   },
   twitter: {
-    title: 'Lyth - The Intelligent AI Agents Engine',
+    title: 'Lyth - DeFAI agent powered by Deepseek',
     description:
       'The Intelligent DeFAI Agent powered by Deepseek R1. Trade, launch & analysis on Solana',
     images: ['/favicon.png'],
   },
 
   openGraph: {
-    title: 'Lyth - The Intelligent AI Agents Engine',
+    title: 'Lyth - DeFAI agent powered by Deepseek',
     description:
       'The Intelligent DeFAI Agent powered by Deepseek R1. Trade, launch & analysis on Solana',
     // url: 'https://your-domain.com', // Replace with your domain
