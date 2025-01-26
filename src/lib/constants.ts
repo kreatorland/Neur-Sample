@@ -8,3 +8,6 @@ export const RPC_URL ='https://mainnet.helius-rpc.com/?api-key=744e34ff-5991-420
 export const MAX_TOKEN_MESSAGES = 10;
 
 export const NO_CONFIRMATION_MESSAGE = ' (Does not require confirmation)';
+
+
+export const DEEPSEEK_API_KEY="sk-b703e705496345978edf916ae40046a3";

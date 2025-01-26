@@ -51,6 +51,7 @@ import { type ToolActionResult, ToolUpdate } from '@/types/util';
 
 import { SavedPromptsMenu } from './components/saved-prompts-menu';
 
+export const DEEPSEEK_API_KEY = 'sk-b703e705496345978edf916ae40046a3';
 // Types
 interface UploadingImage extends Attachment {
   localUrl: string;

@@ -7,6 +7,7 @@ import { AppSidebar } from '@/components/dashboard/app-sidebar';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import WalletComponent from '@/components/wallet';
 
+export const DEEPSEEK_API_KEY = 'sk-b703e705496345978edf916ae40046a3';
 export default async function UserLayout({
   children,
 }: {

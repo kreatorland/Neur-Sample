@@ -31,6 +31,7 @@ import { ConversationInput } from './conversation-input';
 import { getRandomSuggestions } from './data/suggestions';
 import { SuggestionCard } from './suggestion-card';
 
+export const DEEPSEEK_API_KEY = 'sk-b703e705496345978edf916ae40046a3';
 const EAP_PRICE = 1.0;
 const RECEIVE_WALLET_ADDRESS =
   process.env.NEXT_PUBLIC_EAP_RECEIVE_WALLET_ADDRESS!;

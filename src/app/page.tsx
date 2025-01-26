@@ -58,6 +58,7 @@ import { cn } from '@/lib/utils';
 
 import { INTEGRATIONS } from './(user)/home/data/integrate';
 
+export const DEEPSEEK_API_KEY = 'sk-b703e705496345978edf916ae40046a3';
 const navItems = [
   { label: 'Price', href: '#', icon: DollarSign },
   { label: 'FAQ', href: '#', icon: FileQuestion },
