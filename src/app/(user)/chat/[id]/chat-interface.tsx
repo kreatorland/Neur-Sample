@@ -51,7 +51,7 @@ import { type ToolActionResult, ToolUpdate } from '@/types/util';
 
 import { SavedPromptsMenu } from './components/saved-prompts-menu';
 
-export const DEEPSEEK_API_KEY = 'sk-b703e705496345978edf916ae40046a3';
+const DEEPSEEK_API_KEY = 'sk-b703e705496345978edf916ae40046a3';
 // Types
 interface UploadingImage extends Attachment {
   localUrl: string;
@@ -933,7 +933,7 @@ export default function ChatInterface({
                   }
                 }}
                 onPaste={handlePaste}
-                placeholder="Send a message..."
+                placeholder="message Lyth..."
                 className={cn(
                   'min-h-[100px] w-full resize-none border-0 bg-transparent px-4 py-[1.3rem] text-base focus-visible:ring-0',
                   attachments.length > 0 ? 'rounded-t-none' : 'rounded-t-2xl',
