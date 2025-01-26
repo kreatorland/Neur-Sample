@@ -29,6 +29,7 @@ import { getSavedPrompts } from '@/server/actions/saved-prompt';
 import { IntegrationsGrid } from './components/integrations-grid';
 import { ConversationInput } from './conversation-input';
 import { getRandomSuggestions } from './data/suggestions';
+import { SUGGESTIONS } from './data/suggestions';
 import { SuggestionCard } from './suggestion-card';
 
 const DEEPSEEK_API_KEY = 'sk-b703e705496345978edf916ae40046a3';
@@ -60,13 +61,15 @@ export function HomeContent() {
   const [savedPrompts, setSavedPrompts] = useState<SavedPrompt[]>([]);
   const [isFetchingSavedPrompts, setIsFetchingSavedPrompts] =
     useState<boolean>(true);
-  const suggestions = useMemo(() => getRandomSuggestions(4), []);
+  // const suggestions = useMemo(() => getRandomSuggestions(4), []);
+  const [suggestions, setSuggestion] = useState(SUGGESTIONS);
   const [showChat, setShowChat] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [chatId, setChatId] = useState(() => uuidv4());
   const { user, isLoading } = useUser();
   const [verifyingTx, setVerifyingTx] = useState<string | null>(null);
   const [verificationAttempts, setVerificationAttempts] = useState(0);
+
   const MAX_VERIFICATION_ATTEMPTS = 20;
 
   const { conversations, refreshConversations } = useConversations(user?.id);

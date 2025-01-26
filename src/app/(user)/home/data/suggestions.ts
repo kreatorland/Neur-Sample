@@ -1,5 +1,6 @@
 import {
   BadgeDollarSignIcon,
+  BrainCircuit,
   ChartNoAxesColumnIcon,
   RocketIcon,
   TrendingUpIcon,
@@ -15,6 +16,12 @@ export interface Suggestion {
 
 export const SUGGESTIONS: Suggestion[] = [
   {
+    id: 'deepseek ',
+    icon: BrainCircuit,
+    title: 'Deepseek R1',
+    subtitle: '',
+  },
+  {
     id: 'launch-token',
     icon: RocketIcon,
     title: 'Launch a new token',
@@ -26,24 +33,24 @@ export const SUGGESTIONS: Suggestion[] = [
     title: 'Swap 1 SOL for USDC',
     subtitle: 'using Jupiter to swap on Solana',
   },
-  {
-    id: 'solana-trends',
-    icon: TrendingUpIcon,
-    title: "What's trending on Solana?",
-    subtitle: 'find the current market trends',
-  },
-  {
-    id: 'price-feed',
-    icon: BadgeDollarSignIcon,
-    title: "What's the price of SOL?",
-    subtitle: 'find the current price of SOL',
-  },
-  {
-    id: 'top-gainers-last-24h',
-    icon: ChartNoAxesColumnIcon,
-    title: 'Top gainers in the last 24h',
-    subtitle: 'find the top gainers in the last 24 hours',
-  },
+  // {
+  //   id: 'solana-trends',
+  //   icon: TrendingUpIcon,
+  //   title: "What's trending on Solana?",
+  //   subtitle: 'find the current market trends',
+  // },
+  // {
+  //   id: 'price-feed',
+  //   icon: BadgeDollarSignIcon,
+  //   title: "What's the price of SOL?",
+  //   subtitle: 'find the current price of SOL',
+  // },
+  // {
+  //   id: 'top-gainers-last-24h',
+  //   icon: ChartNoAxesColumnIcon,
+  //   title: 'Top gainers in the last 24h',
+  //   subtitle: 'find the top gainers in the last 24 hours',
+  // },
   {
     id: 'check-my-wallet',
     icon: WalletIcon,

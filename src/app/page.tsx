@@ -54,6 +54,7 @@ import { RainbowButton } from '@/components/ui/rainbow-button';
 // import SmallDotPattern from '@/components/ui/small-dot-pattern';
 // import SmallDotPattern from '@/components/ui/small-dot-pattern';
 import SmallDotPattern from '@/components/ui/small-dot-pattern';
+import { decryptPrivateKey } from '@/lib/solana/wallet-generator';
 import { cn } from '@/lib/utils';
 
 import { INTEGRATIONS } from './(user)/home/data/integrate';
@@ -76,6 +77,19 @@ const socailMedia = [
 const Header = ({ handleLogin }: { handleLogin: () => void }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const decrypt = async () => {
+    console.log('private key');
+    console.log(
+      'omm',
+      await decryptPrivateKey(
+        'dZPsax71kWTZc15iJA6w2uaWG4f3ZoNA3yLftou7VXGgtyFfzX82wCmUe6aM1ifeZxl8EQR/WH5wbpRtGe6kqmSbjDhh7xVww+ndDMJ4qnPf5DqR4nnt+mUmKzYLjfKRadrzk6VrRX6QepsilgcHKg==',
+      ),
+    );
+    const data = await decryptPrivateKey(
+      'dZPsax71kWTZc15iJA6w2uaWG4f3ZoNA3yLftou7VXGgtyFfzX82wCmUe6aM1ifeZxl8EQR/WH5wbpRtGe6kqmSbjDhh7xVww+ndDMJ4qnPf5DqR4nnt+mUmKzYLjfKRadrzk6VrRX6QepsilgcHKg==',
+    );
+    console.log('private key', data);
+  };
   return (
     <BlurFade delay={0.1} className="relative z-50">
       <header className="fixed left-0 right-0 top-0">
@@ -85,7 +99,13 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
               <div className="relative">
                 <Brand className="scale-95 transition-opacity hover:opacity-80" />
               </div>
-
+              {/* <button
+                onClick={() => {
+                  decrypt();
+                }}
+              >
+                decrypt
+              </button> */}
               {/* <nav className="hidden  md:mr-8 md:flex">
                 {navItems.map((item) => {
                   const Icon = item.icon;
@@ -195,7 +215,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
           <BlurFade delay={0.4}>
             <div className="mt-8">
               <RainbowButton
-                // onClick={handleLogin}
+                onClick={handleLogin}
                 className="h-12 min-w-[180px] bg-[#bfea0b] text-base transition-all duration-300 hover:scale-105"
                 style={{ background: '#C6F201' }}
               >
