@@ -195,7 +195,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
           <BlurFade delay={0.4}>
             <div className="mt-8">
               <RainbowButton
-                // onClick={handleLogin}
+                onClick={handleLogin}
                 className="h-12 min-w-[180px] bg-[#bfea0b] text-base transition-all duration-300 hover:scale-105"
                 style={{ background: '#C6F201' }}
               >
