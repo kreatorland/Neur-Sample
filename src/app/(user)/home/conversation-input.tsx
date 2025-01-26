@@ -66,7 +66,7 @@ export function ConversationInput({
             onChange={handleTextareaChange}
             onKeyDown={handleKeyDown}
             maxLength={MAX_CHARS}
-            placeholder="Type your message here..."
+            placeholder="Type your message in deepthink mode..."
             className="min-h-[110px] w-full resize-none overflow-hidden border-0 bg-transparent px-4 py-3 text-base focus-visible:ring-0"
           />
 

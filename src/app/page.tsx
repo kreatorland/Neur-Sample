@@ -27,6 +27,7 @@ import {
   TwitterIcon,
   WalletIcon,
   WorkflowIcon,
+  X,
   XIcon,
   ZapIcon,
 } from 'lucide-react';
@@ -61,7 +62,7 @@ const navItems = [
   { label: 'Price', href: '#', icon: DollarSign },
   { label: 'FAQ', href: '#', icon: FileQuestion },
   { label: 'Github', href: '#', icon: GitHubLogoIcon },
-  { label: 'Docs', href: 'https://docs.numble.ai/', icon: BookOpenIcon },
+  { label: 'Docs', href: 'https://docs.lyth.ai/', icon: BookOpenIcon },
 ];
 
 const socailMedia = [
@@ -212,6 +213,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
               <RainbowButton
                 onClick={handleLogin}
                 className="h-12 min-w-[180px] bg-[#bfea0b] text-base transition-all duration-300 hover:scale-105"
+                style={{ background: '#C6F201' }}
               >
                 Try Lyth
               </RainbowButton>
@@ -340,10 +342,14 @@ const Footer = () => {
         delay={0.5}
         className="mx-auto flex  w-[75%] flex-col text-muted-foreground"
       >
-        <div className="b flex justify-center gap-3 border-b border-dotted border-neutral-200 pb-4 dark:border-neutral-700">
+        <div className="b flex items-center justify-center gap-3 border-b border-dotted border-neutral-200 pb-4 dark:border-neutral-700">
           <div>
             <Brand className="scale-95 transition-opacity hover:opacity-80" />
           </div>
+          <X
+            className="color-[#C6F201] h-6  w-6"
+            style={{ color: '#C6F201' }}
+          ></X>
           <img src={'/deepseek.webp'} alt="" style={{ width: '180px' }}></img>
         </div>
       </BlurFade>

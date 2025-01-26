@@ -108,7 +108,7 @@ const ExploreItems = [
 
   {
     title: 'Docs',
-    url: 'https://docs.numble.ai/',
+    url: 'https://docs.lyth.ai/',
     segment: 'docs',
     icon: BookOpen,
     external: true,
