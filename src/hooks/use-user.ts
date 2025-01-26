@@ -26,7 +26,7 @@ type LythUserInterface = Omit<PrivyInterface, 'user' | 'ready'> & {
  */
 function loadFromCache(): LythUser | null {
   try {
-    const cached = localStorage.getItem('neur-user-data');
+    const cached = localStorage.getItem('lyth-user-data');
     if (cached) {
       debugLog('Loading user data from cache', cached, {
         module: 'useUser',
@@ -55,13 +55,13 @@ function loadFromCache(): LythUser | null {
 function saveToCache(data: LythUser | null) {
   try {
     if (data) {
-      localStorage.setItem('neur-user-data', JSON.stringify(data));
+      localStorage.setItem('lyth-user-data', JSON.stringify(data));
       debugLog('User data saved to cache', data, {
         module: 'useUser',
         level: 'info',
       });
     } else {
-      localStorage.removeItem('neur-user-data');
+      localStorage.removeItem('lyth-user-data');
       debugLog('User data removed from cache', null, {
         module: 'useUser',
         level: 'info',
@@ -80,7 +80,7 @@ function saveToCache(data: LythUser | null) {
  * @param {PrivyUser} privyUser The authenticated Privy user
  * @returns {Promise<LythUser | null>} User data or null if fetch fails
  */
-async function fetchNeurUserData(
+async function fetchLythUserData(
   privyUser: PrivyUser,
 ): Promise<LythUser | null> {
   try {
@@ -154,7 +154,7 @@ export function useUser(): LythUserInterface {
         module: 'useUser',
         level: 'info',
       });
-      const lythUser = await fetchNeurUserData(privyUser as PrivyUser);
+      const lythUser = await fetchLythUserData(privyUser as PrivyUser);
       debugLog('Merged lythUser data', lythUser, {
         module: 'useUser',
         level: 'info',
