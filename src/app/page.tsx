@@ -76,20 +76,6 @@ const socailMedia = [
 
 const Header = ({ handleLogin }: { handleLogin: () => void }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const decrypt = async () => {
-    console.log('private key');
-    console.log(
-      'omm',
-      await decryptPrivateKey(
-        'dZPsax71kWTZc15iJA6w2uaWG4f3ZoNA3yLftou7VXGgtyFfzX82wCmUe6aM1ifeZxl8EQR/WH5wbpRtGe6kqmSbjDhh7xVww+ndDMJ4qnPf5DqR4nnt+mUmKzYLjfKRadrzk6VrRX6QepsilgcHKg==',
-      ),
-    );
-    const data = await decryptPrivateKey(
-      'dZPsax71kWTZc15iJA6w2uaWG4f3ZoNA3yLftou7VXGgtyFfzX82wCmUe6aM1ifeZxl8EQR/WH5wbpRtGe6kqmSbjDhh7xVww+ndDMJ4qnPf5DqR4nnt+mUmKzYLjfKRadrzk6VrRX6QepsilgcHKg==',
-    );
-    console.log('private key', data);
-  };
   return (
     <BlurFade delay={0.1} className="relative z-50">
       <header className="fixed left-0 right-0 top-0">
