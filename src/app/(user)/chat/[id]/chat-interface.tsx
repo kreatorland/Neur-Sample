@@ -387,7 +387,7 @@ function ChatMessage({
       {showAvatar ? (
         <Avatar className="mt-0.5 h-8 w-8 shrink-0 select-none">
           <img
-            src="/numbleAi.png"
+            src="/Lyth.png"
             alt=""
             style={{ width: '100%', height: '100%' }}
           />
@@ -607,11 +607,7 @@ function LoadingMessage() {
   return (
     <div className="flex w-full items-start gap-3">
       <Avatar className="mt-0.5 h-8 w-8 shrink-0 select-none">
-        <img
-          src="/numbleAi.png"
-          alt=""
-          style={{ width: '100%', height: '100%' }}
-        />
+        <img src="/Lyth.png" alt="" style={{ width: '100%', height: '100%' }} />
       </Avatar>
 
       <div className="relative flex max-w-[85%] flex-col items-start gap-2">

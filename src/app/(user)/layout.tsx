@@ -32,7 +32,6 @@ export default async function UserLayout({
             </div>
           </div>
 
-          {/* <Banner>$NEUR is now live on Raydium 🎉</Banner> */}
           <div>{children}</div>
           <ToastContainer
             position="top-center"

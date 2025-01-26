@@ -9,22 +9,22 @@ import useSWR from 'swr';
 
 import { debugLog } from '@/lib/debug';
 import { getUserData } from '@/server/actions/user';
-import { NeurUser, PrismaUser, PrivyUser } from '@/types/db';
+import { LythUser, PrismaUser, PrivyUser } from '@/types/db';
 
 /**
- * Extended interface for NeurUser that includes Privy functionality
+ * Extended interface for LythUser that includes Privy functionality
  * Omits 'user' and 'ready' from PrivyInterface to avoid conflicts
  */
-type NeurUserInterface = Omit<PrivyInterface, 'user' | 'ready'> & {
+type LythUserInterface = Omit<PrivyInterface, 'user' | 'ready'> & {
   isLoading: boolean;
-  user: NeurUser | null;
+  user: LythUser | null;
 };
 
 /**
- * Loads cached NeurUser data from localStorage
- * @returns {NeurUser | null} Cached user data or null if not found/invalid
+ * Loads cached LythUser data from localStorage
+ * @returns {LythUser | null} Cached user data or null if not found/invalid
  */
-function loadFromCache(): NeurUser | null {
+function loadFromCache(): LythUser | null {
   try {
     const cached = localStorage.getItem('neur-user-data');
     if (cached) {
@@ -49,10 +49,10 @@ function loadFromCache(): NeurUser | null {
 }
 
 /**
- * Saves NeurUser data to localStorage
- * @param {NeurUser | null} data User data to cache or null to clear cache
+ * Saves LythUser data to localStorage
+ * @param {LythUser | null} data User data to cache or null to clear cache
  */
-function saveToCache(data: NeurUser | null) {
+function saveToCache(data: LythUser | null) {
   try {
     if (data) {
       localStorage.setItem('neur-user-data', JSON.stringify(data));
@@ -76,13 +76,13 @@ function saveToCache(data: NeurUser | null) {
 }
 
 /**
- * Fetches NeurUser data from the server
+ * Fetches LythUser data from the server
  * @param {PrivyUser} privyUser The authenticated Privy user
- * @returns {Promise<NeurUser | null>} User data or null if fetch fails
+ * @returns {Promise<LythUser | null>} User data or null if fetch fails
  */
 async function fetchNeurUserData(
   privyUser: PrivyUser,
-): Promise<NeurUser | null> {
+): Promise<LythUser | null> {
   try {
     const response = await getUserData();
     if (response?.data?.success && response?.data?.data) {
@@ -94,7 +94,7 @@ async function fetchNeurUserData(
       return {
         ...prismaUser,
         privyUser: privyUser as PrivyUser,
-      } as NeurUser;
+      } as LythUser;
     }
     debugLog(
       'Server returned unsuccessful user data response',
@@ -115,13 +115,13 @@ async function fetchNeurUserData(
 }
 
 /**
- * Custom hook for managing NeurUser data fetching, caching, and synchronization
+ * Custom hook for managing LythUser data fetching, caching, and synchronization
  * Combines Privy authentication with our user data management system
- * @returns {NeurUserInterface} Object containing user data, loading state, and Privy interface methods
+ * @returns {LythUserInterface} Object containing user data, loading state, and Privy interface methods
  */
-export function useUser(): NeurUserInterface {
+export function useUser(): LythUserInterface {
   const { ready, user: privyUser, ...privyRest } = usePrivy();
-  const [initialCachedUser, setInitialCachedUser] = useState<NeurUser | null>(
+  const [initialCachedUser, setInitialCachedUser] = useState<LythUser | null>(
     null,
   );
   const router = useRouter();
@@ -138,9 +138,9 @@ export function useUser(): NeurUserInterface {
 
   /**
    * SWR fetcher function that combines server data with Privy user data
-   * @returns {Promise<NeurUser | null>} Combined user data or null
+   * @returns {Promise<LythUser | null>} Combined user data or null
    */
-  const fetcher = useCallback(async (): Promise<NeurUser | null> => {
+  const fetcher = useCallback(async (): Promise<LythUser | null> => {
     if (!ready || !privyUser) {
       debugLog('Privy not ready or user not logged in', null, {
         module: 'useUser',
@@ -150,18 +150,18 @@ export function useUser(): NeurUserInterface {
     }
 
     if (privyUser) {
-      debugLog('Fetching NeurUser data from server', null, {
+      debugLog('Fetching LythUser data from server', null, {
         module: 'useUser',
         level: 'info',
       });
-      const neurUser = await fetchNeurUserData(privyUser as PrivyUser);
-      debugLog('Merged NeurUser data', neurUser, {
+      const lythUser = await fetchNeurUserData(privyUser as PrivyUser);
+      debugLog('Merged lythUser data', lythUser, {
         module: 'useUser',
         level: 'info',
       });
-      return neurUser;
+      return lythUser;
     }
-    debugLog('No valid NeurUser data retrieved', null, {
+    debugLog('No valid lythUser data retrieved', null, {
       module: 'useUser',
       level: 'warn',
     });
@@ -169,7 +169,7 @@ export function useUser(): NeurUserInterface {
   }, [ready, privyUser]);
 
   // Use SWR for data fetching and state management
-  const { data: neurUser, isValidating: swrLoading } = useSWR<NeurUser | null>(
+  const { data: lythUser, isValidating: swrLoading } = useSWR<LythUser | null>(
     swrKey,
     fetcher,
     {
@@ -179,15 +179,15 @@ export function useUser(): NeurUserInterface {
     },
   );
 
-  debugLog('Current NeurUser data', neurUser, { module: 'useUser' });
+  debugLog('Current lythUser data', lythUser, { module: 'useUser' });
   debugLog('SWR validation status', swrLoading, { module: 'useUser' });
 
   // Update cache when new user data is fetched
   useEffect(() => {
-    if (neurUser) {
-      saveToCache(neurUser);
+    if (lythUser) {
+      saveToCache(lythUser);
     }
-  }, [neurUser]);
+  }, [lythUser]);
 
   const isLoading = swrLoading && !initialCachedUser;
   debugLog('Loading state', { isLoading }, { module: 'useUser' });
@@ -223,8 +223,8 @@ export function useUser(): NeurUserInterface {
 
   return {
     ...privyRest,
-    isLoading: isLoading || neurUser == null,
-    user: neurUser || null,
+    isLoading: isLoading || lythUser == null,
+    user: lythUser || null,
     logout: extendedLogout,
   };
 }

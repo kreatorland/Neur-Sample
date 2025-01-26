@@ -34,7 +34,6 @@ export function NLogo({ className }: BrandProps) {
     <Link href="/" className={className}>
       <div className="bg:grey-800 flex items-center gap-2 rounded-md">
         <Logo width={50} />
-        {/* <span className="text-x select-none font-bold">Neur</span> */}
       </div>
     </Link>
   );
