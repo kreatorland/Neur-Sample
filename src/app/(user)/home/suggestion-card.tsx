@@ -40,7 +40,6 @@ export function SuggestionCard({
       onClick={() => onSelect(useSubtitle ? subtitle : title)}
       className={`gap-1.2 py-2.2 flex flex-col items-center justify-center rounded-xl 
        bg-muted/50  px-1 text-left transition-colors duration-200 hover:bg-primary/5 `}
-      style={{ background: title === 'Deepseek R1' ? '#C6F201' : '' }}
     >
       <div className="flex items-center space-x-3 py-2 text-center text-[12px] font-medium">
         <Icon
@@ -53,7 +52,6 @@ export function SuggestionCard({
         ></Icon>
         <p
           style={{
-            color: title === 'Deepseek R1' ? 'black' : '',
             margin: '0px',
           }}
         >

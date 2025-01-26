@@ -9,7 +9,7 @@ import { SavedPrompt } from '@prisma/client';
 import { RiTwitterXFill } from '@remixicon/react';
 import { JSONValue } from 'ai';
 import { useChat } from 'ai/react';
-import { CheckCircle2, Loader2 } from 'lucide-react';
+import { BrainCircuit, CheckCircle2, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -61,8 +61,8 @@ export function HomeContent() {
   const [savedPrompts, setSavedPrompts] = useState<SavedPrompt[]>([]);
   const [isFetchingSavedPrompts, setIsFetchingSavedPrompts] =
     useState<boolean>(true);
-  // const suggestions = useMemo(() => getRandomSuggestions(4), []);
-  const [suggestions, setSuggestion] = useState(SUGGESTIONS);
+  const suggestions = useMemo(() => getRandomSuggestions(4), []);
+  // const [suggestions, setSuggestion] = useState(SUGGESTIONS);
   const [showChat, setShowChat] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [chatId, setChatId] = useState(() => uuidv4());
@@ -265,14 +265,7 @@ export function HomeContent() {
         !hasEAP ? 'h-screen py-0' : 'py-12',
       )}
     >
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '59px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-        }}
-      >
+      <div className="fixed" style={{ bottom: '12px' }}>
         <BlurFade delay={0.2}>
           <TypingAnimation
             className="mb-12 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-center text-4xl font-semibold tracking-tight text-transparent md:text-4xl lg:text-5xl"
@@ -280,6 +273,24 @@ export function HomeContent() {
             text="How can i help you?"
           />
         </BlurFade>
+        <button
+          className={`gap-1.2 py-2.2 my-3 flex flex-col items-center justify-center rounded-xl 
+       bg-[#C6F201] px-1 text-left transition-colors duration-200 hover:bg-primary/5 `}
+        >
+          <div className="flex items-center space-x-3 py-2 text-center text-[12px] font-medium">
+            <BrainCircuit style={{ color: 'black' }}></BrainCircuit>
+            <p style={{ color: 'black' }}>Deepseek R1</p>
+          </div>
+        </button>
+        <div className="mx-auto w-full max-w-3xl space-y-8">
+          <BlurFade delay={0.1}>
+            <ConversationInput
+              value={input}
+              onChange={setInput}
+              onSubmit={handleSend}
+            />
+          </BlurFade>
+        </div>
         {hasEAP && (
           <div className="space-y-8">
             <BlurFade delay={0.2}>
@@ -329,15 +340,6 @@ export function HomeContent() {
             )} */}
           </div>
         )}
-        <div className="mx-auto mt-3 w-full max-w-3xl space-y-8">
-          <BlurFade delay={0.1}>
-            <ConversationInput
-              value={input}
-              onChange={setInput}
-              onSubmit={handleSend}
-            />
-          </BlurFade>
-        </div>
       </div>
     </div>
   );
@@ -430,7 +432,7 @@ export function HomeContent() {
       {!showChat && (
         <div
           className={cn(
-            'absolute inset-0 overflow-y-auto overflow-x-hidden transition-opacity duration-300 ',
+            ' overflow-y-auto overflow-x-hidden transition-opacity duration-300 ',
             showChat ? 'pointer-events-none opacity-0' : 'opacity-100',
           )}
         >
