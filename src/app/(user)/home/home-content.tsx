@@ -257,27 +257,25 @@ export function HomeContent() {
   const mainContent = (
     <div
       className={cn(
-        'mx-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center px-6',
+        'mx-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-end px-6',
         !hasEAP ? 'h-screen py-0' : 'py-12',
       )}
     >
-      <BlurFade delay={0.2}>
-        <TypingAnimation
-          className="mb-12 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-center text-4xl font-semibold tracking-tight text-transparent md:text-4xl lg:text-5xl"
-          duration={50}
-          text="What can I do for you?"
-        />
-      </BlurFade>
-
-      <div className="mx-auto w-full max-w-3xl space-y-8">
-        <BlurFade delay={0.1}>
-          <ConversationInput
-            value={input}
-            onChange={setInput}
-            onSubmit={handleSend}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '59px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+        }}
+      >
+        <BlurFade delay={0.2}>
+          <TypingAnimation
+            className="mb-12 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-center text-4xl font-semibold tracking-tight text-transparent md:text-4xl lg:text-5xl"
+            duration={50}
+            text="What can I do for you?"
           />
         </BlurFade>
-
         {hasEAP && (
           <div className="space-y-8">
             <BlurFade delay={0.2}>
@@ -327,6 +325,15 @@ export function HomeContent() {
             )} */}
           </div>
         )}
+        <div className="mx-auto mt-3 w-full max-w-3xl space-y-8">
+          <BlurFade delay={0.1}>
+            <ConversationInput
+              value={input}
+              onChange={setInput}
+              onSubmit={handleSend}
+            />
+          </BlurFade>
+        </div>
       </div>
     </div>
   );

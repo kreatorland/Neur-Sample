@@ -15,8 +15,8 @@ export default function Logo({
 }) {
   return (
     <DynamicImage
-      lightSrc="/numble.svg"
-      darkSrc="/numble_w.svg"
+      lightSrc="/logo.png"
+      darkSrc="/logo_w.png"
       alt="Logo"
       width={width}
       height={height}

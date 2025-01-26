@@ -3,7 +3,6 @@ import { useEffect, useRef } from 'react';
 import { ForwardIcon, SendHorizontal } from 'lucide-react';
 import { toast } from 'sonner';
 
-import { BorderBeam } from '@/components/ui/border-beam';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 
@@ -67,7 +66,7 @@ export function ConversationInput({
             onChange={handleTextareaChange}
             onKeyDown={handleKeyDown}
             maxLength={MAX_CHARS}
-            placeholder="Crypto confusing? Let's talk..."
+            placeholder="Type your message here..."
             className="min-h-[110px] w-full resize-none overflow-hidden border-0 bg-transparent px-4 py-3 text-base focus-visible:ring-0"
           />
 

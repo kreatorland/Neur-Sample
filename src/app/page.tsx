@@ -75,16 +75,15 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
 
   return (
     <BlurFade delay={0.1} className="relative z-50">
-      <DotPattern />
       <header className="fixed left-0 right-0 top-0">
         <div className="mx-auto  px-4 py-4">
           <div className="rounded-xl ">
-            <div className="flex items-center justify-between px-4 py-2">
+            <div className="flex items-center justify-center px-4 py-2">
               <div className="relative">
                 <Brand className="scale-95 transition-opacity hover:opacity-80" />
               </div>
 
-              <nav className="hidden  md:mr-8 md:flex">
+              {/* <nav className="hidden  md:mr-8 md:flex">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   return (
@@ -102,10 +101,32 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
                     </motion.a>
                   );
                 })}
-                {/* <ThemeToggle></ThemeToggle> */}
-              </nav>
-
-              <div className="flex items-center gap-3">
+               
+              </nav> */}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-9 w-9 md:hidden"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-4 w-4"
+                >
+                  <line x1="4" x2="20" y1="12" y2="12" />
+                  <line x1="4" x2="20" y1="6" y2="6" />
+                  <line x1="4" x2="20" y1="18" y2="18" />
+                </svg>
+              </Button>
+              {/* <div className="flex items-center gap-3">
                 <motion.div whileHover={{ scale: 1.1 }}>
                   <Button
                     variant="outline"
@@ -116,30 +137,8 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
                   </Button>
                 </motion.div>
 
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-9 w-9 md:hidden"
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-4 w-4"
-                  >
-                    <line x1="4" x2="20" y1="12" y2="12" />
-                    <line x1="4" x2="20" y1="6" y2="6" />
-                    <line x1="4" x2="20" y1="18" y2="18" />
-                  </svg>
-                </Button>
-              </div>
+               
+              </div> */}
             </div>
           </div>
 
@@ -187,6 +186,37 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
       {/* Content */}
       <div className="relative mx-auto max-w-screen-xl px-6 pb-6 pt-12 text-center md:pb-8 md:pt-16">
         <div className="mx-auto max-w-3xl">
+          <BlurFade delay={0.3} className="pointer-events-none select-none">
+            <div className="relative inline-flex items-center bg-transparent backdrop-blur-sm">
+              <div className="relative text-[60px] font-medium text-primary sm:text-[60px] md:text-[140px] lg:text-[160px] xl:text-[80px] 2xl:text-[100px]">
+                Lyth
+              </div>
+            </div>
+
+            <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+              The{' '}
+              <AnimatedShinyText className="inline">
+                <span>Intelligent DeFAI Agent powered by Deepseek R1. </span>
+              </AnimatedShinyText>{' '}
+              Trade, launch & analysis on<span> Solana</span>
+            </h1>
+
+            {/* <p className="mt-4 text-lg text-muted-foreground">
+              Experience Solana on-chain actions using powerful AI Engine from
+              Numble
+            </p> */}
+          </BlurFade>
+
+          <BlurFade delay={0.4}>
+            <div className="mt-8">
+              <RainbowButton
+                onClick={handleLogin}
+                className="h-12 min-w-[180px] bg-[#bfea0b] text-base transition-all duration-300 hover:scale-105"
+              >
+                Try Lyth
+              </RainbowButton>
+            </div>
+          </BlurFade>
           <BlurFade delay={0.4}>
             <div className="mb-8 mt-8 flex justify-center gap-4">
               {socailMedia.map((item, index) => {
@@ -207,103 +237,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
               })}
             </div>
           </BlurFade>
-
-          <BlurFade delay={0.3} className="pointer-events-none select-none">
-            <div className="relative inline-flex items-center bg-transparent backdrop-blur-sm">
-              <div className="relative text-[60px] font-medium text-primary sm:text-[60px] md:text-[140px] lg:text-[160px] xl:text-[80px] 2xl:text-[100px]">
-                NUMBLE.AI
-                {/* Top-right border */}
-                <div className="absolute right-[-28px] top-[6px] h-10 w-10 border-r-2 border-t-2 border-gray-800 dark:border-white"></div>
-                {/* Bottom-left border */}
-                <div className="absolute bottom-[-7px] left-[-30px] h-10 w-10 border-b-2 border-l-2 border-gray-800 dark:border-white"></div>
-              </div>
-            </div>
-
-            <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-              The{' '}
-              <AnimatedShinyText className="inline">
-                <span>Intelligent AI Agent Engine </span>
-              </AnimatedShinyText>{' '}
-              to perform on-chain tasks on <span>Solana</span>
-            </h1>
-
-            <p className="mt-4 text-lg text-muted-foreground">
-              Experience Solana on-chain actions using powerful AI Engine from
-              Numble
-            </p>
-          </BlurFade>
-
-          <BlurFade delay={0.4}>
-            <div className="mt-8">
-              <RainbowButton
-                onClick={handleLogin}
-                className="h-12 min-w-[180px] text-base transition-all duration-300 hover:scale-105"
-              >
-                Try Numble
-              </RainbowButton>
-            </div>
-          </BlurFade>
         </div>
-      </div>
-
-      {/* Product Preview */}
-      <div className="relative w-full">
-        <BlurFade delay={0.6} className="mx-auto max-w-screen-2xl px-6">
-          <div className="relative">
-            {/* Product images */}
-            <motion.div
-              initial={{ y: 60, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              style={{
-                rotateX,
-                scale,
-                opacity,
-                transformPerspective: 1000,
-              }}
-              transition={{
-                type: 'spring',
-                stiffness: 50,
-                damping: 20,
-                delay: 0.5,
-              }}
-              className="relative mx-auto w-full max-w-[1200px] will-change-transform"
-            >
-              <div className="group relative overflow-hidden rounded-2xl border bg-card shadow-2xl">
-                {/* Light mode image */}
-                <div className="relative p-1 dark:hidden">
-                  <Image
-                    src="/numGif.gif"
-                    alt="numble AI Interface"
-                    width={1200}
-                    height={755}
-                    className="w-full rounded-2xl"
-                    priority
-                  />
-                </div>
-                {/* Dark mode image */}
-                <div className="relative hidden p-1 dark:block">
-                  <Image
-                    src="/numGif.gif"
-                    alt="numble AI Interface"
-                    width={1200}
-                    height={755}
-                    className="w-full rounded-2xl"
-                    priority
-                  />
-                </div>
-                {/* <BorderBeam
-                  className="opacity-0 group-hover:opacity-100"
-                  duration={10}
-                  size={300}
-                /> */}
-              </div>
-
-              {/* Decorative elements */}
-              <div className="absolute -left-4 -top-4 h-72 w-72 animate-blob rounded-full bg-primary/5 mix-blend-multiply blur-xl" />
-              <div className="animation-delay-2000 absolute -right-4 -top-4 h-72 w-72 animate-blob rounded-full bg-secondary/5 mix-blend-multiply blur-xl" />
-            </motion.div>
-          </div>
-        </BlurFade>
       </div>
     </section>
   );
@@ -406,54 +340,11 @@ const Footer = () => {
         delay={0.5}
         className="mx-auto flex  w-[75%] flex-col text-muted-foreground"
       >
-        <div className="b flex justify-between gap-3 border-b border-dotted border-neutral-200 pb-4 dark:border-neutral-700">
+        <div className="b flex justify-center gap-3 border-b border-dotted border-neutral-200 pb-4 dark:border-neutral-700">
           <div>
             <Brand className="scale-95 transition-opacity hover:opacity-80" />
           </div>
-
-          <div className="flex  gap-4">
-            <div>
-              <h3 className="text-lg font-semibold text-neutral-700 dark:text-neutral-300 sm:text-xl">
-                Site
-              </h3>
-              <div className="flex flex-col">
-                {/* flex items-center gap-1.5 px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary */}
-                <a href="https://docs.numble.ai/" target="_blank">
-                  <h3 className="text-sm  font-medium text-muted-foreground transition-colors hover:text-primary ">
-                    Docs
-                  </h3>
-                </a>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-neutral-700 dark:text-neutral-300 sm:text-xl">
-                Social
-              </h3>
-              <div className="flex flex-col">
-                <a href="https://x.com/NumbleAI" target="_blank">
-                  <h3 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-                    Twitter
-                  </h3>
-                </a>
-
-                <a href="https://t.me/numble_ai" target="_blank">
-                  <motion.h3 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-                    Telegram
-                  </motion.h3>
-                </a>
-
-                <a href="https://discord.gg/9MN5bjBF" target="_blank">
-                  <motion.h3 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-                    Discord
-                  </motion.h3>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-3">
-          <p>© 2025 Numble</p>
+          <img src={'/deepseek.webp'} alt="" style={{ width: '180px' }}></img>
         </div>
       </BlurFade>
     </footer>
@@ -487,9 +378,9 @@ export default function Home() {
       <Header handleLogin={login} />
       <main className="flex-1">
         <Hero handleLogin={login} />
-        <Marque></Marque>
+        {/* <Marque></Marque> */}
 
-        <Lobsang></Lobsang>
+        {/* <Lobsang></Lobsang> */}
       </main>
       <Footer />
     </div>

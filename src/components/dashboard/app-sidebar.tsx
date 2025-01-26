@@ -114,13 +114,13 @@ const ExploreItems = [
     external: true,
   },
 
-  {
-    title: 'Settings',
-    url: '/setting',
-    segment: 'setting',
-    icon: SettingsIcon,
-    external: false,
-  },
+  // {
+  //   title: 'Settings',
+  //   url: '/setting',
+  //   segment: 'setting',
+  //   icon: SettingsIcon,
+  //   external: false,
+  // },
 ] as const;
 
 export function AppSidebar() {

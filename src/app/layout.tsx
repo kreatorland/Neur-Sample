@@ -23,35 +23,35 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Numble',
+    template: '%s | Lyth',
     default:
-      'Numble - The Intelligent AI Agents Engine to perform on-chain tasks on Solana',
+      'Lyth - The Intelligent DeFAI Agent powered by Deepseek R1. Trade, launch & analysis on Solana',
   },
   description:
-    'The Intelligent AI Agents Engine to perform on-chain tasks on Solana',
+    'The Intelligent DeFAI Agent powered by Deepseek R1. Trade, launch & analysis on Solana',
 
   icons: {
     icon: '/favicon.png',
   },
   twitter: {
-    title: 'Numble - The Intelligent AI Agents Engine',
+    title: 'Lyth - The Intelligent AI Agents Engine',
     description:
-      'The Intelligent AI Agents Engine to perform on-chain tasks on Solana',
+      'The Intelligent DeFAI Agent powered by Deepseek R1. Trade, launch & analysis on Solana',
     images: ['/favicon.png'],
   },
 
   openGraph: {
-    title: 'Numble - The Intelligent AI Agents Engine',
+    title: 'Lyth - The Intelligent AI Agents Engine',
     description:
-      'The Intelligent AI Agents Engine to perform on-chain tasks on Solana',
+      'The Intelligent DeFAI Agent powered by Deepseek R1. Trade, launch & analysis on Solana',
     // url: 'https://your-domain.com', // Replace with your domain
-    siteName: 'Numble',
+    siteName: 'Lyth',
     images: [
       {
         url: '/favicon.png', // Ensure this path is correct
         width: 1200,
         height: 630,
-        alt: 'Numble Open Graph Image',
+        alt: 'Lyth Open Graph Image',
       },
     ],
     locale: 'en_US',

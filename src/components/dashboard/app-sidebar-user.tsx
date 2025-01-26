@@ -27,23 +27,23 @@ export const AppSidebarUser = () => {
     <div
       className={` items-center justify-around ${open ? 'flex' : 'flex flex-col gap-1'}`}
     >
-      <div className="flex justify-center rounded-md bg-[#302f2f] p-2">
+      <div className="flex justify-center rounded-md border border-[#C6F201] bg-[#302f2f] p-2">
         <a href="https://x.com/NumbleAI" target="_blank">
           <RiTwitterXFill className=" h-6 w-6" />
         </a>
       </div>
-      <div className="flex justify-center rounded-md bg-[#302f2f] p-2">
+      <div className="flex justify-center rounded-md border border-[#C6F201] bg-[#302f2f] p-2">
         <a href="https://t.me/numble_ai" target="_blank">
           <SendIcon className="h-6 w-6" />
         </a>
       </div>
-      <div className="flex justify-center rounded-md bg-[#302f2f] p-2">
+      <div className="flex justify-center rounded-md border border-[#C6F201] bg-[#302f2f] p-2">
         <a href="https://discord.gg/9MN5bjBF" target="_blank">
           <RiDiscordFill className="h-6 w-6" />
         </a>
       </div>
 
-      <div className="flex justify-center rounded-md bg-[#302f2f] p-2">
+      <div className="flex justify-center rounded-md border border-[#C6F201] bg-[#302f2f] p-2">
         <a href="https://docs.numble.ai/" target="_blank">
           <BookOpenIcon className=" h-6 w-6" />
         </a>

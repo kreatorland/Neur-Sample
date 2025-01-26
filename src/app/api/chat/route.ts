@@ -76,7 +76,7 @@ export async function POST(req: Request) {
       return new Response('No user message found', { status: 400 });
     }
 
-    // Create a new conversation if it doesn't exist
+    // Create a new conversation if it doesn't existF
     if (existingMessages.length === 0) {
       const title = await generateTitleFromUserMessage({
         message: message.content,
