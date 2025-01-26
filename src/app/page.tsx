@@ -129,19 +129,6 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
                   <line x1="4" x2="20" y1="18" y2="18" />
                 </svg>
               </Button>
-              {/* <div className="flex items-center gap-3">
-                <motion.div whileHover={{ scale: 1.1 }}>
-                  <Button
-                    variant="outline"
-                    className="h-9 rounded-lg bg-primary px-4 text-sm text-white transition-colors hover:bg-primary hover:text-primary-foreground dark:bg-primary dark:text-black"
-                    onClick={handleLogin}
-                  >
-                    Try Numble
-                  </Button>
-                </motion.div>
-
-               
-              </div> */}
             </div>
           </div>
 
@@ -203,17 +190,12 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
               </AnimatedShinyText>{' '}
               Trade, launch & analysis on<span> Solana</span>
             </h1>
-
-            {/* <p className="mt-4 text-lg text-muted-foreground">
-              Experience Solana on-chain actions using powerful AI Engine from
-              Numble
-            </p> */}
           </BlurFade>
 
           <BlurFade delay={0.4}>
             <div className="mt-8">
               <RainbowButton
-                onClick={handleLogin}
+                // onClick={handleLogin}
                 className="h-12 min-w-[180px] bg-[#bfea0b] text-base transition-all duration-300 hover:scale-105"
                 style={{ background: '#C6F201' }}
               >
@@ -244,96 +226,6 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
         </div>
       </div>
     </section>
-  );
-};
-
-const Lobsang = () => {
-  const [inView, setInView] = useState(false);
-  const controls = useAnimation();
-
-  const handleScroll = () => {
-    const position = window.scrollY;
-    console.log('positon', position);
-    if (position > 1400) {
-      // alert('inview');
-      // Adjust the scroll trigger value
-      setInView(true);
-    } else {
-      setInView(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  return (
-    <BlurFade delay={0.5} className="py-25 relative my-6 sm:py-10">
-      <GridDotPattern></GridDotPattern>
-      <div className="w-fit-content mx-auto w-[70%] px-4 py-10 sm:px-6">
-        <h2 className="mb-3 text-center text-2xl font-bold tracking-tight sm:mb-4 sm:text-4xl">
-          Numble Seamless DeFAI
-        </h2>
-        <HelperComponent></HelperComponent>
-      </div>
-    </BlurFade>
-  );
-};
-
-const Marque = () => {
-  return (
-    <BlurFade
-      delay={0.5}
-      className="mx-auto mb-6 mt-11 flex w-full flex-col text-muted-foreground md:w-[50%]"
-    >
-      <div className="flex justify-center">
-        <h2 className="mb-2 text-2xl font-bold tracking-tight sm:mb-4 sm:text-4xl">
-          Integrated with
-        </h2>
-      </div>
-      <div className=" white masked-div flex overflow-hidden border-neutral-200 dark:border-neutral-700">
-        <motion.div
-          className="flex w-[100%] shrink-0 items-center justify-around  whitespace-nowrap py-10"
-          animate={{ x: ['0', '-100%'] }}
-          transition={{ repeat: Infinity, duration: 10, ease: 'linear' }}
-        >
-          {INTEGRATIONS.map((item, idx) => (
-            <div
-              className="w-50 flex"
-              style={{ borderRadius: '100%', background: 'black' }}
-              key={idx}
-            >
-              <Image
-                src={`${item.icon}`}
-                alt=""
-                height={50}
-                width={50}
-                style={{ backgroundBlendMode: 'lighten', borderRadius: '50%' }}
-              ></Image>
-              {/* <p className=''>{item.label}</p> */}
-            </div>
-          ))}
-        </motion.div>
-        <motion.div
-          className="flex w-[100%] shrink-0 items-center justify-around whitespace-nowrap py-10"
-          animate={{ x: ['0', '-100%'] }}
-          transition={{ repeat: Infinity, duration: 10, ease: 'linear' }}
-        >
-          {INTEGRATIONS.map((item, idx) => (
-            <div className="w-50 flex" key={idx}>
-              <Image
-                src={`${item.icon}`}
-                alt=""
-                height={50}
-                width={50}
-                style={{ backgroundBlendMode: 'lighten', borderRadius: '50%' }}
-              ></Image>
-              {/* <p className=''>{item.label}</p> */}
-            </div>
-          ))}
-        </motion.div>
-      </div>
-    </BlurFade>
   );
 };
 
@@ -376,7 +268,7 @@ export default function Home() {
 
   if (isMaintenanceMode) {
     login = () => {
-      window.location.href = 'https://x.com/NumbleAI';
+      window.location.href = 'https://x.com/Lyth_ai';
     };
   }
 

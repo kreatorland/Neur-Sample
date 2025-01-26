@@ -32,7 +32,7 @@ export const FeatureLists: DataIntegration[] = [
     icon: BotIcon,
     label: 'On-Chain Automation',
     description:
-      ' Numble simplifies complex tasks on Solana by automating smart contract interactions, making blockchain processes seamless.',
+      ' Lyth simplifies complex tasks on Solana by automating smart contract interactions, making blockchain processes seamless.',
   },
   {
     icon: WorkflowIcon,

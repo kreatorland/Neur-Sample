@@ -122,7 +122,7 @@ export function HelperComponent() {
                 className="line-clamp-3 text-xs text-muted-foreground/70"
                 initial={false}
               >
-                Numble simplifies complex tasks on Solana by automating smart
+                Lyth simplifies complex tasks on Solana by automating smart
                 contract interactions, making blockchain processes seamless.
               </motion.div>
               {/* )} */}
