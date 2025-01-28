@@ -50,27 +50,41 @@ export const SUGGESTIONS: Suggestion[] = [
     title: 'Check my wallet',
     subtitle: 'check the portfolio of your wallet',
   },
-  // {
-  //   id: 'sell-everything-buy-neur',
-  //   title: 'Sell everything and buy $NEUR',
-  //   subtitle: 'swap all your tokens for $NEUR',
-  // },
-  // {
-  //   id: 'phantom-updates',
-  //   title: 'Any updates from @phantom recently?',
-  //   subtitle: 'summarize the latest tweets from @phantom',
-  // },
-  // {
-  //     id: "toly-updates",
-  //     title: "What has toly been doing recently?",
-  //     subtitle: "summarize his recent tweets"
-  // },
 ];
 
 export function getRandomSuggestions(count: number): Suggestion[] {
   // Ensure we don't request more items than available
   const safeCount = Math.min(count, SUGGESTIONS.length);
   const startIndex = Math.floor(Date.now() / 1000) % SUGGESTIONS.length;
+
+  // Create a rotated copy of the array starting from startIndex
+  const rotatedSuggestions = [
+    ...SUGGESTIONS.slice(startIndex),
+    ...SUGGESTIONS.slice(0, startIndex),
+  ];
+
+  // Return only the first safeCount items
+  return rotatedSuggestions.slice(0, safeCount);
+}
+export const SUGGESTIONS2: Suggestion[] = [
+  {
+    id: 'top-gainers-last-24h',
+    icon: ChartNoAxesColumnIcon,
+    title: 'Top gainers in the last 24h',
+    subtitle: 'find the top gainers in the last 24 hours',
+  },
+  {
+    id: 'check-my-wallet',
+    icon: WalletIcon,
+    title: 'Check my wallet',
+    subtitle: 'check the portfolio of your wallet',
+  },
+];
+
+export function getRandomSuggestions2(count: number): Suggestion[] {
+  // Ensure we don't request more items than available
+  const safeCount = Math.min(count, SUGGESTIONS.length);
+  const startIndex = Math.floor(Date.now() / 1000) % SUGGESTIONS2.length;
 
   // Create a rotated copy of the array starting from startIndex
   const rotatedSuggestions = [

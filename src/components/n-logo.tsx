@@ -5,8 +5,8 @@ import { cn } from '@/lib/utils';
 import { DynamicImage } from './dynamic-image';
 
 export default function Logo({
-  width = 28,
-  height = 28,
+  width = 35,
+  height = 35,
   className,
 }: {
   width?: number;
@@ -15,8 +15,8 @@ export default function Logo({
 }) {
   return (
     <DynamicImage
-      lightSrc="/n.png"
-      darkSrc="/n_w.png"
+      lightSrc="/favicon.png"
+      darkSrc="/favicon.png"
       alt="Logo"
       width={width}
       height={height}
@@ -31,11 +31,9 @@ interface BrandProps {
 
 export function NLogo({ className }: BrandProps) {
   return (
-    <Link href="/" className={className}>
-      <div className="bg:grey-800 flex items-center gap-2 rounded-md">
-        <Logo width={50} />
-        {/* <span className="text-x select-none font-bold">Neur</span> */}
-      </div>
-    </Link>
+    <div className="bg:grey-800 flex items-center gap-2 rounded-md">
+      <Logo width={50} />
+      {/* <span className="text-x select-none font-bold">Neur</span> */}
+    </div>
   );
 }

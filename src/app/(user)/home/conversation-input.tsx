@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react';
 
-import { ForwardIcon, SendHorizontal } from 'lucide-react';
+import { ForwardIcon, Mic, SendHorizontal } from 'lucide-react';
 import { toast } from 'sonner';
 
+import { NLogo } from '@/components/n-logo';
 import { BorderBeam } from '@/components/ui/border-beam';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -55,51 +56,52 @@ export function ConversationInput({
   return (
     <div className="relative duration-500 animate-in fade-in slide-in-from-bottom-4">
       <div
-        className="relative rounded-xl bg-muted"
+        className="relative rounded-xl bg-[#fff] px-1"
         style={{
-          border: '1px solid #adad39',
+          border: '1px solid #fff',
         }}
       >
-        <form onSubmit={handleSubmit} className="flex flex-col">
+        <form onSubmit={handleSubmit} className="flex items-center">
+          <NLogo></NLogo>
+          {/* min-h-[40px] */}
           <Textarea
             ref={textareaRef}
             value={value}
             onChange={handleTextareaChange}
             onKeyDown={handleKeyDown}
             maxLength={MAX_CHARS}
-            placeholder="Crypto confusing? Let's talk..."
-            className="min-h-[110px] w-full resize-none overflow-hidden border-0 bg-transparent px-4 py-3 text-base focus-visible:ring-0"
+            placeholder="Type your prompt here..."
+            className=" w-full resize-none overflow-hidden border-0 bg-transparent p-[14px] text-black focus-visible:ring-0"
           />
 
-          <div className="flex items-center justify-between border-t px-4 py-2">
-            <span className="text-xs text-muted-foreground">
-              {value.length}/{MAX_CHARS}
-            </span>
-
+          <div className="flex items-center justify-center gap-2">
+            <Mic color="black"></Mic>
             <Button
               type="submit"
               size="icon"
               variant="ghost"
               disabled={!value.trim()}
               className="group relative flex h-8 w-8 items-center
-                justify-center rounded-lg 
+              justify-center 
+                rounded-lg bg-[#1adc34] 
                 transition-all 
                 duration-200 ease-in-out
                 hover:bg-primary hover:text-primary-foreground active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              <div
-                className="rounded-lg bg-[#111111] p-2"
-                style={{
-                  border: '1px solid #adad39',
-                }}
-              >
-                <ForwardIcon
-                  className="color-[#adad39] h-6 w-6 transition-transform 
+              <ForwardIcon
+                className="color-[#adad39] h-6 w-6 transition-transform 
                   duration-200 ease-out group-hover:scale-110"
-                />
-              </div>
+              />
             </Button>
           </div>
+
+          {/* <div className="flex items-center justify-between border-t px-4 py-2">
+            <span className="text-xs text-muted-foreground">
+              {value.length}/{MAX_CHARS}
+            </span>
+
+           
+          </div> */}
         </form>
       </div>
     </div>

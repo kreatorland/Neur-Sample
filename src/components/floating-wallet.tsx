@@ -94,20 +94,29 @@ export function FloatingWallet({
           <div
             role="combobox"
             aria-expanded={open}
-            className="flex w-[200px] items-center justify-around rounded-md bg-white p-2"
+            className="flex w-[180px] items-center justify-around rounded-md bg-white p-2"
           >
+            <Wallet className="h-4 w-4 text-black" style={{ color: 'black' }} />
+            {/* <p className="text-sm font-medium text-black">
+              ${formatNumber(data.totalBalance, 'currency')}
+            </p> */}
             <span className="max-w-[120px] truncate text-sm text-black">
               {data?.address?.slice(0, 6)}...{data?.address?.slice(-6)}
             </span>
-
-            <Wallet className="h-4 w-4 text-black" style={{ color: 'black' }} />
-            <p className="text-sm font-medium text-black">
-              {formatNumber(data.totalBalance, 'currency')}
-            </p>
           </div>
         </PopoverTrigger>
         <PopoverContent className="w-[200px] bg-black p-1">
           <div className="flex flex-col gap-1 p-1">
+            <div className="flex cursor-pointer items-center gap-1 text-white">
+              <Wallet
+                className="h-4 w-4 text-black"
+                style={{ color: 'black' }}
+              />
+              <p className="text-sm font-medium text-black">
+                ${formatNumber(data.totalBalance, 'currency')}
+              </p>
+            </div>
+            <div className="border-t-2"></div>
             <div
               className="hover:bg-grey flex cursor-pointer items-center justify-between"
               onClick={() => handleCopy(data.address)}

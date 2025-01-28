@@ -14,6 +14,7 @@ import { toast } from 'sonner';
 import { v4 as uuidv4 } from 'uuid';
 
 import ChatInterface from '@/app/(user)/chat/[id]/chat-interface';
+import NLogo from '@/components/n-logo';
 import { Badge } from '@/components/ui/badge';
 import BlurFade from '@/components/ui/blur-fade';
 import { Button } from '@/components/ui/button';
@@ -29,6 +30,7 @@ import { getSavedPrompts } from '@/server/actions/saved-prompt';
 import { IntegrationsGrid } from './components/integrations-grid';
 import { ConversationInput } from './conversation-input';
 import { getRandomSuggestions } from './data/suggestions';
+import { getRandomSuggestions2 } from './data/suggestions';
 import { SuggestionCard } from './suggestion-card';
 
 const EAP_PRICE = 1.0;
@@ -59,7 +61,8 @@ export function HomeContent() {
   const [savedPrompts, setSavedPrompts] = useState<SavedPrompt[]>([]);
   const [isFetchingSavedPrompts, setIsFetchingSavedPrompts] =
     useState<boolean>(true);
-  const suggestions = useMemo(() => getRandomSuggestions(4), []);
+  const suggestions = useMemo(() => getRandomSuggestions(6), []);
+  const suggestions2 = useMemo(() => getRandomSuggestions2(2), []);
   const [showChat, setShowChat] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [chatId, setChatId] = useState(() => uuidv4());
@@ -257,46 +260,42 @@ export function HomeContent() {
   const mainContent = (
     <div
       className={cn(
-        'mx-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center px-6',
+        'mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center space-y-8 rounded-md bg-[#1f1f1f] px-6',
         !hasEAP ? 'h-screen py-0' : 'py-12',
       )}
     >
       <BlurFade delay={0.2}>
+        <div className=" flex justify-center">
+          <NLogo></NLogo>
+        </div>
+      </BlurFade>
+      <BlurFade delay={0.2}>
         <TypingAnimation
-          className="mb-12 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-center text-4xl font-semibold tracking-tight text-transparent md:text-4xl lg:text-5xl"
+          className="bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-center text-4xl font-semibold tracking-tight text-transparent md:text-4xl lg:text-5xl"
           duration={50}
           text="What can I do for you?"
         />
       </BlurFade>
 
-      <div className="mx-auto w-full max-w-3xl space-y-8">
-        <BlurFade delay={0.1}>
-          <ConversationInput
-            value={input}
-            onChange={setInput}
-            onSubmit={handleSend}
-          />
-        </BlurFade>
-
-        {hasEAP && (
-          <div className="space-y-8">
-            <BlurFade delay={0.2}>
-              <div className="space-y-2">
-                <SectionTitle>Suggestions</SectionTitle>
-                <div className="grid grid-cols-4 gap-4">
-                  {suggestions.map((suggestion, index) => (
-                    <SuggestionCard
-                      key={suggestion.title}
-                      {...suggestion}
-                      delay={0.3 + index * 0.1}
-                      onSelect={setInput}
-                    />
-                  ))}
-                </div>
+      {hasEAP && (
+        <div className="mx-auto w-full space-y-8">
+          <BlurFade delay={0.2}>
+            <div className="space-y-2">
+              {/* <SectionTitle>Suggestions</SectionTitle> */}
+              <div className="grid grid-cols-3 gap-4">
+                {suggestions.map((suggestion, index) => (
+                  <SuggestionCard
+                    key={suggestion.title}
+                    {...suggestion}
+                    delay={0.3 + index * 0.1}
+                    onSelect={setInput}
+                  />
+                ))}
               </div>
-            </BlurFade>
+            </div>
+          </BlurFade>
 
-            {/* {!isFetchingSavedPrompts && savedPrompts.length !== 0 && (
+          {/* {!isFetchingSavedPrompts && savedPrompts.length !== 0 && (
               <BlurFade delay={0.3}>
                 <div className="space-y-2">
                   <SectionTitle>Saved Prompts</SectionTitle>
@@ -325,8 +324,27 @@ export function HomeContent() {
                 </div>
               </BlurFade>
             )} */}
-          </div>
-        )}
+        </div>
+      )}
+      <BlurFade delay={0.2}>
+        <div className=" flex justify-around space-x-11">
+          <h1 className="text-green-600 underline">All</h1>
+          <h1>Text</h1>
+          <h1>Image</h1>
+          <h1>Video</h1>
+          <h1>Music</h1>
+          <h1>Analytics</h1>
+        </div>
+      </BlurFade>
+
+      <div className="mx-auto w-full  space-y-8">
+        <BlurFade delay={0.1}>
+          <ConversationInput
+            value={input}
+            onChange={setInput}
+            onSubmit={handleSend}
+          />
+        </BlurFade>
       </div>
     </div>
   );
@@ -419,7 +437,7 @@ export function HomeContent() {
       {!showChat && (
         <div
           className={cn(
-            'absolute inset-0 overflow-y-auto overflow-x-hidden transition-opacity duration-300 ',
+            'absolute inset-0 mt-5 overflow-y-auto overflow-x-hidden transition-opacity duration-300',
             showChat ? 'pointer-events-none opacity-0' : 'opacity-100',
           )}
         >

@@ -9,6 +9,7 @@ import {
   BotIcon,
   Brain,
   DollarSignIcon,
+  FilePenLine,
   HeartHandshakeIcon,
   HomeIcon,
   SettingsIcon,
@@ -33,11 +34,16 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { APP_VERSION, IS_BETA } from '@/lib/constants';
 
 import { Brand } from '../logo';
 import NLogo from '../n-logo';
-import { Card, CardContent } from '../ui/card';
 import { AppSidebarConversations } from './app-sidebar-conversations';
 import { AppSidebarUser } from './app-sidebar-user';
 
@@ -45,31 +51,40 @@ const AppSidebarHeader = ({ open }: { open: boolean }) => {
   return (
     <SidebarHeader>
       <div
-        className={`border-b-1 flex h-[48px]  items-center border-[#5f5e5e]  py-1.5 ${open ? 'justify-between' : 'justify-center'}`}
+        className={`border-b-1 flex h-[48px] items-center  rounded-md bg-[#1f1f1f]  py-1.5 ${open ? 'justify-between' : 'justify-center'}`}
       >
-        <span className="pl-2 text-lg font-medium tracking-tight group-data-[collapsible=icon]:hidden">
-          <Brand />
-        </span>
-        {!open && (
-          <div className="ml-2 flex items-center gap-1.5">
-            <NLogo></NLogo>
-          </div>
-        )}
+        <div className="flex items-center gap-2">
+          <NLogo></NLogo>
+          <h2>Numble</h2>
+        </div>
+
+        {/* <Tooltip>
+          <TooltipTrigger asChild>
+            <span className="pl-2 text-lg font-medium tracking-tight group-data-[collapsible=icon]:hidden">
+              <SidebarTrigger></SidebarTrigger>
+            </span>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Close sidebar</p>
+          </TooltipContent>
+        </Tooltip>
+
+        {open && (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link href="/home">
+                <div className="rounded-md bg-[#444444] p-1">
+                  <FilePenLine className="h-4 w-4"></FilePenLine>
+                </div>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>New message</p>
+            </TooltipContent>
+          </Tooltip>
+        )} */}
       </div>
     </SidebarHeader>
-  );
-};
-
-const AppSidebarFooter = () => {
-  return (
-    <div>
-      {/* <Card>
-        <CardContent>ss</CardContent>
-      </Card> */}
-      <SidebarFooter>
-        <AppSidebarUser />
-      </SidebarFooter>
-    </div>
   );
 };
 
@@ -106,13 +121,13 @@ const ExploreItems = [
   //   external: false,
   // },
 
-  {
-    title: 'Docs',
-    url: 'https://docs.numble.ai/',
-    segment: 'docs',
-    icon: BookOpen,
-    external: true,
-  },
+  // {
+  //   title: 'Docs',
+  //   url: 'https://docs.numble.ai/',
+  //   segment: 'docs',
+  //   icon: BookOpen,
+  //   external: true,
+  // },
 
   {
     title: 'Settings',
@@ -138,20 +153,20 @@ export function AppSidebar() {
     <Sidebar
       variant="sidebar"
       collapsible="icon"
-      className=" fixed hidden h-screen bg-black md:flex"
+      className=" fixed left-5 top-5 hidden h-[95vh]  rounded-md md:flex"
       style={{ backgroundColor: 'black' }}
     >
       <AppSidebarHeader open={open} />
-      <SidebarContent>
+      <SidebarContent className="bg-[#1f1f1f] ">
         <SidebarGroup className=" pl-3 pr-2">
           <SidebarGroupContent>
             <SidebarMenu
               className={`space-y-2 ${open ? '' : 'flex items-center '}`}
             >
-              {ExploreItems.map((item) => (
+              {ExploreItems.map((item, index) => (
                 <SidebarMenuItem
                   key={item.title}
-                  className="sidebarMenuItem rounded-lg  p-1 "
+                  className="sidebarMenuItem rounded-lg  bg-primary/5 p-1"
                 >
                   <SidebarMenuButton
                     asChild
@@ -181,8 +196,6 @@ export function AppSidebar() {
 
         <AppSidebarConversations />
       </SidebarContent>
-
-      <AppSidebarFooter />
     </Sidebar>
   );
 }

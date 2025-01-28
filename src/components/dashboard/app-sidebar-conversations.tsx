@@ -135,8 +135,8 @@ const ConversationMenuItem = ({
               <span>Rename</span>
             </DropdownMenuItem>
             <DropdownMenuItem onClick={handleDelete}>
-              <TrashIcon className="h-4 w-4" />
-              <span>Delete</span>
+              <TrashIcon className="h-4 w-4" color="red" />
+              <span className="text-red">Delete</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

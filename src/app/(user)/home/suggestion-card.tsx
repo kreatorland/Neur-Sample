@@ -38,15 +38,15 @@ export function SuggestionCard({
       }}
       whileTap={{ scale: 0.99 }}
       onClick={() => onSelect(useSubtitle ? subtitle : title)}
-      className="gap-1.2 py-2.2 flex flex-col items-center justify-center rounded-xl 
-    bg-muted/50  px-1 text-left transition-colors duration-200 hover:bg-primary/5"
+      className="gap-1.2 py-2.2 flex h-[80px] flex-col items-center justify-center 
+      rounded-xl  bg-primary/5 px-1 text-left transition-colors duration-200 hover:bg-primary/5"
     >
-      <div className="flex items-center space-x-3 py-2 text-center text-[12px] font-medium">
+      <div className="flex flex-col items-center gap-2 space-x-3 py-2 text-center text-[12px] font-medium">
         <Icon
           className={`color-${getRandomColor()}`}
           style={{
-            height: '15px',
-            width: '15px',
+            height: '30px',
+            width: '30px',
             color: `${getRandomColor()}`,
           }}
         ></Icon>
