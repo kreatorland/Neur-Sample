@@ -360,7 +360,7 @@ export function HomeContent() {
           <div className="mx-auto max-h-screen max-w-xl overflow-y-auto p-6">
             <Card className="relative flex max-h-full flex-col border-white/[0.1] bg-[#1bea2c] p-4 backdrop-blur-sm backdrop-saturate-150 sm:p-8">
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 to-white/[0.02] dark:from-white/[0.02] dark:to-white/[0.01]" />
-              <div className="flex items-center justify-center">
+              <div className="flex flex-1 items-center justify-center">
                 <Circle>
                   <NLogo></NLogo>
                   <BorderBeam
@@ -370,13 +370,39 @@ export function HomeContent() {
                   />
                 </Circle>
               </div>
-              <div className="relative space-y-6">
+
+              <div className="flex  flex-col ">
+                <h2 className="text-lg font-semibold text-black sm:text-2xl">
+                  Early Access
+                </h2>
+                <div className="text-muted-foreground">
+                  {/* <Badge>BETA</Badge> */}
+                  We&apos;re offering BETA access to a limited number of users
+                  to maintain stability and improve features.
+                </div>
+
+                <Button
+                  onClick={handlePurchase}
+                  disabled={isProcessing}
+                  className="bg-[#fff] text-xs ring-offset-0  focus-visible:ring-0 focus-visible:ring-offset-0 sm:text-sm"
+                >
+                  {isProcessing ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Processing
+                    </>
+                  ) : (
+                    `Join Early Access (${EAP_PRICE} SOL)`
+                  )}
+                </Button>
+              </div>
+              {/* <div className="relative space-y-6">
                 <div className="space-y-2 text-center">
                   <h2 className="text-lg font-semibold text-black sm:text-2xl">
                     Early Access
                   </h2>
                   <div className="text-muted-foreground">
-                    {/* <Badge>BETA</Badge> */}
+                  
                     We&apos;re offering BETA access to a limited number of users
                     to maintain stability and improve features.
                   </div>
@@ -406,7 +432,7 @@ export function HomeContent() {
                     )}
                   </Button>
                 </div>
-              </div>
+              </div> */}
             </Card>
           </div>
         </div>
