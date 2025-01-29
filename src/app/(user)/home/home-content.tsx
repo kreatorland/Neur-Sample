@@ -356,7 +356,7 @@ export function HomeContent() {
         {mainContent}
         <div className="absolute inset-0 z-20 flex items-center justify-center">
           <div className="mx-auto max-h-screen max-w-xl overflow-y-auto p-6">
-            <Card className="relative max-h-full border-white/[0.1] bg-[#1bea2c] p-4 backdrop-blur-sm backdrop-saturate-150 dark:bg-black/[0.02] sm:p-8">
+            <Card className="relative max-h-full border-white/[0.1] bg-[#1bea2c] p-4 backdrop-blur-sm backdrop-saturate-150 sm:p-8">
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 to-white/[0.02] dark:from-white/[0.02] dark:to-white/[0.01]" />
               <div className="relative space-y-6">
                 <div className="space-y-2 text-center">
