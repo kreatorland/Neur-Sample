@@ -892,11 +892,11 @@ export default function ChatInterface({
       </div>
 
       <div
-        className="fixed bottom-0 z-10 bg-[#fff]"
+        className="fixed bottom-0 z-10 "
         style={{ left: '9%', width: '100%' }}
       >
         {/* <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/95 to-background/0" /> */}
-        <div className="relative mx-auto w-full max-w-3xl px-4 py-4">
+        <div className="relative mx-auto w-full max-w-3xl bg-[#fff] px-4 py-4">
           <form
             onSubmit={handleFormSubmit}
             className="relative flex items-center space-y-4"
