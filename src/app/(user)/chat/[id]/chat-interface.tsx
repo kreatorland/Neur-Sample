@@ -896,6 +896,11 @@ export default function ChatInterface({
         style={{ left: '9%', width: '100%' }}
       >
         {/* <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/95 to-background/0" /> */}
+
+        {/* style={{    position: "fixed",
+    bottom: "10px",
+    left: "37%"
+}} */}
         <div className="relative mx-auto w-full max-w-3xl  px-4 py-4">
           <form onSubmit={handleFormSubmit} className="relative  space-y-4">
             <SavedPromptsMenu
@@ -943,7 +948,7 @@ export default function ChatInterface({
                   onPaste={handlePaste}
                   placeholder="Send a message..."
                   className={cn(
-                    'min-h-[100px] w-full resize-none border-0 bg-transparent px-4 py-[1.3rem] pt-8 text-base focus-visible:ring-0',
+                    'min-h-[100px] w-full resize-none border-0 bg-transparent px-4 py-[1.3rem] pt-8 text-base text-black focus-visible:ring-0',
                     attachments.length > 0 ? 'rounded-t-none' : 'rounded-t-2xl',
                   )}
                   maxLength={MAX_CHARS}
