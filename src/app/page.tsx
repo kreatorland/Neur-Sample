@@ -110,7 +110,7 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
                   <Button
                     variant="outline"
                     className="h-9 rounded-lg bg-primary px-4 text-sm text-white transition-colors hover:bg-primary hover:text-primary-foreground dark:bg-primary dark:text-black"
-                    onClick={handleLogin}
+                    // onClick={handleLogin}
                   >
                     Get started
                   </Button>
@@ -235,7 +235,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
           <BlurFade delay={0.4}>
             <div className="mt-8">
               <RainbowButton
-                onClick={handleLogin}
+                // onClick={handleLogin}
                 className="h-12 min-w-[180px] text-base transition-all duration-300 hover:scale-105"
               >
                 Get started
