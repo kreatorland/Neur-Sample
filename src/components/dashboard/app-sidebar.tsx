@@ -160,7 +160,7 @@ export function AppSidebar() {
         ></MagnifyingGlassIcon>
         <Input
           placeholder="Search"
-          className="border-none bg-primary/5 "
+          className="border-none bg-primary/5 focus-visible:ring-0 "
         ></Input>
       </div>
     );
