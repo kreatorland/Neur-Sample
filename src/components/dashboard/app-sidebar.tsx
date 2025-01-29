@@ -154,14 +154,14 @@ export function AppSidebar() {
 
   function AppSearchBar() {
     return (
-      <div className="mt-1 flex items-center justify-start gap-1 rounded-lg bg-primary/5 p-1">
+      <div className="mt-1 flex items-center justify-start gap-1 rounded-lg bg-[#27272a] p-1 pl-3">
         <MagnifyingGlassIcon
           className="h-6 w-6"
           color="white"
         ></MagnifyingGlassIcon>
         <Input
           placeholder="Search"
-          className="border-none bg-primary/5 focus-visible:ring-0 "
+          className="border-none bg-[#27272a] p-0 focus-visible:ring-0 "
         ></Input>
       </div>
     );
@@ -187,11 +187,11 @@ export function AppSidebar() {
                   key={item.title}
                   className=" rounded-lg  bg-[#fff] pl-2"
                 >
-                  <div className="sidebarMenuItem rounded-lg  bg-primary/5 p-1">
+                  <div className="sidebarMenuItem   bg-primary/5 p-1">
                     <SidebarMenuButton
                       asChild
                       isActive={getIsActive(item.segment)}
-                      className="group rounded-lg"
+                      className="group"
                     >
                       <Link
                         href={item.url}
