@@ -867,7 +867,7 @@ export default function ChatInterface({
     <div className="flex h-full flex-col">
       <div className="no-scrollbar relative flex-1 overflow-y-auto">
         <div className="mx-auto w-full max-w-3xl">
-          <Card>
+          <Card className=" rounded-md bg-[#3d3c3c]">
             <div className="space-y-4 px-4 pb-36 pt-4">
               {messages.map((message, index) => (
                 <ChatMessage
@@ -893,11 +893,6 @@ export default function ChatInterface({
       <div className="sticky bottom-0 z-10">
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/95 to-background/0" />
         <div className="relative mx-auto w-full max-w-3xl px-4 py-4">
-          {/* Floating Wallet */}
-          {/* {portfolio && (
-            <FloatingWallet data={portfolio} isLoading={isPortfolioLoading} />
-          )} */}
-
           <form onSubmit={handleFormSubmit} className="relative space-y-4">
             <SavedPromptsMenu
               input={input}
