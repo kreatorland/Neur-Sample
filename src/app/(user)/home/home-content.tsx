@@ -357,8 +357,8 @@ export function HomeContent() {
         <div className="absolute inset-0 z-10 bg-background/30 backdrop-blur-md" />
         {mainContent}
         <div className="absolute inset-0 z-20 flex items-center justify-center">
-          <div className="mx-auto max-h-screen max-w-xl overflow-y-auto p-6">
-            <Card className="relative flex max-h-full flex-col border-white/[0.1] bg-[#1bea2c] p-4 backdrop-blur-sm backdrop-saturate-150 sm:p-8">
+          <div className="mx-auto h-[400px] max-w-xl overflow-y-auto p-6">
+            <Card className="relative flex max-h-full flex-col border-white/[0.1] bg-gradient-to-b from-[#1bea2c]/80 to-[#1bea2c]/60 p-4 backdrop-blur-sm backdrop-saturate-150 sm:p-8">
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 to-white/[0.02] dark:from-white/[0.02] dark:to-white/[0.01]" />
               <div className="flex flex-1 items-center justify-center">
                 <Circle>
@@ -371,7 +371,7 @@ export function HomeContent() {
                 </Circle>
               </div>
 
-              <div className="flex  flex-col ">
+              <div className="flex  flex-col gap-2">
                 <h2 className="text-lg font-semibold text-black sm:text-2xl">
                   Early Access
                 </h2>
@@ -384,7 +384,7 @@ export function HomeContent() {
                 <Button
                   onClick={handlePurchase}
                   disabled={isProcessing}
-                  className="bg-[#fff] text-xs ring-offset-0  focus-visible:ring-0 focus-visible:ring-offset-0 sm:text-sm"
+                  className="w-[50%] bg-[#fff] text-xs ring-offset-0  focus-visible:ring-0 focus-visible:ring-offset-0 sm:text-sm"
                 >
                   {isProcessing ? (
                     <>
