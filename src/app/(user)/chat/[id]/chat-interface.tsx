@@ -896,11 +896,8 @@ export default function ChatInterface({
         style={{ left: '9%', width: '100%' }}
       >
         {/* <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/95 to-background/0" /> */}
-        <div className="relative mx-auto w-full max-w-3xl bg-[#fff] px-4 py-4">
-          <form
-            onSubmit={handleFormSubmit}
-            className="relative flex items-center space-y-4"
-          >
+        <div className="relative mx-auto w-full max-w-3xl  px-4 py-4">
+          <form onSubmit={handleFormSubmit} className="relative  space-y-4">
             <SavedPromptsMenu
               input={input}
               isFetchingSavedPrompts={isFetchingSavedPrompts}
@@ -923,82 +920,84 @@ export default function ChatInterface({
                 </div>
               )}
 
-              <NLogo></NLogo>
-              <Textarea
-                ref={textareaRef}
-                value={input}
-                onChange={(e) => {
-                  if (e.target.value.length <= MAX_CHARS) {
-                    handleInputChange(e);
-                  }
-                }}
-                onKeyDown={(e) => {
-                  if (
-                    e.key === 'Enter' &&
-                    !e.shiftKey &&
-                    !e.nativeEvent.isComposing
-                  ) {
-                    e.preventDefault();
-                    handleFormSubmit(e);
-                  }
-                }}
-                onPaste={handlePaste}
-                placeholder="Send a message..."
-                className={cn(
-                  'min-h-[100px] w-full resize-none border-0 bg-transparent px-4 py-[1.3rem] text-base focus-visible:ring-0',
-                  attachments.length > 0 ? 'rounded-t-none' : 'rounded-t-2xl',
-                )}
-                maxLength={MAX_CHARS}
-              />
-
-              <div className="absolute bottom-3 right-3 flex items-center gap-2">
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept="image/*"
-                  multiple
-                  className="hidden"
-                  onChange={handleFileSelect}
-                  disabled={isLoading}
+              <div className="flex items-center gap-2 bg-[#fff] p-2">
+                <NLogo></NLogo>
+                <Textarea
+                  ref={textareaRef}
+                  value={input}
+                  onChange={(e) => {
+                    if (e.target.value.length <= MAX_CHARS) {
+                      handleInputChange(e);
+                    }
+                  }}
+                  onKeyDown={(e) => {
+                    if (
+                      e.key === 'Enter' &&
+                      !e.shiftKey &&
+                      !e.nativeEvent.isComposing
+                    ) {
+                      e.preventDefault();
+                      handleFormSubmit(e);
+                    }
+                  }}
+                  onPaste={handlePaste}
+                  placeholder="Send a message..."
+                  className={cn(
+                    'min-h-[100px] w-full resize-none border-0 bg-transparent px-4 py-[1.3rem] text-base focus-visible:ring-0',
+                    attachments.length > 0 ? 'rounded-t-none' : 'rounded-t-2xl',
+                  )}
+                  maxLength={MAX_CHARS}
                 />
 
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 hover:bg-muted"
-                  onClick={() => fileInputRef.current?.click()}
-                  disabled={isLoading}
-                >
-                  <div className="rounded-lg bg-[#1bea2c] p-2">
-                    <ImageIcon
-                      className="color-black h-6 w-6 transition-transform 
-                      duration-200 ease-out group-hover:scale-110"
-                      style={{ color: 'black' }}
-                    />
-                  </div>
-                  {/* <ImageIcon className="h-5 w-5" /> */}
-                </Button>
+                <div className="absolute bottom-3 right-3 flex items-center gap-2">
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    className="hidden"
+                    onChange={handleFileSelect}
+                    disabled={isLoading}
+                  />
 
-                <Button
-                  type="submit"
-                  size="icon"
-                  variant="ghost"
-                  disabled={
-                    (!input.trim() && attachments.length === 0) ||
-                    isLoading ||
-                    attachments.some((att) => att.uploading)
-                  }
-                  className="h-8 w-8 hover:bg-muted"
-                >
-                  <div className="rounded-lg bg-[#1bea2c] p-2">
-                    <ForwardIcon
-                      className="color-black h-6 w-6 transition-transform 
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    className="h-8 w-8 hover:bg-muted"
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={isLoading}
+                  >
+                    <div className="rounded-lg bg-[#1bea2c] p-2">
+                      <ImageIcon
+                        className="color-black h-6 w-6 transition-transform 
                       duration-200 ease-out group-hover:scale-110"
-                      style={{ color: 'black' }}
-                    />
-                  </div>
-                </Button>
+                        style={{ color: 'black' }}
+                      />
+                    </div>
+                    {/* <ImageIcon className="h-5 w-5" /> */}
+                  </Button>
+
+                  <Button
+                    type="submit"
+                    size="icon"
+                    variant="ghost"
+                    disabled={
+                      (!input.trim() && attachments.length === 0) ||
+                      isLoading ||
+                      attachments.some((att) => att.uploading)
+                    }
+                    className="h-8 w-8 hover:bg-muted"
+                  >
+                    <div className="rounded-lg bg-[#1bea2c] p-2">
+                      <ForwardIcon
+                        className="color-black h-6 w-6 transition-transform 
+                      duration-200 ease-out group-hover:scale-110"
+                        style={{ color: 'black' }}
+                      />
+                    </div>
+                  </Button>
+                </div>
               </div>
             </div>
 
