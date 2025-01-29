@@ -361,17 +361,17 @@ export function HomeContent() {
               <div className="relative space-y-6">
                 <div className="space-y-2 text-center">
                   <h2 className="text-lg font-semibold sm:text-2xl">
-                    Early Access Program
+                    Early Access
                   </h2>
                   <div className="text-muted-foreground">
-                    We&apos;re currently limiting <Badge>BETA</Badge> access to
-                    a limited amount of users to ensure stable service while
-                    continuing to refine features.
+                    {/* <Badge>BETA</Badge> */}
+                    We&apos;re offering BETA access to a limited number of users
+                    to maintain stability and improve features.
                   </div>
                 </div>
 
                 <Card className="border-teal-500/10 bg-white/[0.01] p-6 backdrop-blur-sm dark:bg-black/[0.01]">
-                  <h3 className="mb-4 font-semibold">EAP Benefits</h3>
+                  {/* <h3 className="mb-4 font-semibold">EAP Benefits</h3>
                   <div className="space-y-3">
                     {EAP_BENEFITS.map((benefit, index) => (
                       <div key={index} className="flex items-start gap-2">
@@ -379,40 +379,31 @@ export function HomeContent() {
                         <span className="text-xs sm:text-sm">{benefit}</span>
                       </div>
                     ))}
-                  </div>
+                  </div> */}
                 </Card>
 
-                <div className="rounded-lg bg-white/[0.01] p-4 backdrop-blur-sm dark:bg-black/[0.01]">
+                <div className="rounded-lg bg-[#1bea2c] p-4 backdrop-blur-sm dark:bg-black/[0.01]">
                   <div className="mb-2 flex items-center justify-between">
                     <span className="text:xs font-medium sm:text-sm">
                       Payment
                     </span>
-                    <span className="text-base font-semibold sm:text-lg">
+                    <span className="font-semibold text-[#1bea2c] sm:text-lg">
                       {EAP_PRICE} SOL
                     </span>
                   </div>
-                  <div className="text-xs text-muted-foreground sm:text-sm">
+                  {/* <div className="text-xs text-muted-foreground sm:text-sm">
                     Funds will be allocated to cover expenses such as LLM
                     integration, RPC data services, infrastructure maintenance,
                     and other operational costs, all aimed at ensuring the
                     platform&apos;s stability and reliability.
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="flex items-center justify-between gap-4">
-                  <Link
-                    href="https://x.com/neur_sh"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-xs text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
-                  >
-                    <RiTwitterXFill className="mr-2 h-4 w-4" />
-                    Follow Updates
-                  </Link>
                   <Button
                     onClick={handlePurchase}
                     disabled={isProcessing}
-                    className="bg-teal-500/70 text-xs ring-offset-0 hover:bg-teal-500/90 focus-visible:ring-0 focus-visible:ring-offset-0 dark:bg-teal-500/60 dark:hover:bg-teal-500/80 sm:text-sm"
+                    className="bg-[#1bea2c] text-xs ring-offset-0  focus-visible:ring-0 focus-visible:ring-offset-0 sm:text-sm"
                   >
                     {isProcessing ? (
                       <>
@@ -420,7 +411,7 @@ export function HomeContent() {
                         Processing
                       </>
                     ) : (
-                      `Join EAP (${EAP_PRICE} SOL)`
+                      `Apply for EAP (${EAP_PRICE} SOL)`
                     )}
                   </Button>
                 </div>
