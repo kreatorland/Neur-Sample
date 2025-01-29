@@ -54,7 +54,7 @@ const AppSidebarHeader = ({ open }: { open: boolean }) => {
   return (
     <SidebarHeader>
       <div
-        className={`border-b-1 flex h-[48px] items-center  rounded-lg bg-[#1f1f1f] py-1.5  pl-[10px] ${open ? 'justify-between' : 'justify-center'}`}
+        className={`border-b-1 flex h-[48px] items-center  rounded-lg bg-[#1f1f1f] py-1.5  pl-[15px] ${open ? 'justify-between' : 'justify-center'}`}
       >
         <div className="flex items-center gap-2">
           <NLogo></NLogo>
@@ -185,7 +185,7 @@ export function AppSidebar() {
               {ExploreItems.map((item, index) => (
                 <SidebarMenuItem
                   key={item.title}
-                  className=" rounded-lg  bg-[#fff] pl-2"
+                  className=" rounded-lg  bg-[#1bea2c] pl-1"
                 >
                   <div className="sidebarMenuItem   bg-primary/5 p-1">
                     <SidebarMenuButton

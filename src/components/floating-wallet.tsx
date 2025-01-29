@@ -95,7 +95,7 @@ export function FloatingWallet({
           <div
             role="combobox"
             aria-expanded={open}
-            className="flex w-[170px] items-center justify-around rounded-md bg-[#0faf1c] p-2"
+            className="flex w-full items-center justify-around rounded-md bg-[#1bea2c] p-2"
           >
             {/* <Wallet className="h-4 w-4 text-black" style={{ color: 'black' }} /> */}
 
