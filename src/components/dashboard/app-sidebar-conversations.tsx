@@ -136,7 +136,9 @@ const ConversationMenuItem = ({
             </DropdownMenuItem>
             <DropdownMenuItem onClick={handleDelete}>
               <TrashIcon className="h-4 w-4" color="red" />
-              <span className="text-red">Delete</span>
+              <span className="" style={{ color: 'red' }}>
+                Delete
+              </span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

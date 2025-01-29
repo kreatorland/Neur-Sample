@@ -36,6 +36,7 @@ import Logo from '@/components/logo';
 import { ToolResult } from '@/components/message/tool-result';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import usePolling from '@/hooks/use-polling';
 import { useUser } from '@/hooks/use-user';
@@ -866,24 +867,26 @@ export default function ChatInterface({
     <div className="flex h-full flex-col">
       <div className="no-scrollbar relative flex-1 overflow-y-auto">
         <div className="mx-auto w-full max-w-3xl">
-          <div className="space-y-4 px-4 pb-36 pt-4">
-            {messages.map((message, index) => (
-              <ChatMessage
-                key={message.id}
-                message={message}
-                index={index}
-                messages={messages}
-                setSavedPrompts={setSavedPrompts}
-                onPreviewImage={setPreviewImage}
-                addToolResult={addToolResult}
-              />
-            ))}
-            {isLoading &&
-              messages[messages.length - 1]?.role !== 'assistant' && (
-                <LoadingMessage />
-              )}
-            <div ref={messagesEndRef} />
-          </div>
+          <Card>
+            <div className="space-y-4 px-4 pb-36 pt-4">
+              {messages.map((message, index) => (
+                <ChatMessage
+                  key={message.id}
+                  message={message}
+                  index={index}
+                  messages={messages}
+                  setSavedPrompts={setSavedPrompts}
+                  onPreviewImage={setPreviewImage}
+                  addToolResult={addToolResult}
+                />
+              ))}
+              {isLoading &&
+                messages[messages.length - 1]?.role !== 'assistant' && (
+                  <LoadingMessage />
+                )}
+              <div ref={messagesEndRef} />
+            </div>
+          </Card>
         </div>
       </div>
 
