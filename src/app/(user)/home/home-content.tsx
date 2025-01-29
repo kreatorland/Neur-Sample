@@ -17,8 +17,10 @@ import ChatInterface from '@/app/(user)/chat/[id]/chat-interface';
 import NLogo from '@/components/n-logo';
 import { Badge } from '@/components/ui/badge';
 import BlurFade from '@/components/ui/blur-fade';
+import { BorderBeam } from '@/components/ui/border-beam';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Circle } from '@/components/ui/circle';
 import TypingAnimation from '@/components/ui/typing-animation';
 import { useConversations } from '@/hooks/use-conversations';
 import { useUser } from '@/hooks/use-user';
@@ -154,9 +156,9 @@ export function HomeContent() {
   const handleSend = async (value: string) => {
     if (!value.trim()) return;
 
-    // if (!user?.earlyAccess) {
-    //   return;
-    // }
+    if (!user?.earlyAccess) {
+      return;
+    }
 
     const fakeEvent = new Event('submit') as any;
     fakeEvent.preventDefault = () => {};
@@ -255,8 +257,8 @@ export function HomeContent() {
     );
   }
 
-  const hasEAP = true;
-  // const hasEAP = user?.earlyAccess === true;
+  // const hasEAP = true;
+  const hasEAP = user?.earlyAccess === true;
   const mainContent = (
     <div
       className={cn(
@@ -356,8 +358,18 @@ export function HomeContent() {
         {mainContent}
         <div className="absolute inset-0 z-20 flex items-center justify-center">
           <div className="mx-auto max-h-screen max-w-xl overflow-y-auto p-6">
-            <Card className="relative max-h-full border-white/[0.1] bg-[#fff] p-4 backdrop-blur-sm backdrop-saturate-150 sm:p-8">
+            <Card className="relative flex max-h-full flex-col border-white/[0.1] bg-[#1bea2c] p-4 backdrop-blur-sm backdrop-saturate-150 sm:p-8">
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 to-white/[0.02] dark:from-white/[0.02] dark:to-white/[0.01]" />
+              <div className="flex items-center justify-center">
+                <Circle>
+                  <NLogo></NLogo>
+                  <BorderBeam
+                    className="opacity-0 group-hover:opacity-100"
+                    duration={10}
+                    size={300}
+                  />
+                </Circle>
+              </div>
               <div className="relative space-y-6">
                 <div className="space-y-2 text-center">
                   <h2 className="text-lg font-semibold text-black sm:text-2xl">
@@ -370,27 +382,7 @@ export function HomeContent() {
                   </div>
                 </div>
 
-                {/* <Card className="border-teal-500/10 bg-white/[0.01] p-6 backdrop-blur-sm dark:bg-black/[0.01]"> */}
-                {/* <h3 className="mb-4 font-semibold">EAP Benefits</h3>
-                  <div className="space-y-3">
-                    {EAP_BENEFITS.map((benefit, index) => (
-                      <div key={index} className="flex items-start gap-2">
-                        <CheckCircle2 className="mt-1 h-4 w-4 text-teal-500" />
-                        <span className="text-xs sm:text-sm">{benefit}</span>
-                      </div>
-                    ))}
-                  </div> */}
-                {/* </Card> */}
-
                 <div className="rounded-lg p-4 backdrop-blur-sm dark:bg-black/[0.01]">
-                  {/* <div className="mb-2 flex items-center justify-between">
-                    <span className="text:xs font-medium sm:text-sm">
-                      Payment
-                    </span>
-                    <span className="font-semibold text-[#1bea2c] sm:text-lg">
-                      {EAP_PRICE} SOL
-                    </span>
-                  </div> */}
                   <div className="text-center text-xs text-muted-foreground sm:text-sm">
                     All proceeds from early adopters will directly support
                     development, covering costs for Deepseek API, RPC services,
@@ -402,7 +394,7 @@ export function HomeContent() {
                   <Button
                     onClick={handlePurchase}
                     disabled={isProcessing}
-                    className="bg-[#1bea2c] text-xs ring-offset-0  focus-visible:ring-0 focus-visible:ring-offset-0 sm:text-sm"
+                    className="bg-[#fff] text-xs ring-offset-0  focus-visible:ring-0 focus-visible:ring-offset-0 sm:text-sm"
                   >
                     {isProcessing ? (
                       <>

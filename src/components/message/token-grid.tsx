@@ -132,7 +132,7 @@ function TokenCard({ token, className }: TokenCardProps) {
           </div>
         </div>
 
-        <div className="p-[10px]">
+        <div className="p-[6px]">
           {/* Metrics */}
           <div className="grid grid-cols-4 gap-px rounded-md bg-border/50">
             <div className="bg-background/50 p-3">

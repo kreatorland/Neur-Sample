@@ -233,7 +233,7 @@ const PopularCollections = ({
           <TableRow>
             <TableHead className="w-[5%]">1</TableHead>
             <TableHead className="w-[20%]">Image</TableHead>
-            <TableHead className="w-[30%]">Name</TableHead>
+            <TableHead className="w-[30%] text-center">Name</TableHead>
             <TableHead className="w-[20%]">Floor</TableHead>
             <TableHead className="w-[25%] text-right">Volume</TableHead>
           </TableRow>
@@ -245,8 +245,8 @@ const PopularCollections = ({
                 <Badge variant="outline">#{index + 1}</Badge>
               </TableCell>
               <TableCell className="font-medium">
-                <Badge variant="outline">
-                  <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl">
+                <Badge variant="outline" className="p-2">
+                  <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl">
                     <img
                       src={processImageUrl(collection.image)}
                       alt={collection.name}
