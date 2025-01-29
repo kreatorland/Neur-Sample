@@ -112,7 +112,7 @@ const Header = ({ handleLogin }: { handleLogin: () => void }) => {
                     className="h-9 rounded-lg bg-primary px-4 text-sm text-white transition-colors hover:bg-primary hover:text-primary-foreground dark:bg-primary dark:text-black"
                     onClick={handleLogin}
                   >
-                    Try Numble
+                    Get started
                   </Button>
                 </motion.div>
 
@@ -238,7 +238,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
                 onClick={handleLogin}
                 className="h-12 min-w-[180px] text-base transition-all duration-300 hover:scale-105"
               >
-                Try Numble
+                Get started
               </RainbowButton>
             </div>
           </BlurFade>

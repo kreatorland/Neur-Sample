@@ -80,8 +80,7 @@ export function ConversationInput({
               type="submit"
               size="icon"
               disabled={!value.trim()}
-              className="
-              group 
+              className=" 
               relative 
               flex 
               h-8 
@@ -89,9 +88,9 @@ export function ConversationInput({
               items-center
               justify-center 
               rounded-lg 
-            
+            bg-[#1bea2c] 
               "
-              style={{ backgroundColor: '#1bea2c !important' }}
+              style={{ backgroundColor: '#1bea2c' }}
             >
               <ForwardIcon
                 color="black"
