@@ -943,13 +943,13 @@ export default function ChatInterface({
                   onPaste={handlePaste}
                   placeholder="Send a message..."
                   className={cn(
-                    'min-h-[100px] w-full resize-none border-0 bg-transparent px-4 py-[1.3rem] text-base focus-visible:ring-0',
+                    'min-h-[100px] w-full resize-none border-0 bg-transparent px-4 py-[1.3rem] pt-8 text-base focus-visible:ring-0',
                     attachments.length > 0 ? 'rounded-t-none' : 'rounded-t-2xl',
                   )}
                   maxLength={MAX_CHARS}
                 />
 
-                <div className="absolute bottom-3 right-3 flex items-center gap-2">
+                <div className=" right-3 flex items-center gap-2">
                   <input
                     ref={fileInputRef}
                     type="file"
