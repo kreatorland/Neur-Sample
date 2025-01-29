@@ -30,9 +30,9 @@ export default async function UserLayout({
             <div className="border-b-1 sticky top-5 z-10 flex h-[55px] items-center justify-between space-x-1  border-[#5f5e5e]  py-1.5">
               <HeaderPart></HeaderPart>
 
-              <div>
+              {/* <div>
                 <WalletComponent></WalletComponent>
-              </div>
+              </div> */}
             </div>
             <AppSidebarUser></AppSidebarUser>
 

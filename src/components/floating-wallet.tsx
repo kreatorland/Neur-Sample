@@ -9,6 +9,7 @@ import {
   CopyCheckIcon,
   ExternalLink,
   LogOutIcon,
+  PlusIcon,
   TrendingUp,
   Wallet,
 } from 'lucide-react';
@@ -94,15 +95,16 @@ export function FloatingWallet({
           <div
             role="combobox"
             aria-expanded={open}
-            className="flex w-[170px] items-center justify-around rounded-md bg-white p-2"
+            className="flex w-[170px] items-center justify-around rounded-md bg-[#0faf1c] p-2"
           >
-            <Wallet className="h-4 w-4 text-black" style={{ color: 'black' }} />
-            {/* <p className="text-sm font-medium text-black">
-              ${formatNumber(data.totalBalance, 'currency')}
-            </p> */}
+            {/* <Wallet className="h-4 w-4 text-black" style={{ color: 'black' }} /> */}
+
             <span className="max-w-[120px] truncate text-sm text-black">
               {data?.address?.slice(0, 6)}...{data?.address?.slice(-6)}
             </span>
+            <Button className="flex h-6 w-6 items-center justify-center bg-[#fff] p-0">
+              <PlusIcon color="black"></PlusIcon>
+            </Button>
           </div>
         </PopoverTrigger>
         <PopoverContent className="w-[200px] bg-black p-1">

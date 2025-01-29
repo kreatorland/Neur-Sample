@@ -46,6 +46,7 @@ import { APP_VERSION, IS_BETA } from '@/lib/constants';
 import { Brand } from '../logo';
 import NLogo from '../n-logo';
 import { Input } from '../ui/input';
+import WalletComponent from '../wallet';
 import { AppSidebarConversations } from './app-sidebar-conversations';
 import { AppSidebarUser } from './app-sidebar-user';
 
@@ -177,7 +178,7 @@ export function AppSidebar() {
       <SidebarContent className="mt-2 rounded-lg bg-[#1f1f1f]">
         <SidebarGroup className=" pl-3 pr-2">
           <AppSearchBar></AppSearchBar>
-          <SidebarGroupContent>
+          <SidebarGroupContent className="mt-3">
             <SidebarMenu
               className={`mt-3 space-y-2 ${open ? '' : 'flex items-center '}`}
             >
@@ -216,6 +217,9 @@ export function AppSidebar() {
 
         <AppSidebarConversations />
       </SidebarContent>
+      <SidebarFooter>
+        <WalletComponent></WalletComponent>
+      </SidebarFooter>
     </Sidebar>
   );
 }
