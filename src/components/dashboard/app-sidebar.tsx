@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 import {
   ActivityIcon,
   BookOpen,
@@ -44,6 +45,7 @@ import { APP_VERSION, IS_BETA } from '@/lib/constants';
 
 import { Brand } from '../logo';
 import NLogo from '../n-logo';
+import { Input } from '../ui/input';
 import { AppSidebarConversations } from './app-sidebar-conversations';
 import { AppSidebarUser } from './app-sidebar-user';
 
@@ -149,6 +151,15 @@ export function AppSidebar() {
     return pathname.startsWith(`/${itemSegment}`);
   };
 
+  function AppSearchBar() {
+    return (
+      <div className="flex items-center rounded-lg bg-primary/5 p-1">
+        <MagnifyingGlassIcon color="white"></MagnifyingGlassIcon>
+        <Input placeholder="Search"></Input>
+      </div>
+    );
+  }
+
   return (
     <Sidebar
       variant="sidebar"
@@ -156,6 +167,7 @@ export function AppSidebar() {
       className=" fixed left-5 top-5 hidden h-[95vh]  rounded-md md:flex"
       style={{ backgroundColor: 'black' }}
     >
+      <AppSearchBar></AppSearchBar>
       <AppSidebarHeader open={open} />
       <SidebarContent className="mt-2 rounded-lg bg-[#1f1f1f]">
         <SidebarGroup className=" pl-3 pr-2">
@@ -166,28 +178,30 @@ export function AppSidebar() {
               {ExploreItems.map((item, index) => (
                 <SidebarMenuItem
                   key={item.title}
-                  className="sidebarMenuItem rounded-lg  bg-primary/5 p-1"
+                  className="sidebarMenuItem rounded-lg  bg-[#fff] pl-2"
                 >
-                  <SidebarMenuButton
-                    asChild
-                    isActive={getIsActive(item.segment)}
-                    className="group"
-                  >
-                    <Link
-                      href={item.url}
-                      target={item.external ? '_blank' : undefined}
+                  <div className="bg-primary/5  p-1">
+                    <SidebarMenuButton
+                      asChild
+                      isActive={getIsActive(item.segment)}
+                      className="group"
                     >
-                      <item.icon
-                        style={{
-                          height: '24px',
-                          width: '24px',
-                          marginLeft: '-4px',
-                        }}
-                        className="iconImage "
-                      />
-                      <span className="span_text">{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
+                      <Link
+                        href={item.url}
+                        target={item.external ? '_blank' : undefined}
+                      >
+                        <item.icon
+                          style={{
+                            height: '24px',
+                            width: '24px',
+                            marginLeft: '-4px',
+                          }}
+                          className="iconImage "
+                        />
+                        <span className="span_text">{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </div>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
