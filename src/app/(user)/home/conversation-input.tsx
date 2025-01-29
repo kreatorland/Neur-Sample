@@ -89,8 +89,9 @@ export function ConversationInput({
               items-center
               justify-center 
               rounded-lg 
-            bg-[#1bea2c] 
+            
               "
+              style={{ backgroundColor: '#1bea2c !important' }}
             >
               <ForwardIcon
                 color="black"

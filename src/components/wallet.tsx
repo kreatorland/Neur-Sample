@@ -15,7 +15,7 @@ export default function WalletComponent() {
 
   console.log('kkkk data aayo', portfolio);
   return (
-    <div className="mt-3 flex items-center justify-start gap-1 rounded-lg bg-[#27272a] p-1">
+    <div className="mt-2 flex items-center justify-start gap-1 rounded-lg bg-[#27272a] p-1">
       {portfolio?.tokens && (
         <>
           <FloatingWallet data={portfolio} isLoading={isPortfolioLoading} />
