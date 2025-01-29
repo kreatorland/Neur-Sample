@@ -184,13 +184,13 @@ export function AppSidebar() {
               {ExploreItems.map((item, index) => (
                 <SidebarMenuItem
                   key={item.title}
-                  className="sidebarMenuItem rounded-lg  bg-[#fff] pl-2"
+                  className=" rounded-lg  bg-[#fff] pl-2"
                 >
-                  <div className="bg-primary/5  p-1">
+                  <div className="sidebarMenuItem rounded-lg  bg-primary/5 p-1">
                     <SidebarMenuButton
                       asChild
                       isActive={getIsActive(item.segment)}
-                      className="group"
+                      className="group rounded-lg"
                     >
                       <Link
                         href={item.url}
