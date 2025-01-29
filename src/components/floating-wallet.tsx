@@ -39,6 +39,8 @@ import { formatNumber } from '@/lib/format';
 import { cn } from '@/lib/utils';
 import { WalletPortfolio as Portfolio } from '@/types/helius/portfolio';
 
+import { useSidebar } from './ui/sidebar';
+
 interface FloatingWalletProps {
   data: Portfolio;
   className?: string;
@@ -50,6 +52,7 @@ export function FloatingWallet({
   className,
   isLoading = false,
 }: FloatingWalletProps) {
+  const { open: sidebarOpen } = useSidebar();
   console.log('floationg wallet dataa', data);
   const { isLoading: loading, user, logout } = useUser();
   const [isExpanded, setIsExpanded] = useState(false);
@@ -98,10 +101,12 @@ export function FloatingWallet({
             className="mx-auto  flex w-full items-center justify-between rounded-md bg-[#1bea2c] p-2"
           >
             {/* <Wallet className="h-4 w-4 text-black" style={{ color: 'black' }} /> */}
+            {sidebarOpen && (
+              <span className="max-w-[120px] truncate text-sm text-black">
+                {data?.address?.slice(0, 6)}...{data?.address?.slice(-6)}
+              </span>
+            )}
 
-            <span className="max-w-[120px] truncate text-sm text-black">
-              {data?.address?.slice(0, 6)}...{data?.address?.slice(-6)}
-            </span>
             <Button className="flex h-6 w-6 items-center justify-center bg-[#fff] p-0">
               <PlusIcon color="black"></PlusIcon>
             </Button>
