@@ -117,7 +117,7 @@ const ConversationMenuItem = ({
 
   return (
     <>
-      <SidebarMenuItem className="bg-[#27272a] p-2">
+      <SidebarMenuItem className="flex items-center justify-between rounded-md bg-[#27272a] p-1">
         <SidebarMenuButton asChild isActive={active}>
           <Link href={`/chat/${id}`}>
             <span>{title}</span>
@@ -230,7 +230,7 @@ export const AppSidebarConversations = () => {
             </Button>
           </CollapsibleTrigger>
         </div>
-        <CollapsibleContent className="data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
+        <CollapsibleContent className="data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down mt-2">
           <SidebarGroupContent className="group-data-[collapsible=icon]:hidden">
             {isConversationsLoading ? (
               <div className="flex items-center justify-center">
