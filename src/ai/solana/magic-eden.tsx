@@ -235,7 +235,7 @@ const PopularCollections = ({
             <TableHead className="w-[20%]">Image</TableHead>
             <TableHead className="w-[30%]">Name</TableHead>
             <TableHead className="w-[20%]">Floor</TableHead>
-            <TableHead className="w-[20%] text-right">Volume</TableHead>
+            <TableHead className="w-[25%] text-right">Volume</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
