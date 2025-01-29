@@ -375,7 +375,7 @@ export function HomeContent() {
                 <h2 className="text-lg font-semibold text-black sm:text-2xl">
                   Early Access
                 </h2>
-                <div className="text-black text-muted-foreground">
+                <div className="text-black ">
                   {/* <Badge>BETA</Badge> */}
                   We&apos;re offering BETA access to a limited number of users
                   to maintain stability and improve features.
