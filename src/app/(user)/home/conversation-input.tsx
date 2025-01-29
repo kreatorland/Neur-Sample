@@ -80,10 +80,16 @@ export function ConversationInput({
               type="submit"
               size="icon"
               disabled={!value.trim()}
-              className="group relative flex h-8 w-8 items-center
-               justify-center 
-                rounded-lg 
-                bg-[#1bea2c] 
+              className="
+              group 
+              relative 
+              flex 
+              h-8 
+              w-8 
+              items-center
+              justify-center 
+              rounded-lg 
+            bg-[#1bea2c] 
               "
             >
               <ForwardIcon

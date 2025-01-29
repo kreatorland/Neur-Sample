@@ -9,6 +9,7 @@ import { Conversation } from '@prisma/client';
 import {
   ChevronDown,
   Loader2,
+  Mail,
   MoreHorizontal,
   PencilIcon,
   TrashIcon,
@@ -118,6 +119,7 @@ const ConversationMenuItem = ({
   return (
     <>
       <SidebarMenuItem className="flex items-center justify-between rounded-md bg-[#27272a] p-1">
+        <Mail className="h-4 w-4" />
         <SidebarMenuButton asChild isActive={active}>
           <Link href={`/chat/${id}`}>
             <span>{title}</span>
