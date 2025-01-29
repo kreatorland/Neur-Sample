@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import { ForwardIcon, Mic, SendHorizontal } from 'lucide-react';
+import { ForwardIcon, ImageIcon, Mic, SendHorizontal } from 'lucide-react';
 import { toast } from 'sonner';
 
 import { NLogo } from '@/components/n-logo';
@@ -75,7 +75,7 @@ export function ConversationInput({
           />
 
           <div className="flex items-center justify-center gap-2">
-            <Mic color="black"></Mic>
+            <ImageIcon color="black"></ImageIcon>
             <Button
               type="submit"
               size="icon"
@@ -83,10 +83,11 @@ export function ConversationInput({
               disabled={!value.trim()}
               className="group relative flex h-8 w-8 items-center
               justify-center 
-                rounded-lg bg-[#1adc34] 
+                rounded-lg 
+                bg-[#1bea2c] 
                 transition-all 
                 duration-200 ease-in-out
-                hover:text-primary-foreground active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+                active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <ForwardIcon
                 color="white"

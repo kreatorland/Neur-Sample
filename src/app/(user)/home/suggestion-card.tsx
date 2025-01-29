@@ -47,7 +47,7 @@ export function SuggestionCard({
           style={{
             height: '25px',
             width: '25px',
-            color: `${getRandomColor()}`,
+            color: `#1bea2c`,
           }}
         ></Icon>
         <p style={{ margin: '0px' }}>{title}</p>
