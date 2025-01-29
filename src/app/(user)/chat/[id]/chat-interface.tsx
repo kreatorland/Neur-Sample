@@ -890,8 +890,8 @@ export default function ChatInterface({
         </div>
       </div>
 
-      <div className="sticky bottom-0 z-10">
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/95 to-background/0" />
+      <div className="fixed bottom-0 z-10">
+        {/* <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/95 to-background/0" /> */}
         <div className="relative mx-auto w-full max-w-3xl px-4 py-4">
           <form onSubmit={handleFormSubmit} className="relative space-y-4">
             <SavedPromptsMenu
@@ -962,14 +962,9 @@ export default function ChatInterface({
                   onClick={() => fileInputRef.current?.click()}
                   disabled={isLoading}
                 >
-                  <div
-                    className="rounded-lg bg-[#111111] p-2"
-                    style={{
-                      border: '1px solid #adad39',
-                    }}
-                  >
+                  <div className="rounded-lg bg-[#1bea2c] p-2">
                     <ImageIcon
-                      className="color-[#adad39] h-6 w-6 transition-transform 
+                      className="color-black h-6 w-6 transition-transform 
                       duration-200 ease-out group-hover:scale-110"
                     />
                   </div>
@@ -987,14 +982,9 @@ export default function ChatInterface({
                   }
                   className="h-8 w-8 hover:bg-muted"
                 >
-                  <div
-                    className="rounded-lg bg-[#111111] p-2"
-                    style={{
-                      border: '1px solid #adad39',
-                    }}
-                  >
+                  <div className="rounded-lg bg-[#1bea2c] p-2">
                     <ForwardIcon
-                      className="color-[#adad39] h-6 w-6 transition-transform 
+                      className="color-black h-6 w-6 transition-transform 
                       duration-200 ease-out group-hover:scale-110"
                     />
                   </div>

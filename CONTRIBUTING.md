@@ -1,6 +1,6 @@
 # Contributing
 
-We love your input! We want to make contributing to Neur as easy and transparent as possible, whether it's:
+We love your input! We want to make contributing to Numble as easy and transparent as possible, whether it's:
 
 - Reporting a bug
 - Discussing the current state of the code
@@ -99,13 +99,3 @@ feat: add user authentication component
 3. The PR may be merged once you have the sign-off of at least one maintainer
 
 ## Any contributions you make will be under the MIT Software License
-
-When you submit code changes, your submissions are understood to be under the same [MIT License](http://choosealicense.com/licenses/mit/) that covers the project. Feel free to contact the maintainers if that's a concern.
-
-## Report bugs using GitHub's [issue tracker](https://github.com/NeurProjects/neur-app/issues)
-
-We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/NeurProjects/neur-app/issues/new).
-
-## License
-
-By contributing, you agree that your contributions will be licensed under its MIT License.
