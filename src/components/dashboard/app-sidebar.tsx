@@ -153,7 +153,7 @@ export function AppSidebar() {
 
   function AppSearchBar() {
     return (
-      <div className="flex items-center justify-start gap-2 rounded-lg bg-primary/5 p-1">
+      <div className="mt-1 flex items-center justify-start gap-1 rounded-lg bg-primary/5 p-1">
         <MagnifyingGlassIcon
           className="h-6 w-6"
           color="white"
@@ -179,7 +179,7 @@ export function AppSidebar() {
           <AppSearchBar></AppSearchBar>
           <SidebarGroupContent>
             <SidebarMenu
-              className={`space-y-2 ${open ? '' : 'flex items-center '}`}
+              className={`mt-3 space-y-2 ${open ? '' : 'flex items-center '}`}
             >
               {ExploreItems.map((item, index) => (
                 <SidebarMenuItem

@@ -40,7 +40,7 @@ export default function HeaderPart() {
           <p>Open sidebar</p>
         </TooltipContent>
       </Tooltip>
-      <Brand></Brand>
+      {/* <Brand></Brand> */}
     </div>
   );
 }
