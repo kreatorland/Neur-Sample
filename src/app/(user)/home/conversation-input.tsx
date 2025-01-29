@@ -82,12 +82,10 @@ export function ConversationInput({
               variant="ghost"
               disabled={!value.trim()}
               className="group relative flex h-8 w-8 items-center
-              justify-center 
+               justify-center 
                 rounded-lg 
                 bg-[#1bea2c] 
-                transition-all 
-                duration-200 ease-in-out
-                active:scale-95 disabled:cursor-not-allowed "
+              "
             >
               <ForwardIcon
                 color="black"
