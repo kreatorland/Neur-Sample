@@ -154,9 +154,9 @@ export function HomeContent() {
   const handleSend = async (value: string) => {
     if (!value.trim()) return;
 
-    if (!user?.earlyAccess) {
-      return;
-    }
+    // if (!user?.earlyAccess) {
+    //   return;
+    // }
 
     const fakeEvent = new Event('submit') as any;
     fakeEvent.preventDefault = () => {};
@@ -255,8 +255,8 @@ export function HomeContent() {
     );
   }
 
-  // const hasEAP = true;
-  const hasEAP = user?.earlyAccess === true;
+  const hasEAP = true;
+  // const hasEAP = user?.earlyAccess === true;
   const mainContent = (
     <div
       className={cn(
@@ -391,7 +391,7 @@ export function HomeContent() {
                       {EAP_PRICE} SOL
                     </span>
                   </div> */}
-                  <div className="text-xs text-muted-foreground sm:text-sm">
+                  <div className="text-center text-xs text-muted-foreground sm:text-sm">
                     All proceeds from early adopters will directly support
                     development, covering costs for Deepseek API, RPC services,
                     and other essential integrations.
