@@ -33,7 +33,7 @@ import { getRandomSuggestions } from './data/suggestions';
 import { getRandomSuggestions2 } from './data/suggestions';
 import { SuggestionCard } from './suggestion-card';
 
-const EAP_PRICE = 0.1;
+const EAP_PRICE = 0.05;
 const RECEIVE_WALLET_ADDRESS =
   process.env.NEXT_PUBLIC_EAP_RECEIVE_WALLET_ADDRESS!;
 
@@ -356,7 +356,7 @@ export function HomeContent() {
         {mainContent}
         <div className="absolute inset-0 z-20 flex items-center justify-center">
           <div className="mx-auto max-h-screen max-w-xl overflow-y-auto p-6">
-            <Card className="relative max-h-full border-white/[0.1] bg-white/[0.02] p-4 backdrop-blur-sm backdrop-saturate-150 dark:bg-black/[0.02] sm:p-8">
+            <Card className="relative max-h-full border-white/[0.1] bg-[#1bea2c] p-4 backdrop-blur-sm backdrop-saturate-150 dark:bg-black/[0.02] sm:p-8">
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 to-white/[0.02] dark:from-white/[0.02] dark:to-white/[0.01]" />
               <div className="relative space-y-6">
                 <div className="space-y-2 text-center">
@@ -370,8 +370,8 @@ export function HomeContent() {
                   </div>
                 </div>
 
-                <Card className="border-teal-500/10 bg-white/[0.01] p-6 backdrop-blur-sm dark:bg-black/[0.01]">
-                  {/* <h3 className="mb-4 font-semibold">EAP Benefits</h3>
+                {/* <Card className="border-teal-500/10 bg-white/[0.01] p-6 backdrop-blur-sm dark:bg-black/[0.01]"> */}
+                {/* <h3 className="mb-4 font-semibold">EAP Benefits</h3>
                   <div className="space-y-3">
                     {EAP_BENEFITS.map((benefit, index) => (
                       <div key={index} className="flex items-start gap-2">
@@ -380,17 +380,17 @@ export function HomeContent() {
                       </div>
                     ))}
                   </div> */}
-                </Card>
+                {/* </Card> */}
 
-                <div className="rounded-lg bg-[#1bea2c] p-4 backdrop-blur-sm dark:bg-black/[0.01]">
-                  <div className="mb-2 flex items-center justify-between">
+                <div className="rounded-lg p-4 backdrop-blur-sm dark:bg-black/[0.01]">
+                  {/* <div className="mb-2 flex items-center justify-between">
                     <span className="text:xs font-medium sm:text-sm">
                       Payment
                     </span>
                     <span className="font-semibold text-[#1bea2c] sm:text-lg">
                       {EAP_PRICE} SOL
                     </span>
-                  </div>
+                  </div> */}
                   <div className="text-xs text-muted-foreground sm:text-sm">
                     All proceeds from early adopters will directly support
                     development, covering costs for Deepseek API, RPC services,
@@ -398,11 +398,11 @@ export function HomeContent() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center justify-center gap-4">
                   <Button
                     onClick={handlePurchase}
                     disabled={isProcessing}
-                    className="bg-[#1bea2c] text-xs ring-offset-0  focus-visible:ring-0 focus-visible:ring-offset-0 sm:text-sm"
+                    className="bg-[#fff] text-xs ring-offset-0  focus-visible:ring-0 focus-visible:ring-offset-0 sm:text-sm"
                   >
                     {isProcessing ? (
                       <>
@@ -410,7 +410,7 @@ export function HomeContent() {
                         Processing
                       </>
                     ) : (
-                      `Apply for EAP (${EAP_PRICE} SOL)`
+                      `Join Early Access (${EAP_PRICE} SOL)`
                     )}
                   </Button>
                 </div>
