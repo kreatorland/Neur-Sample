@@ -218,13 +218,12 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
                 <div className="absolute bottom-[-7px] left-[-30px] h-10 w-10 border-b-2 border-l-2 border-gray-800 dark:border-white"></div>
               </div>
             </div>
-
             <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
               The{' '}
               <AnimatedShinyText className="inline">
-                <span>Intelligent AI Agent Engine </span>
+                <span>Intelligent AI agent on Solana </span>
               </AnimatedShinyText>{' '}
-              to perform on-chain tasks on <span>Solana</span>
+              powered by <span>Deepseek</span>
             </h1>
 
             <p className="mt-4 text-lg text-muted-foreground">
