@@ -71,7 +71,7 @@ export function ConversationInput({
             onKeyDown={handleKeyDown}
             maxLength={MAX_CHARS}
             placeholder="Type your prompt here..."
-            className=" w-full resize-none overflow-hidden border-0 bg-transparent p-[14px] text-black focus-visible:ring-0"
+            className=" w-full resize-none overflow-hidden border-0 bg-transparent p-[14px] pt-[22px] text-black focus-visible:ring-0"
           />
 
           <div className="flex items-center justify-center gap-2">
@@ -86,9 +86,10 @@ export function ConversationInput({
                 rounded-lg bg-[#1adc34] 
                 transition-all 
                 duration-200 ease-in-out
-                hover:bg-primary hover:text-primary-foreground active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+                hover:text-primary-foreground active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <ForwardIcon
+                color="white"
                 className="color-[#adad39] h-6 w-6 transition-transform 
                   duration-200 ease-out group-hover:scale-110"
               />

@@ -20,7 +20,7 @@ export default function HeaderPart() {
   const { open } = useSidebar();
   return (
     <div className="flex items-center gap-2">
-      {!open && (
+      {/* {!open && (
         <>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -30,22 +30,8 @@ export default function HeaderPart() {
               <p>Open sidebar</p>
             </TooltipContent>
           </Tooltip>
-
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link href="/home">
-                Home
-                <div className="flex items-center justify-center rounded-md bg-[#444444] p-1">
-                  <FilePenLine className="h-4 w-4"></FilePenLine>
-                </div>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>New message</p>
-            </TooltipContent>
-          </Tooltip>
         </>
-      )}
+      )} */}
       <Tooltip>
         <TooltipTrigger asChild>
           <SidebarTrigger />

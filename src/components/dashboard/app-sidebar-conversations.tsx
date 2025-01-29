@@ -117,7 +117,7 @@ const ConversationMenuItem = ({
 
   return (
     <>
-      <SidebarMenuItem>
+      <SidebarMenuItem className="bg-[#27272a] p-2">
         <SidebarMenuButton asChild isActive={active}>
           <Link href={`/chat/${id}`}>
             <span>{title}</span>
@@ -206,7 +206,7 @@ export const AppSidebarConversations = () => {
   if (isUserLoading) {
     return (
       <SidebarGroup>
-        <SidebarGroupLabel>Conversations</SidebarGroupLabel>
+        <SidebarGroupLabel>Chat</SidebarGroupLabel>
         <div className="flex items-center justify-center">
           <Loader2 className="mt-4 h-4 w-4 animate-spin" />
         </div>
@@ -218,9 +218,9 @@ export const AppSidebarConversations = () => {
     <SidebarGroup>
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <div className="flex items-center justify-between pr-2">
-          <SidebarGroupLabel>Conversations</SidebarGroupLabel>
+          <SidebarGroupLabel>Chat</SidebarGroupLabel>
           <CollapsibleTrigger asChild>
-            <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
+            <Button size="sm" className="h-6 w-6 bg-[#444444] p-0">
               <ChevronDown
                 className={cn(
                   'h-4 w-4 transition-transform duration-200',
@@ -237,9 +237,7 @@ export const AppSidebarConversations = () => {
                 <Loader2 className="mt-4 h-4 w-4 animate-spin" />
               </div>
             ) : !conversations?.length ? (
-              <p className="ml-2 text-xs text-muted-foreground">
-                No conversations
-              </p>
+              <p className="ml-2 text-xs text-muted-foreground">No Chat</p>
             ) : (
               <SidebarMenu>
                 {conversations.map((conversation: Conversation) => (

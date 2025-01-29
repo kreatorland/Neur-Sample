@@ -614,7 +614,8 @@ function LoadingMessage() {
       </Avatar>
 
       <div className="relative flex max-w-[85%] flex-col items-start gap-2">
-        <div className="relative flex flex-col gap-2 rounded-2xl bg-muted/60 px-4 py-3 text-sm shadow-sm">
+        <div className="relative flex gap-2 rounded-2xl bg-muted/60 px-4 py-3 text-sm shadow-sm">
+          <h2 className="text-sm">Numble is Listening</h2>
           <div className="flex items-center gap-1">
             <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-foreground/50 [animation-delay:-0.3s]" />
             <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-foreground/50 [animation-delay:-0.15s]" />

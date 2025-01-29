@@ -94,7 +94,7 @@ export function FloatingWallet({
           <div
             role="combobox"
             aria-expanded={open}
-            className="flex w-[180px] items-center justify-around rounded-md bg-white p-2"
+            className="flex w-[170px] items-center justify-around rounded-md bg-white p-2"
           >
             <Wallet className="h-4 w-4 text-black" style={{ color: 'black' }} />
             {/* <p className="text-sm font-medium text-black">
@@ -109,10 +109,10 @@ export function FloatingWallet({
           <div className="flex flex-col gap-1 p-1">
             <div className="flex cursor-pointer items-center gap-1 text-white">
               <Wallet
-                className="h-4 w-4 text-black"
-                style={{ color: 'black' }}
+                className="h-4 w-4 text-white"
+                style={{ color: 'white' }}
               />
-              <p className="text-sm font-medium text-black">
+              <p className="text-sm font-medium text-white">
                 ${formatNumber(data.totalBalance, 'currency')}
               </p>
             </div>

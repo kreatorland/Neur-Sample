@@ -260,7 +260,7 @@ export function HomeContent() {
   const mainContent = (
     <div
       className={cn(
-        'mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center space-y-8 rounded-md bg-[#1f1f1f] px-6',
+        'mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center space-y-8 rounded-md bg-[#1f1f1f] px-6',
         !hasEAP ? 'h-screen py-0' : 'py-12',
       )}
     >

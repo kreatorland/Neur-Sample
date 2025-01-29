@@ -51,11 +51,11 @@ const AppSidebarHeader = ({ open }: { open: boolean }) => {
   return (
     <SidebarHeader>
       <div
-        className={`border-b-1 flex h-[48px] items-center  rounded-md bg-[#1f1f1f]  py-1.5 ${open ? 'justify-between' : 'justify-center'}`}
+        className={`border-b-1 flex h-[48px] items-center  rounded-lg bg-[#1f1f1f] py-1.5  pl-[10px] ${open ? 'justify-between' : 'justify-center'}`}
       >
         <div className="flex items-center gap-2">
           <NLogo></NLogo>
-          <h2>Numble</h2>
+          {open && <h2>Numble</h2>}
         </div>
 
         {/* <Tooltip>
@@ -90,10 +90,10 @@ const AppSidebarHeader = ({ open }: { open: boolean }) => {
 
 const ExploreItems = [
   {
-    title: 'Home',
+    title: 'New Chat',
     url: '/home',
     segment: 'home',
-    icon: HomeIcon,
+    icon: FilePenLine,
     external: false,
   },
 
@@ -106,7 +106,7 @@ const ExploreItems = [
   // },
 
   {
-    title: 'Portfolio',
+    title: 'Wallet',
     url: '/wallet',
     segment: 'Portfolio',
     icon: WalletIcon,
@@ -157,7 +157,7 @@ export function AppSidebar() {
       style={{ backgroundColor: 'black' }}
     >
       <AppSidebarHeader open={open} />
-      <SidebarContent className="bg-[#1f1f1f] ">
+      <SidebarContent className="mt-2 rounded-lg bg-[#1f1f1f]">
         <SidebarGroup className=" pl-3 pr-2">
           <SidebarGroupContent>
             <SidebarMenu
