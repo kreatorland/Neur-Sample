@@ -395,17 +395,19 @@ function ChatMessage({
         </Avatar>
       ) : !isUser ? (
         <div className="w-8" aria-hidden="true" />
-      ) : null}
+      ) : (
+        <Avatar className="mt-0.5 h-8 w-8 shrink-0 select-none">l</Avatar>
+      )}
 
       <div className="group relative flex max-w-[85%] flex-row items-center">
-        {isUser && (
+        {/* {isUser && (
           <button
             onClick={handleSavePrompt}
             className="mr-1 hidden group-hover:block"
           >
             <Bookmark className="h-4 w-4" />
           </button>
-        )}
+        )} */}
         <div
           className={cn('relative gap-2', isUser ? 'items-end' : 'items-start')}
         >
