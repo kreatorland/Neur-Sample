@@ -153,12 +153,15 @@ export function AppSidebar() {
 
   function AppSearchBar() {
     return (
-      <div className="flex items-center justify-start gap-3 rounded-lg bg-primary/5 p-1">
+      <div className="flex items-center justify-start gap-2 rounded-lg bg-primary/5 p-1">
         <MagnifyingGlassIcon
-          className="h-5 w-5"
+          className="h-6 w-6"
           color="white"
         ></MagnifyingGlassIcon>
-        <Input placeholder="Search" className="border-none"></Input>
+        <Input
+          placeholder="Search"
+          className="border-none bg-primary/5 "
+        ></Input>
       </div>
     );
   }
@@ -172,8 +175,8 @@ export function AppSidebar() {
     >
       <AppSidebarHeader open={open} />
       <SidebarContent className="mt-2 rounded-lg bg-[#1f1f1f]">
-        <AppSearchBar></AppSearchBar>
         <SidebarGroup className=" pl-3 pr-2">
+          <AppSearchBar></AppSearchBar>
           <SidebarGroupContent>
             <SidebarMenu
               className={`space-y-2 ${open ? '' : 'flex items-center '}`}
