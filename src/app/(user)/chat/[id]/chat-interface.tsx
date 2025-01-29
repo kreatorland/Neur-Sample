@@ -395,9 +395,7 @@ function ChatMessage({
         </Avatar>
       ) : !isUser ? (
         <div className="w-8" aria-hidden="true" />
-      ) : (
-        <Avatar className="mt-0.5 h-8 w-8 shrink-0 select-none">l</Avatar>
-      )}
+      ) : null}
 
       <div className="group relative flex max-w-[85%] flex-row items-center">
         {/* {isUser && (
@@ -426,7 +424,7 @@ function ChatMessage({
           {message.content && (
             <div
               className={cn(
-                'relative flex flex-col gap-2 rounded-2xl px-4 py-3 text-sm shadow-sm',
+                'relative flex flex-col gap-2 rounded-3xl px-4 py-2 text-sm shadow-sm',
                 isUser ? 'bg-primary' : 'bg-muted/60',
               )}
             >

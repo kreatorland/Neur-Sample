@@ -97,6 +97,8 @@ function TokenCard({ token, className }: TokenCardProps) {
     >
       <div className="flex flex-row justify-between">
         {/* Token Info */}
+
+        <div className="flex"></div>
         <div className="flex flex-col items-center gap-3 p-3">
           <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg">
             <Image
@@ -109,7 +111,14 @@ function TokenCard({ token, className }: TokenCardProps) {
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2">
-              <h3 className="truncate text-sm font-medium">{token.name}</h3>
+              <h3 className="truncate text-sm font-medium">
+                {/* {token.name} */}
+                {token.name.length > 22 ? (
+                  <>{token.name.slice(0, 12)}...</>
+                ) : (
+                  token.name.slice(0, 6)
+                )}
+              </h3>
             </div>
             <div
               className={cn(
@@ -160,14 +169,23 @@ function TokenCard({ token, className }: TokenCardProps) {
                 {formatNumber(token.transactions24h, 'number')}
               </p>
             </div>
+
+            <div className="bg-background/50 p-3">
+              <p className="text-[10px] font-medium text-muted-foreground">
+                Listed
+              </p>
+              <p className="mt-0.5 text-sm font-medium">
+                {formatListedTime(token.listedAt)}
+              </p>
+            </div>
           </div>
 
           {/* Additional Info */}
-          <div className="flex bg-border/50">
+          {/* <div className="flex bg-border/50">
             <div className="flex items-center justify-center gap-2 border-r-2 bg-background/50 p-3">
               <span>Listed {formatListedTime(token.listedAt)}</span>
             </div>
-          </div>
+          </div> */}
           {/* <div className="flex items-center justify-between border-t border-border/50 px-3 py-2 text-[10px] text-muted-foreground"></div> */}
         </div>
       </div>
