@@ -28,7 +28,7 @@ import { ConversationInput } from '../home/conversation-input';
 import { getRandomSuggestions } from '../home/data/suggestions';
 import { SuggestionCard } from '../home/suggestion-card';
 
-const EAP_PRICE = 1.0;
+const EAP_PRICE = 0.1;
 const RECEIVE_WALLET_ADDRESS =
   process.env.NEXT_PUBLIC_EAP_RECEIVE_WALLET_ADDRESS!;
 
@@ -77,8 +77,8 @@ export function IntegrationContent() {
     );
   }
 
-  const hasEAP = true;
-  // const hasEAP = user?.earlyAccess === true;
+  // const hasEAP = true;
+  const hasEAP = user?.earlyAccess === true;
 
   const mainContent = (
     <div

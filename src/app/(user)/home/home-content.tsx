@@ -33,7 +33,7 @@ import { getRandomSuggestions } from './data/suggestions';
 import { getRandomSuggestions2 } from './data/suggestions';
 import { SuggestionCard } from './suggestion-card';
 
-const EAP_PRICE = 1.0;
+const EAP_PRICE = 0.1;
 const RECEIVE_WALLET_ADDRESS =
   process.env.NEXT_PUBLIC_EAP_RECEIVE_WALLET_ADDRESS!;
 
@@ -154,9 +154,9 @@ export function HomeContent() {
   const handleSend = async (value: string) => {
     if (!value.trim()) return;
 
-    // if (!user?.earlyAccess) {
-    //   return;
-    // }
+    if (!user?.earlyAccess) {
+      return;
+    }
 
     const fakeEvent = new Event('submit') as any;
     fakeEvent.preventDefault = () => {};
@@ -255,8 +255,8 @@ export function HomeContent() {
     );
   }
 
-  const hasEAP = true;
-
+  // const hasEAP = true;
+  const hasEAP = user?.earlyAccess === true;
   const mainContent = (
     <div
       className={cn(
