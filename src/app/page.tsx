@@ -271,7 +271,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
                 {/* Light mode image */}
                 <div className="relative p-1 dark:hidden">
                   <Image
-                    src="/numGif.gif"
+                    src="/numbleHomepage.png"
                     alt="numble AI Interface"
                     width={1200}
                     height={755}
@@ -282,7 +282,7 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
                 {/* Dark mode image */}
                 <div className="relative hidden p-1 dark:block">
                   <Image
-                    src="/numGif.gif"
+                    src="/numbleHomepage.png"
                     alt="numble AI Interface"
                     width={1200}
                     height={755}
@@ -482,13 +482,14 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      {/* <DotPattern /> */}
+      <DotPattern />
       <Header handleLogin={login} />
       <main className="flex-1">
         <Hero handleLogin={login} />
-        <Marque></Marque>
 
         <Lobsang></Lobsang>
+
+        <Marque></Marque>
       </main>
       <Footer />
     </div>
