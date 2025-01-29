@@ -34,6 +34,7 @@ import { Confirmation } from '@/components/confimation';
 import { FloatingWallet } from '@/components/floating-wallet';
 import Logo from '@/components/logo';
 import { ToolResult } from '@/components/message/tool-result';
+import { NLogo } from '@/components/n-logo';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -891,12 +892,15 @@ export default function ChatInterface({
       </div>
 
       <div
-        className="fixed bottom-0 z-10"
+        className="fixed bottom-0 z-10 bg-[#fff]"
         style={{ left: '9%', width: '100%' }}
       >
         {/* <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/95 to-background/0" /> */}
         <div className="relative mx-auto w-full max-w-3xl px-4 py-4">
-          <form onSubmit={handleFormSubmit} className="relative space-y-4">
+          <form
+            onSubmit={handleFormSubmit}
+            className="relative flex items-center space-y-4"
+          >
             <SavedPromptsMenu
               input={input}
               isFetchingSavedPrompts={isFetchingSavedPrompts}
@@ -919,6 +923,7 @@ export default function ChatInterface({
                 </div>
               )}
 
+              <NLogo></NLogo>
               <Textarea
                 ref={textareaRef}
                 value={input}
