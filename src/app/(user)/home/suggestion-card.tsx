@@ -45,8 +45,8 @@ export function SuggestionCard({
         <Icon
           className={`color-${getRandomColor()}`}
           style={{
-            height: '25px',
-            width: '25px',
+            height: '22px',
+            width: '22px',
             color: `#1bea2c`,
           }}
         ></Icon>

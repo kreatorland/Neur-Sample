@@ -87,10 +87,10 @@ export function ConversationInput({
                 bg-[#1bea2c] 
                 transition-all 
                 duration-200 ease-in-out
-                active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+                active:scale-95 disabled:cursor-not-allowed "
             >
               <ForwardIcon
-                color="white"
+                color="black"
                 className="color-[#adad39] h-6 w-6 transition-transform 
                   duration-200 ease-out group-hover:scale-110"
               />
