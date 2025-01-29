@@ -273,8 +273,8 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
                   <Image
                     src="/numbleHomepage.png"
                     alt="numble AI Interface"
-                    width={1200}
-                    height={785}
+                    width={1894}
+                    height={901}
                     className="w-full rounded-2xl"
                     priority
                   />
@@ -284,8 +284,8 @@ const Hero = ({ handleLogin }: { handleLogin: () => void }) => {
                   <Image
                     src="/numbleHomepage.png"
                     alt="numble AI Interface"
-                    width={1200}
-                    height={785}
+                    width={1894}
+                    height={901}
                     className="w-full rounded-2xl"
                     priority
                   />
