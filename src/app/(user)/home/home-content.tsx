@@ -440,7 +440,7 @@ export function HomeContent() {
             'fixed inset-0 mt-5 overflow-y-auto overflow-x-hidden transition-opacity duration-300',
             showChat ? 'pointer-events-none opacity-0' : 'opacity-100',
           )}
-          style={{ top: '19%', left: '14%' }}
+          style={{ top: '8%', left: '14%' }}
         >
           {mainContent}
         </div>
