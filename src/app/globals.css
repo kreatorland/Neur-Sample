@@ -12,28 +12,28 @@
 }
 
 .sidebarMenuItem {
-  background: #27272a;
+  background: #fff;
 }
 
-.sidebarMenuItem:hover {
+/* .sidebarMenuItem:hover {
   background-color: #fff;
-}
+} */
 
 .span_text {
   color: white;
 }
 
-.sidebarMenuItem:hover .span_text {
+/* .sidebarMenuItem:hover .span_text {
   color: black;
-}
+} */
 
-.sidebarMenuItem:hover .iconImage {
+/* .sidebarMenuItem:hover .iconImage {
   color: black;
-}
+} */
 
-.iconImage {
+/* .iconImage {
   color: white;
-}
+} */
 
 .custom-toast {
   background-color: black !important; /* Black background */
