@@ -391,12 +391,11 @@ export function HomeContent() {
                       {EAP_PRICE} SOL
                     </span>
                   </div>
-                  {/* <div className="text-xs text-muted-foreground sm:text-sm">
-                    Funds will be allocated to cover expenses such as LLM
-                    integration, RPC data services, infrastructure maintenance,
-                    and other operational costs, all aimed at ensuring the
-                    platform&apos;s stability and reliability.
-                  </div> */}
+                  <div className="text-xs text-muted-foreground sm:text-sm">
+                    All proceeds from early adopters will directly support
+                    development, covering costs for Deepseek API, RPC services,
+                    and other essential integrations.
+                  </div>
                 </div>
 
                 <div className="flex items-center justify-between gap-4">
