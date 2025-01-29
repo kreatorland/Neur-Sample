@@ -62,7 +62,10 @@ function DetailItem({
   };
 
   return (
-    <div className="flex items-center justify-between gap-4 rounded-lg border bg-card/50 p-3">
+    <div
+      className="flex items-center justify-between gap-4 rounded-lg  bg-card/50 p-3"
+      style={{ border: '1px solid #1bea2c' }}
+    >
       <div className="min-w-0 flex-1">
         <div className="text-sm font-medium text-muted-foreground">{label}</div>
         <TooltipProvider delayDuration={0}>
@@ -211,9 +214,8 @@ export function LaunchResult({
   return (
     <Card className="w-full max-w-2xl">
       <CardHeader className="space-y-1">
-        <CardTitle className="flex items-center gap-2 text-2xl">
-          Token Created Successfully!
-          <span>🚀</span>
+        <CardTitle className="flex items-center justify-center gap-2 text-2xl">
+          Token Successfully Created !<span>🚀</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="grid gap-6">
@@ -235,7 +237,7 @@ export function LaunchResult({
           </div>
         ) : metadata ? (
           <div className="grid gap-6">
-            <div className="flex flex-col gap-6 sm:flex-row">
+            <div className="flex flex-row items-center justify-center gap-6 sm:flex-col">
               {metadata.image && (
                 <div className="relative aspect-square h-24 w-24 shrink-0 overflow-hidden rounded-lg border bg-muted">
                   <Image
