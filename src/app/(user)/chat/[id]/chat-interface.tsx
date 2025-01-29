@@ -890,7 +890,10 @@ export default function ChatInterface({
         </div>
       </div>
 
-      <div className="fixed bottom-0 z-10">
+      <div
+        className="fixed bottom-0 z-10"
+        style={{ left: '9%', width: '100%' }}
+      >
         {/* <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-background/95 to-background/0" /> */}
         <div className="relative mx-auto w-full max-w-3xl px-4 py-4">
           <form onSubmit={handleFormSubmit} className="relative space-y-4">
@@ -966,6 +969,7 @@ export default function ChatInterface({
                     <ImageIcon
                       className="color-black h-6 w-6 transition-transform 
                       duration-200 ease-out group-hover:scale-110"
+                      style={{ color: 'black' }}
                     />
                   </div>
                   {/* <ImageIcon className="h-5 w-5" /> */}
@@ -986,6 +990,7 @@ export default function ChatInterface({
                     <ForwardIcon
                       className="color-black h-6 w-6 transition-transform 
                       duration-200 ease-out group-hover:scale-110"
+                      style={{ color: 'black' }}
                     />
                   </div>
                 </Button>
