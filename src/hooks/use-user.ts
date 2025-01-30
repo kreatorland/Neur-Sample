@@ -9,22 +9,22 @@ import useSWR from 'swr';
 
 import { debugLog } from '@/lib/debug';
 import { getUserData } from '@/server/actions/user';
-import { NeurUser, PrismaUser, PrivyUser } from '@/types/db';
+import { NumbleUser, PrismaUser, PrivyUser } from '@/types/db';
 
 /**
- * Extended interface for NeurUser that includes Privy functionality
+ * Extended interface for NumbleUser that includes Privy functionality
  * Omits 'user' and 'ready' from PrivyInterface to avoid conflicts
  */
-type NeurUserInterface = Omit<PrivyInterface, 'user' | 'ready'> & {
+type NumbleUserInterface = Omit<PrivyInterface, 'user' | 'ready'> & {
   isLoading: boolean;
-  user: NeurUser | null;
+  user: NumbleUser | null;
 };
 
 /**
- * Loads cached NeurUser data from localStorage
- * @returns {NeurUser | null} Cached user data or null if not found/invalid
+ * Loads cached NumbleUser data from localStorage
+ * @returns {NumbleUser | null} Cached user data or null if not found/invalid
  */
-function loadFromCache(): NeurUser | null {
+function loadFromCache(): NumbleUser | null {
   try {
     const cached = localStorage.getItem('neur-user-data');
     if (cached) {
@@ -49,10 +49,10 @@ function loadFromCache(): NeurUser | null {
 }
 
 /**
- * Saves NeurUser data to localStorage
- * @param {NeurUser | null} data User data to cache or null to clear cache
+ * Saves NumbleUser data to localStorage
+ * @param {NumbleUser | null} data User data to cache or null to clear cache
  */
-function saveToCache(data: NeurUser | null) {
+function saveToCache(data: NumbleUser | null) {
   try {
     if (data) {
       localStorage.setItem('neur-user-data', JSON.stringify(data));
@@ -76,13 +76,13 @@ function saveToCache(data: NeurUser | null) {
 }
 
 /**
- * Fetches NeurUser data from the server
+ * Fetches NumbleUser data from the server
  * @param {PrivyUser} privyUser The authenticated Privy user
- * @returns {Promise<NeurUser | null>} User data or null if fetch fails
+ * @returns {Promise<NumbleUser | null>} User data or null if fetch fails
  */
-async function fetchNeurUserData(
+async function fetchNumbleUserData(
   privyUser: PrivyUser,
-): Promise<NeurUser | null> {
+): Promise<NumbleUser | null> {
   try {
     const response = await getUserData();
     if (response?.data?.success && response?.data?.data) {
@@ -94,7 +94,7 @@ async function fetchNeurUserData(
       return {
         ...prismaUser,
         privyUser: privyUser as PrivyUser,
-      } as NeurUser;
+      } as NumbleUser;
     }
     debugLog(
       'Server returned unsuccessful user data response',
@@ -115,13 +115,13 @@ async function fetchNeurUserData(
 }
 
 /**
- * Custom hook for managing NeurUser data fetching, caching, and synchronization
+ * Custom hook for managing NumbleUser data fetching, caching, and synchronization
  * Combines Privy authentication with our user data management system
- * @returns {NeurUserInterface} Object containing user data, loading state, and Privy interface methods
+ * @returns {NumbleUserInterface} Object containing user data, loading state, and Privy interface methods
  */
-export function useUser(): NeurUserInterface {
+export function useUser(): NumbleUserInterface {
   const { ready, user: privyUser, ...privyRest } = usePrivy();
-  const [initialCachedUser, setInitialCachedUser] = useState<NeurUser | null>(
+  const [initialCachedUser, setInitialCachedUser] = useState<NumbleUser | null>(
     null,
   );
   const router = useRouter();
@@ -138,9 +138,9 @@ export function useUser(): NeurUserInterface {
 
   /**
    * SWR fetcher function that combines server data with Privy user data
-   * @returns {Promise<NeurUser | null>} Combined user data or null
+   * @returns {Promise<NumbleUser | null>} Combined user data or null
    */
-  const fetcher = useCallback(async (): Promise<NeurUser | null> => {
+  const fetcher = useCallback(async (): Promise<NumbleUser | null> => {
     if (!ready || !privyUser) {
       debugLog('Privy not ready or user not logged in', null, {
         module: 'useUser',
@@ -150,18 +150,18 @@ export function useUser(): NeurUserInterface {
     }
 
     if (privyUser) {
-      debugLog('Fetching NeurUser data from server', null, {
+      debugLog('Fetching NumbleUser data from server', null, {
         module: 'useUser',
         level: 'info',
       });
-      const neurUser = await fetchNeurUserData(privyUser as PrivyUser);
-      debugLog('Merged NeurUser data', neurUser, {
+      const numbleUser = await fetchNumbleUserData(privyUser as PrivyUser);
+      debugLog('Merged NumbleUser data', numbleUser, {
         module: 'useUser',
         level: 'info',
       });
-      return neurUser;
+      return numbleUser;
     }
-    debugLog('No valid NeurUser data retrieved', null, {
+    debugLog('No valid NumbleUser data retrieved', null, {
       module: 'useUser',
       level: 'warn',
     });
@@ -169,25 +169,22 @@ export function useUser(): NeurUserInterface {
   }, [ready, privyUser]);
 
   // Use SWR for data fetching and state management
-  const { data: neurUser, isValidating: swrLoading } = useSWR<NeurUser | null>(
-    swrKey,
-    fetcher,
-    {
+  const { data: numbleUser, isValidating: swrLoading } =
+    useSWR<NumbleUser | null>(swrKey, fetcher, {
       fallbackData: initialCachedUser,
       revalidateOnFocus: false,
       shouldRetryOnError: false,
-    },
-  );
+    });
 
-  debugLog('Current NeurUser data', neurUser, { module: 'useUser' });
+  debugLog('Current NumbleUser data', numbleUser, { module: 'useUser' });
   debugLog('SWR validation status', swrLoading, { module: 'useUser' });
 
   // Update cache when new user data is fetched
   useEffect(() => {
-    if (neurUser) {
-      saveToCache(neurUser);
+    if (numbleUser) {
+      saveToCache(numbleUser);
     }
-  }, [neurUser]);
+  }, [numbleUser]);
 
   const isLoading = swrLoading && !initialCachedUser;
   debugLog('Loading state', { isLoading }, { module: 'useUser' });
@@ -223,8 +220,8 @@ export function useUser(): NeurUserInterface {
 
   return {
     ...privyRest,
-    isLoading: isLoading || neurUser == null,
-    user: neurUser || null,
+    isLoading: isLoading || numbleUser == null,
+    user: numbleUser || null,
     logout: extendedLogout,
   };
 }

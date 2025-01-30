@@ -30,7 +30,7 @@ export type PrismaUser = _PrismaUser & {
   wallets: EmbeddedWallet[];
 };
 
-export type NeurUser = Pick<
+export type NumbleUser = Pick<
   PrismaUser,
   | 'id'
   | 'privyId'

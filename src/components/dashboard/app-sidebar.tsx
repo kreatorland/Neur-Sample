@@ -152,17 +152,19 @@ export function AppSidebar() {
     return pathname.startsWith(`/${itemSegment}`);
   };
 
-  function AppSearchBar() {
+  function AppSearchBar({ open }: { open: boolean }) {
     return (
       <div className="mt-1 flex items-center justify-start gap-1 rounded-lg bg-[#27272a] p-1 pl-3">
         <MagnifyingGlassIcon
-          className="h-6 w-6"
+          className={`h-6 w-6 ${open ? '' : 'h-7 w-7 justify-center'}`}
           color="white"
         ></MagnifyingGlassIcon>
-        <Input
-          placeholder="Search"
-          className="border-none bg-[#27272a] p-0 focus-visible:ring-0 "
-        ></Input>
+        {open && (
+          <Input
+            placeholder="Search"
+            className={`border-none bg-[#27272a] p-0 focus-visible:ring-0 `}
+          ></Input>
+        )}
       </div>
     );
   }
@@ -177,7 +179,7 @@ export function AppSidebar() {
       <AppSidebarHeader open={open} />
       <SidebarContent className="mt-2 rounded-lg bg-[#1f1f1f]">
         <SidebarGroup className=" pl-3 pr-2">
-          <AppSearchBar></AppSearchBar>
+          <AppSearchBar open={open}></AppSearchBar>
           <SidebarGroupContent className="mt-3">
             <SidebarMenu
               className={`mt-3 space-y-2 ${open ? '' : 'flex items-center '}`}
