@@ -11,7 +11,7 @@ export function LoadingStateSkeleton() {
           {/* Embedded Wallet Section */}
           <section className="space-y-4">
             <h2 className="text-sm font-medium text-muted-foreground">
-              Wallet
+              Portfolio
             </h2>
             <Card className="bg-sidebar">
               <CardContent className="pt-6">
