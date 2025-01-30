@@ -136,13 +136,11 @@ export function AccountContent() {
     <div className="flex flex-1 flex-col py-8">
       <div className="w-full ">
         <div className=" space-y-6">
-          <Card className="w-full">
+          <Card className="w-full rounded-md bg-[#252323]">
             <CardContent className="pt-6">
               {/* Legacy Embedded Wallet Section */}
               <section className="space-y-4">
-                <h2 className="text-sm font-medium text-muted-foreground">
-                  Wallet
-                </h2>
+                <h2 className="text-sm font-medium text-white">Portfolio</h2>
                 {legacyWallets.map((wallet: EmbeddedWallet) => (
                   <WalletCard
                     key={wallet.id}
