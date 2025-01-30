@@ -35,7 +35,7 @@ export const CopyableText = ({ text, showSolscan = false }: Props) => {
   const shouldShowSolscanLink = showSolscan && isValidBase58;
 
   return (
-    <div className="flex w-full select-none items-center gap-2">
+    <div className="flex w-full select-none items-center gap-2 rounded-lg border border-sidebar-accent/50 p-2">
       <div className="min-w-0 flex-1 truncate">
         <span className="block font-mono text-sm">{text}</span>
       </div>
