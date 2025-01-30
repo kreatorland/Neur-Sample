@@ -23,7 +23,7 @@ export default function AuthProviders({
       config={{
         appearance: {
           theme: resolvedTheme as 'light' | 'dark',
-          logo: resolvedTheme === 'dark' ? '/numble.svg' : '/numble.svg',
+          logo: resolvedTheme === 'dark' ? '/numble1.svg' : '/numble1.svg',
         },
         externalWallets: {
           solana: {
