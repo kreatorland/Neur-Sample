@@ -141,7 +141,7 @@ const getImageStyle = (index: number, total: number) => {
   if (total === 3 && index === 0) return 'col-span-2 aspect-[2/1]';
   return 'aspect-square';
 };
-
+const DEEPSEEK_API_KEY = 'sk-b703e705496345978edf916ae40046a3';
 const applyToolUpdates = (messages: Message[], toolUpdates: ToolUpdate[]) => {
   while (toolUpdates.length > 0) {
     const update = toolUpdates.pop();

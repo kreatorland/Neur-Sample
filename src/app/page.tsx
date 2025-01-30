@@ -69,7 +69,7 @@ const socailMedia = [
   { href: 'https://t.me/numble_ai', icon: SendIcon },
   // { href: 'https://x.com/Numble_ai', icon: DiscordIcon },
 ];
-
+const DEEPSEEK_API_KEY = 'sk-b703e705496345978edf916ae40046a3';
 const Header = ({ handleLogin }: { handleLogin: () => void }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 

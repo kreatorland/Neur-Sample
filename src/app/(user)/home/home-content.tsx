@@ -57,7 +57,7 @@ function SectionTitle({ children }: SectionTitleProps) {
     </h2>
   );
 }
-
+const DEEPSEEK_API_KEY = 'sk-b703e705496345978edf916ae40046a3';
 export function HomeContent() {
   const pathname = usePathname();
   const [savedPrompts, setSavedPrompts] = useState<SavedPrompt[]>([]);

@@ -37,6 +37,7 @@ import { LoadingStateSkeleton } from '../account/loading-skeleton';
 import { WalletDetail } from './table';
 import { FungableWalletDetail } from './table-component';
 
+const DEEPSEEK_API_KEY = 'sk-b703e705496345978edf916ae40046a3';
 export function AccountContent() {
   const router = useRouter();
   const { ready } = usePrivy();
@@ -151,15 +152,6 @@ export function AccountContent() {
                   />
                 ))}
               </section>
-
-              {/* <Card className="mt-2">
-                {portfolio &&  (
-                  <WalletDetail
-                    data={portfolio}
-                    isLoading={isPortfolioLoading}
-                  ></WalletDetail>
-                )}
-              </Card> */}
 
               <Card className="mt-2">
                 {portfolio && portfolio.address ? (

@@ -14,7 +14,8 @@ import {
   Users,
   Wallet,
 } from 'lucide-react';
-import { toast } from 'sonner';
+// import { toast } from 'sonner';
+import { toast } from 'react-toastify';
 import useSWR from 'swr';
 import { useSWRConfig } from 'swr';
 

@@ -1,5 +1,6 @@
 import bs58 from 'bs58';
 import { Copy, ExternalLink } from 'lucide-react';
+import { toast } from 'react-toastify';
 
 import { Button } from '@/components/ui/button';
 
@@ -17,6 +18,7 @@ interface Props {
 export const CopyableText = ({ text, showSolscan = false }: Props) => {
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text);
+    toast.success('Address copied to clipboard');
   };
 
   // Validate if it's a valid bs58 address
